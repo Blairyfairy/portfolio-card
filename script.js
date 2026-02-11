@@ -1,4 +1,3 @@
-// ✨ Connect Button Toggle (because networking should be fun)
 const followBtn = document.getElementById("followBtn");
 const btnText = document.querySelector(".btn-text");
 
@@ -12,7 +11,6 @@ followBtn.addEventListener("click", () => {
   }
 });
 
-// 🌙 Dark/Light Theme Toggle (for mood and style)
 const themeToggle = document.getElementById("themeToggle");
 
 themeToggle.addEventListener("click", () => {
