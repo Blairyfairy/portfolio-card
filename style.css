@@ -1,55 +1,57 @@
 /* =========================
-   COLOR SYSTEM (REFINED GRADIENT SCALE)
+   COLOR SYSTEM
+   Blue → Green Gradient
+   Subtle Purple Accents
    ========================= */
 
 :root {
-  /* Primary spectrum */
-  --ink-black: #0a0b10;
-  --deep-indigo: #1b1f3b;
-  --royal-purple: #4f46e5;
-  --emerald-accent: #22c55e;
-  --soft-white: #f9fafb;
+  /* Core tones */
+  --midnight-blue: #0b1c2d;
+  --deep-blue: #1e3a8a;
+  --teal-blue: #0f766e;
+  --emerald-green: #22c55e;
+  --accent-purple: #6d28d9;
+  --soft-white: #f8fafc;
 
-  /* Existing variable mappings (structure untouched) */
-  --deep-blue: var(--royal-purple);
-  --vibrant-orange: var(--emerald-accent);
+  /* Existing variable usage (UNCHANGED) */
+  --vibrant-orange: var(--emerald-green);
 
-  /* Gradient depth (closer to original, more professional) */
+  /* Background gradient (rich, professional scale) */
   --bg-light: linear-gradient(
     135deg,
-    #0a0b10 0%,
-    #14162a 35%,
-    #1b1f3b 70%,
-    #2a1e5c 100%
+    #0b1c2d 0%,
+    #0f2f4f 30%,
+    #0f766e 60%,
+    #22c55e 100%
   );
 
   --text-light: var(--soft-white);
 
-  /* Glass system */
-  --glass-bg: rgba(255, 255, 255, 0.09);
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.085);
   --glass-border: rgba(255, 255, 255, 0.22);
 }
 
 /* =========================
-   DARK MODE (DEEPER CONTRAST)
+   DARK MODE
    ========================= */
 
 body.dark {
   --bg-light: linear-gradient(
     135deg,
-    #05060a 0%,
-    #0b0d18 40%,
-    #12152a 75%,
-    #1a133d 100%
+    #050b14 0%,
+    #071a2d 35%,
+    #083a3a 70%,
+    #0f5132 100%
   );
 
-  --glass-bg: rgba(18, 18, 30, 0.65);
+  --glass-bg: rgba(15, 25, 35, 0.65);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --text-light: #f8fafc;
+  --text-light: #f9fafb;
 }
 
 /* =========================
-   BASE STYLES (UNCHANGED)
+   BASE STYLES
    ========================= */
 
 body {
@@ -117,8 +119,8 @@ body {
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   display: block;
-  border: 4px solid rgba(255, 255, 255, 0.38);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.55);
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
 }
 
 /* =========================
@@ -132,13 +134,13 @@ body {
 
 .sub-name {
   font-size: 0.75rem;
-  opacity: 0.72;
+  opacity: 0.7;
   margin-bottom: 0.5rem;
 }
 
 .profile-info h4 {
   margin: 0.6rem 0 1rem;
-  color: var(--vibrant-orange);
+  color: var(--emerald-green);
   font-weight: 500;
 }
 
@@ -180,7 +182,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(15, 23, 42, 0.95);
   color: white;
   padding: 6px 12px;
   border-radius: 8px;
@@ -206,8 +208,8 @@ body {
   background: linear-gradient(
     135deg,
     var(--deep-blue),
-    #4338ca,
-    var(--vibrant-orange)
+    var(--accent-purple),
+    var(--emerald-green)
   );
   border: none;
   padding: 0.75rem 2rem;
@@ -226,8 +228,8 @@ body {
 .following {
   background: linear-gradient(
     135deg,
-    var(--vibrant-orange),
-    #16a34a,
+    var(--emerald-green),
+    var(--accent-purple),
     var(--deep-blue)
   );
 }
