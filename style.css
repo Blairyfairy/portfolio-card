@@ -1,34 +1,51 @@
 /* =========================
-   COLOR SYSTEM (UPDATED ONLY)
+   COLOR SYSTEM (REFINED GRADIENT SCALE)
    ========================= */
 
 :root {
-  /* Core palette */
-  --deep-black: #0b0b0f;
-  --pure-white: #ffffff;
-  --electric-green: #22c55e;
-  --sleek-purple: #7c3aed;
+  /* Primary spectrum */
+  --ink-black: #0a0b10;
+  --deep-indigo: #1b1f3b;
+  --royal-purple: #4f46e5;
+  --emerald-accent: #22c55e;
+  --soft-white: #f9fafb;
 
-  /* Mapped to existing variables (NO structural changes) */
-  --deep-blue: var(--sleek-purple);
-  --vibrant-orange: var(--electric-green);
+  /* Existing variable mappings (structure untouched) */
+  --deep-blue: var(--royal-purple);
+  --vibrant-orange: var(--emerald-accent);
 
-  --bg-light: linear-gradient(135deg, #0b0b0f, #1a102f);
-  --text-light: #ffffff;
+  /* Gradient depth (closer to original, more professional) */
+  --bg-light: linear-gradient(
+    135deg,
+    #0a0b10 0%,
+    #14162a 35%,
+    #1b1f3b 70%,
+    #2a1e5c 100%
+  );
 
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.18);
+  --text-light: var(--soft-white);
+
+  /* Glass system */
+  --glass-bg: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.22);
 }
 
 /* =========================
-   DARK MODE (REFINED)
+   DARK MODE (DEEPER CONTRAST)
    ========================= */
 
 body.dark {
-  --bg-light: linear-gradient(135deg, #050508, #120a22);
-  --glass-bg: rgba(20, 20, 30, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --text-light: #f9fafb;
+  --bg-light: linear-gradient(
+    135deg,
+    #05060a 0%,
+    #0b0d18 40%,
+    #12152a 75%,
+    #1a133d 100%
+  );
+
+  --glass-bg: rgba(18, 18, 30, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-light: #f8fafc;
 }
 
 /* =========================
@@ -43,7 +60,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.5s ease;
+  transition: background 0.6s ease;
 }
 
 .container {
@@ -64,7 +81,7 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   font-size: 0.75rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 /* =========================
@@ -80,13 +97,13 @@ body {
   text-align: center;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .profile-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.8);
 }
 
 /* =========================
@@ -100,8 +117,8 @@ body {
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   display: block;
-  border: 4px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+  border: 4px solid rgba(255, 255, 255, 0.38);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.55);
 }
 
 /* =========================
@@ -115,19 +132,19 @@ body {
 
 .sub-name {
   font-size: 0.75rem;
-  opacity: 0.7;
+  opacity: 0.72;
   margin-bottom: 0.5rem;
 }
 
 .profile-info h4 {
-  margin: 0.5rem 0 1rem;
+  margin: 0.6rem 0 1rem;
   color: var(--vibrant-orange);
   font-weight: 500;
 }
 
 .bio {
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* =========================
@@ -135,7 +152,7 @@ body {
    ========================= */
 
 .social-links {
-  margin: 1.5rem 0;
+  margin: 1.6rem 0;
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -150,7 +167,7 @@ body {
 
 .social-links a:hover {
   transform: translateY(-6px);
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.6));
 }
 
 /* =========================
@@ -163,7 +180,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.92);
   color: white;
   padding: 6px 12px;
   border-radius: 8px;
@@ -186,7 +203,12 @@ body {
 
 .follow-btn {
   margin-top: 1rem;
-  background: linear-gradient(135deg, var(--deep-blue), var(--vibrant-orange));
+  background: linear-gradient(
+    135deg,
+    var(--deep-blue),
+    #4338ca,
+    var(--vibrant-orange)
+  );
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 30px;
@@ -194,23 +216,28 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
 }
 
 .follow-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .following {
-  background: linear-gradient(135deg, var(--vibrant-orange), var(--deep-blue));
+  background: linear-gradient(
+    135deg,
+    var(--vibrant-orange),
+    #16a34a,
+    var(--deep-blue)
+  );
 }
 
 /* =========================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE
    ========================= */
 
 .theme-btn {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
   padding: 0.4rem 1rem;
