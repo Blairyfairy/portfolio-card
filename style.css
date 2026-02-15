@@ -1,62 +1,53 @@
 /* =========================
-   PROFESSIONAL PHOTO-MATCHED COLOR SYSTEM
-   Dark Blue → Lime Green
-   Purple Accent
-   High Contrast (Light + Dark)
+   COLOR SYSTEM
+   Based on Provided Swatch
+   Dark → Light Contrast
    ========================= */
 
 :root {
-  /* Dark anchors (black turtleneck / city shadows) */
-  --ink-blue-black: #030712;
-  --deep-navy: #020f2e;
-  --steel-blue: #0b3a5f;
+  /* Core palette */
+  --black: #000000ff;
+  --midnight-violet: #291528ff;
+  --charcoal-brown: #3a3e3bff;
+  --ghost-white: #f0eff4ff;
+  --dusty-mauve: #9e829cff;
 
-  /* Green spectrum (trees, street foliage, lime highlights) */
-  --forest-green: #14532d;
-  --lime-green: #65f59b;
-  --lime-soft: #86efac;
+  /* Existing variable usage (structure unchanged) */
+  --deep-blue: var(--midnight-violet);
+  --vibrant-orange: var(--dusty-mauve);
+  --text-light: var(--ghost-white);
 
-  /* Accent (used sparingly) */
-  --royal-purple: #6d28d9;
-
-  /* Text */
-  --text-light: #f9fafb;
-
-  /* Existing variable usage (STRUCTURE UNCHANGED) */
-  --deep-blue: var(--steel-blue);
-  --vibrant-orange: var(--lime-green);
-
-  /* Background gradient (cinematic, dark → light) */
+  /* Background gradient (dark → light, cinematic) */
   --bg-light: linear-gradient(
     135deg,
-    #030712 0%,
-    #020f2e 25%,
-    #0b3a5f 50%,
-    #14532d 75%,
-    #65f59b 100%
+    #000000ff 0%,
+    #291528ff 30%,
+    #3a3e3bff 60%,
+    #9e829cff 85%,
+    #f0eff4ff 100%
   );
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.085);
-  --glass-border: rgba(255, 255, 255, 0.24);
+  --glass-bg: rgba(240, 239, 244, 0.08);
+  --glass-border: rgba(240, 239, 244, 0.22);
 }
 
 /* =========================
-   DARK MODE (EDITORIAL, EVEN DEEPER)
+   DARK MODE (DEEP EDITORIAL)
    ========================= */
 
 body.dark {
   --bg-light: linear-gradient(
     135deg,
-    #02040a 0%,
-    #020617 30%,
-    #042f2e 65%,
-    #14532d 100%
+    #000000ff 0%,
+    #1a0d19 35%,
+    #291528ff 70%,
+    #3a3e3bff 100%
   );
 
-  --glass-bg: rgba(8, 12, 20, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --text-light: #f8fafc;
+  --glass-bg: rgba(0, 0, 0, 0.65);
+  --glass-border: rgba(240, 239, 244, 0.12);
+  --text-light: #f8f7fb;
 }
 
 /* =========================
@@ -108,13 +99,13 @@ body {
   text-align: center;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
   transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .profile-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 38px 90px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
 }
 
 /* =========================
@@ -128,7 +119,7 @@ body {
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   display: block;
-  border: 4px solid rgba(255, 255, 255, 0.45);
+  border: 4px solid rgba(240, 239, 244, 0.45);
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
 }
 
@@ -149,7 +140,7 @@ body {
 
 .profile-info h4 {
   margin: 0.6rem 0 1rem;
-  color: var(--lime-green);
+  color: var(--dusty-mauve);
   font-weight: 500;
 }
 
@@ -191,8 +182,8 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(3, 7, 18, 0.96);
-  color: white;
+  background: rgba(0, 0, 0, 0.95);
+  color: var(--ghost-white);
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 0.75rem;
@@ -209,21 +200,21 @@ body {
 }
 
 /* =========================
-   BUTTON (PURPLE ACCENT)
+   BUTTON
    ========================= */
 
 .follow-btn {
   margin-top: 1rem;
   background: linear-gradient(
     135deg,
-    var(--royal-purple),
-    var(--deep-blue),
-    var(--lime-green)
+    #291528ff,
+    #3a3e3bff,
+    #9e829cff
   );
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 30px;
-  color: white;
+  color: var(--ghost-white);
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -237,9 +228,9 @@ body {
 .following {
   background: linear-gradient(
     135deg,
-    var(--lime-green),
-    var(--royal-purple),
-    var(--deep-blue)
+    #9e829cff,
+    #291528ff,
+    #000000ff
   );
 }
 
@@ -248,11 +239,11 @@ body {
    ========================= */
 
 .theme-btn {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(240, 239, 244, 0.18);
+  border: 1px solid rgba(240, 239, 244, 0.35);
   border-radius: 20px;
   padding: 0.4rem 1rem;
-  color: white;
+  color: var(--ghost-white);
   cursor: pointer;
   backdrop-filter: blur(10px);
 }
