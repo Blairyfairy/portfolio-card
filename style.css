@@ -1,56 +1,62 @@
 /* =========================
-   COLOR SYSTEM
-   Dark → Light Contrast
-   Blue → Green
-   Purple Accents
+   PROFESSIONAL PHOTO-MATCHED COLOR SYSTEM
+   Dark Blue → Lime Green
+   Purple Accent
+   High Contrast (Light + Dark)
    ========================= */
 
 :root {
-  /* Contrast anchors */
-  --blue-darkest: #020617;   /* near-black blue */
-  --blue-deep: #020f2e;
-  --blue-mid: #0b3a5f;
-  --green-mid: #15803d;
-  --green-lightest: #4ade80;
-  --purple-accent: #7c3aed;
+  /* Dark anchors (black turtleneck / city shadows) */
+  --ink-blue-black: #030712;
+  --deep-navy: #020f2e;
+  --steel-blue: #0b3a5f;
 
-  --text-light: #f8fafc;
+  /* Green spectrum (trees, street foliage, lime highlights) */
+  --forest-green: #14532d;
+  --lime-green: #65f59b;
+  --lime-soft: #86efac;
 
-  /* Existing variable usage (UNCHANGED STRUCTURE) */
-  --deep-blue: var(--blue-mid);
-  --vibrant-orange: var(--green-lightest);
+  /* Accent (used sparingly) */
+  --royal-purple: #6d28d9;
 
-  /* Background gradient (true dark → light scale) */
+  /* Text */
+  --text-light: #f9fafb;
+
+  /* Existing variable usage (STRUCTURE UNCHANGED) */
+  --deep-blue: var(--steel-blue);
+  --vibrant-orange: var(--lime-green);
+
+  /* Background gradient (cinematic, dark → light) */
   --bg-light: linear-gradient(
     135deg,
-    #020617 0%,
+    #030712 0%,
     #020f2e 25%,
-    #0b3a5f 55%,
-    #15803d 80%,
-    #4ade80 100%
+    #0b3a5f 50%,
+    #14532d 75%,
+    #65f59b 100%
   );
 
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.085);
-  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.24);
 }
 
 /* =========================
-   DARK MODE (EVEN DEEPER)
+   DARK MODE (EDITORIAL, EVEN DEEPER)
    ========================= */
 
 body.dark {
   --bg-light: linear-gradient(
     135deg,
-    #01030a 0%,
-    #020617 35%,
-    #042f2e 70%,
+    #02040a 0%,
+    #020617 30%,
+    #042f2e 65%,
     #14532d 100%
   );
 
-  --glass-bg: rgba(10, 15, 25, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-light: #f9fafb;
+  --glass-bg: rgba(8, 12, 20, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text-light: #f8fafc;
 }
 
 /* =========================
@@ -65,7 +71,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.6s ease;
+  transition: background 0.7s ease;
 }
 
 .container {
@@ -94,7 +100,7 @@ body {
    ========================= */
 
 .profile-card {
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 22px;
@@ -102,13 +108,13 @@ body {
   text-align: center;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.85);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .profile-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 38px 90px rgba(0, 0, 0, 0.95);
 }
 
 /* =========================
@@ -122,8 +128,8 @@ body {
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   display: block;
-  border: 4px solid rgba(255, 255, 255, 0.42);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+  border: 4px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
 }
 
 /* =========================
@@ -143,7 +149,7 @@ body {
 
 .profile-info h4 {
   margin: 0.6rem 0 1rem;
-  color: var(--green-lightest);
+  color: var(--lime-green);
   font-weight: 500;
 }
 
@@ -172,7 +178,7 @@ body {
 
 .social-links a:hover {
   transform: translateY(-6px);
-  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.75));
 }
 
 /* =========================
@@ -185,7 +191,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(2, 6, 23, 0.96);
+  background: rgba(3, 7, 18, 0.96);
   color: white;
   padding: 6px 12px;
   border-radius: 8px;
@@ -210,9 +216,9 @@ body {
   margin-top: 1rem;
   background: linear-gradient(
     135deg,
-    var(--purple-accent),
+    var(--royal-purple),
     var(--deep-blue),
-    var(--green-lightest)
+    var(--lime-green)
   );
   border: none;
   padding: 0.75rem 2rem;
@@ -221,7 +227,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
 }
 
 .follow-btn:hover {
@@ -231,8 +237,8 @@ body {
 .following {
   background: linear-gradient(
     135deg,
-    var(--green-lightest),
-    var(--purple-accent),
+    var(--lime-green),
+    var(--royal-purple),
     var(--deep-blue)
   );
 }
