@@ -16,16 +16,28 @@ followBtn.addEventListener("click", () => {
 const themeToggle = document.getElementById("themeToggle");
 
 themeToggle.addEventListener("click", () => {
-  // Toggle the dark class on <body>
+  // Toggle dark class on body
   document.body.classList.toggle("dark");
 
-  // Update the toggle button text exactly like gallery/blog
+  // Update toggle button text like blog.html
   themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 
-  // Keep follow button gradient intact — only adjust text color for readability
+  // Remove glass/frosted effect on theme button to match blog.html
+  themeToggle.style.background = "none";
+  themeToggle.style.border = "1px solid var(--glass-border)";
+  themeToggle.style.backdropFilter = "none";
+  themeToggle.style.color = "var(--text-light)";
+
+  // Set body dark/light colors exactly like blog.html
   if (document.body.classList.contains("dark")) {
-    btnText.style.color = "#f0eff4"; // light text in dark mode
+    document.body.style.background = "linear-gradient(135deg, #000000ff 0%, #291528ff 30%, #3a3e3bff 60%, #9e829cff 85%, #f0eff4ff 100%)";
+    document.body.style.color = "var(--text-light)";
   } else {
-    btnText.style.color = "#f0eff4"; // maintain original light color in light mode
+    document.body.style.background = "linear-gradient(135deg, #000000ff 0%, #291528ff 30%, #3a3e3bff 60%, #9e829cff 85%, #f0eff4ff 100%)";
+    document.body.style.color = "var(--text-light)";
   }
+
+  // Keep connect button exactly as original (gradient, hover)
+  // Only change text color for readability if needed
+  btnText.style.color = "#f0eff4"; // matches blog light text
 });
