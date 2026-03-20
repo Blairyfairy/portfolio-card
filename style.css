@@ -33,21 +33,22 @@
 }
 
 /* =========================
-   DARK MODE (DEEP EDITORIAL)
+   DARK MODE (NOW LIGHT MODE TO MATCH BLOG)
    ========================= */
 
 body.dark {
+  /* LIGHT MODE (matches blog toggle behavior) */
   --bg-light: linear-gradient(
     135deg,
-    #000000ff 0%,
-    #1a0d19 35%,
-    #291528ff 70%,
-    #3a3e3bff 100%
+    #f0eff4 0%,
+    #e4dfe8 40%,
+    #cbbac8 75%,
+    #9e829c 100%
   );
 
-  --glass-bg: rgba(0, 0, 0, 0.65);
-  --glass-border: rgba(240, 239, 244, 0.12);
-  --text-light: #f8f7fb;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.15);
+  --text-light: #1a1a1a;
 }
 
 /* =========================
@@ -235,15 +236,15 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE
+   THEME TOGGLE (FIXED)
    ========================= */
 
 .theme-btn {
-  background: rgba(240, 239, 244, 0.18);
-  border: 1px solid rgba(240, 239, 244, 0.35);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 0.4rem 1rem;
-  color: var(--ghost-white);
+  color: var(--text-light); /* FIXED */
   cursor: pointer;
   backdrop-filter: blur(10px);
 }
