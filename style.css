@@ -1,6 +1,6 @@
 /* =========================
    COLOR SYSTEM
-========================= */
+   ========================= */
 
 :root {
   --black: #000000ff;
@@ -22,14 +22,13 @@
     #f0eff4ff 100%
   );
 
-  /* MATCH BLOG COLORS */
-  --glass-bg: rgba(58,62,59,0.15);
-  --glass-border: rgba(240,239,244,0.22);
+  --glass-bg: rgba(240, 239, 244, 0.08);
+  --glass-border: rgba(240, 239, 244, 0.22);
 }
 
 /* =========================
    DARK MODE
-========================= */
+   ========================= */
 
 body.dark {
   --bg-light: linear-gradient(
@@ -40,16 +39,14 @@ body.dark {
     #3a3e3bff 100%
   );
 
-  /* KEEP SAME AS BLOG */
-  --glass-bg: rgba(58,62,59,0.15);
-  --glass-border: rgba(240,239,244,0.22);
-
+  --glass-bg: rgba(0, 0, 0, 0.65); /* SAME value used by card */
+  --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
 }
 
 /* =========================
-   BASE STYLES
-========================= */
+   BASE
+   ========================= */
 
 body {
   margin: 0;
@@ -71,8 +68,8 @@ body {
 }
 
 /* =========================
-   TOP BAR (UNCHANGED)
-========================= */
+   TOP BAR
+   ========================= */
 
 .top-bar {
   display: flex;
@@ -80,11 +77,12 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   font-size: 0.75rem;
+  letter-spacing: 0.6px;
 }
 
 /* =========================
-   PROFILE CARD (UNCHANGED)
-========================= */
+   PROFILE CARD
+   ========================= */
 
 .profile-card {
   backdrop-filter: blur(20px);
@@ -106,7 +104,7 @@ body {
 
 /* =========================
    PROFILE IMAGE
-========================= */
+   ========================= */
 
 .profile-img {
   width: 180px;
@@ -121,7 +119,7 @@ body {
 
 /* =========================
    PROFILE INFO
-========================= */
+   ========================= */
 
 .profile-info h2 {
   margin: 0;
@@ -147,7 +145,7 @@ body {
 
 /* =========================
    SOCIAL LINKS
-========================= */
+   ========================= */
 
 .social-links {
   margin: 1.6rem 0;
@@ -170,7 +168,7 @@ body {
 
 /* =========================
    TOOLTIP
-========================= */
+   ========================= */
 
 .tooltip::after {
   content: attr(data-tooltip);
@@ -196,8 +194,8 @@ body {
 }
 
 /* =========================
-   FOLLOW BUTTON
-========================= */
+   BUTTON
+   ========================= */
 
 .follow-btn {
   margin-top: 1rem;
@@ -231,37 +229,30 @@ body {
 }
 
 /* =========================
-   🔥 EXACT BLOG TOGGLE (FIXED)
-========================= */
+   THEME TOGGLE (FINAL FIX)
+   ========================= */
 
 .theme-btn {
-  /* SAME SIZE */
-  padding: 0.4rem 1rem;
-
-  /* SAME SHAPE */
+  border: 2px solid rgba(240, 239, 244, 0.35); /* same thickness */
   border-radius: 20px;
-
-  /* SAME BORDER */
-  border: 1px solid var(--glass-border);
-
-  /* LIGHT MODE = CLEAR */
-  background: transparent;
-
-  /* GLASS EFFECT */
-  backdrop-filter: blur(10px);
-
-  /* TEXT */
-  color: var(--text-light);
-  font-size: 0.9rem;
-  line-height: 1;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
 
   cursor: pointer;
 
-  /* MATCH SPEED */
-  transition: background 0.25s ease;
+  /* LIGHT MODE = transparent */
+  background: transparent;
+
+  color: var(--text-light);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* DARK MODE = MATCH CARD COLOR EXACTLY */
+/* DARK MODE = EXACT SAME AS CARD */
 body.dark .theme-btn {
   background: var(--glass-bg);
 }
