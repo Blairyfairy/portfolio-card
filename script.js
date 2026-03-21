@@ -25,14 +25,27 @@ function syncToggleButton() {
   themeToggle.style.border = "1px solid rgba(255,255,255,0.35)";
   themeToggle.style.borderRadius = "20px";
 
-  // Background and text
+  // Instant background and text update
+  themeToggle.style.transition = "none"; // remove delay
+  profileCard.style.transition = "none"; // instant background change
+
   if (isDark) {
     themeToggle.style.backgroundColor = "rgba(58,62,59,0.8)"; // dark background
     themeToggle.style.color = "#f0eff4";
+    profileCard.style.backgroundColor = "rgba(58,62,59,0.8)";
+    profileCard.style.color = "#f0eff4";
   } else {
     themeToggle.style.backgroundColor = "transparent"; // light = transparent
     themeToggle.style.color = "#9e829c";
+    profileCard.style.backgroundColor = "rgba(255,255,255,0.04)";
+    profileCard.style.color = "#9e829c";
   }
+
+  // Reset transitions after applying instantly
+  setTimeout(() => {
+    themeToggle.style.transition = "";
+    profileCard.style.transition = "";
+  }, 10);
 }
 
 // Initialize toggle button on page load
@@ -40,11 +53,11 @@ syncToggleButton();
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    // Toggle dark mode on body and profile card
+    // Toggle dark mode on body and profile card instantly
     document.body.classList.toggle("dark");
     if (profileCard) profileCard.classList.toggle("dark");
 
-    // Sync toggle button to match mode
+    // Sync toggle button and profile card instantly
     syncToggleButton();
   });
 }
