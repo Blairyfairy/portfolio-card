@@ -16,29 +16,35 @@ const profileCard = document.querySelector(".profile-card");
 function syncToggleButton() {
   if (!themeToggle || !profileCard) return;
 
-  // Determine if dark mode is active
   const isDark = document.body.classList.contains("dark");
 
   // Update icon
   themeToggle.textContent = isDark ? "☀️" : "🌙";
 
-  // Match toggle button background and border to profile card
-  const cardStyles = window.getComputedStyle(profileCard);
-  themeToggle.style.background = cardStyles.backgroundColor;
-  themeToggle.style.border = cardStyles.border;
-  themeToggle.style.color = cardStyles.color;
+  // Always keep outline visible
+  themeToggle.style.border = "1px solid rgba(255,255,255,0.35)";
+  themeToggle.style.borderRadius = "20px";
+
+  // Background and text
+  if (isDark) {
+    themeToggle.style.backgroundColor = "rgba(58,62,59,0.8)"; // dark background
+    themeToggle.style.color = "#f0eff4";
+  } else {
+    themeToggle.style.backgroundColor = "transparent"; // light = transparent
+    themeToggle.style.color = "#9e829c";
+  }
 }
 
-// Initialize toggle button state on page load
+// Initialize toggle button on page load
 syncToggleButton();
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    // Toggle dark mode class on body and profile card
+    // Toggle dark mode on body and profile card
     document.body.classList.toggle("dark");
     if (profileCard) profileCard.classList.toggle("dark");
 
-    // Sync the toggle button to match card immediately
+    // Sync toggle button to match mode
     syncToggleButton();
   });
 }
