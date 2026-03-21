@@ -1,83 +1,61 @@
-// ===== THEME TOGGLE MATCH BLOG.HTML =====
-const themeToggle = document.getElementById("themeToggle");
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-
-    // Border always visible
-    themeToggle.style.border = "1px solid var(--glass-border)";
-
-    // Small click animation like blog.html
-    themeToggle.style.transform = "scale(0.93)";
-    setTimeout(() => themeToggle.style.transform = "scale(1)", 100);
-  });
-}
-
-// ===== PORTFOLIO CARD EXPAND/COLLAPSE =====
-const container = document.getElementById("portfolioContainer");
+const portfolioContainer = document.getElementById("portfolioContainer");
 let cardNumber = 1;
 
-async function loadCards() {
-  while (true) {
-    try {
-      const response = await fetch(`cards/card${cardNumber}.txt`);
-      if (!response.ok) break;
-      const text = await response.text();
+/* Load sample portfolio cards (mocked) */
+function loadPortfolio() {
+  while (cardNumber <= 6) { // demo 6 cards
+    const card = document.createElement("article");
+    card.className = "portfolio-card";
 
-      const titleMatch = text.match(/<h1>(.*?)<\/h1>/);
-      const title = titleMatch ? titleMatch[1] : `Card ${cardNumber}`;
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="expand-btn">+</div>
+      </div>
+      <h2>Project ${cardNumber}</h2>
+      <p class="preview">This is a brief preview for project ${cardNumber}.</p>
+      <div class="card-content">
+        <p>Full content for project ${cardNumber} goes here.</p>
+      </div>
+    `;
 
-      const previewMatch = text.match(/<p>(.*?)<\/p>/);
-      const preview = previewMatch ? previewMatch[1] : "";
+    portfolioContainer.appendChild(card);
 
-      const card = document.createElement("article");
-      card.className="portfolio-card";
+    const btn = card.querySelector(".expand-btn");
 
-      card.innerHTML = `
-        <div class="card-header">
-          <div class="expand-btn">+</div>
-        </div>
-        <h2>${title}</h2>
-        <p class="preview">${preview}</p>
-        <div class="card-content">${text}</div>
-      `;
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      toggleCard(card, btn);
+    });
 
-      container.appendChild(card);
+    card.addEventListener("click", () => {
+      toggleCard(card, btn);
+    });
 
-      const btn = card.querySelector(".expand-btn");
-
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        toggleCard(card, btn);
-      });
-
-      card.addEventListener("click", () => {
-        toggleCard(card, btn);
-      });
-
-      cardNumber++;
-    } catch (e) {
-      break;
-    }
+    cardNumber++;
   }
 }
 
+/* Toggle card expansion */
 function toggleCard(card, btn) {
-  if (card.classList.contains("expanded")) {
-    card.classList.remove("expanded");
+  if (card.classList.contains("active")) {
     card.classList.remove("active");
     btn.textContent = "+";
   } else {
     document.querySelectorAll(".portfolio-card").forEach(c => {
-      c.classList.remove("expanded");
       c.classList.remove("active");
+      c.querySelector(".expand-btn").textContent = "+";
     });
-    card.classList.add("expanded");
     card.classList.add("active");
     btn.textContent = "−";
   }
 }
 
-loadCards();
+/* THEME TOGGLE */
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
+/* Initialize portfolio */
+loadPortfolio();
