@@ -1,61 +1,50 @@
-const portfolioContainer = document.getElementById("portfolioContainer");
-let cardNumber = 1;
+// =========================
+// Portfolio Card JS
+// =========================
 
-/* Load sample portfolio cards (mocked) */
-function loadPortfolio() {
-  while (cardNumber <= 6) { // demo 6 cards
-    const card = document.createElement("article");
-    card.className = "portfolio-card";
+// Follow / Connect button
+const followBtn = document.getElementById("followBtn");
+const btnText = document.querySelector(".btn-text");
 
-    card.innerHTML = `
-      <div class="card-header">
-        <div class="expand-btn">+</div>
-      </div>
-      <h2>Project ${cardNumber}</h2>
-      <p class="preview">This is a brief preview for project ${cardNumber}.</p>
-      <div class="card-content">
-        <p>Full content for project ${cardNumber} goes here.</p>
-      </div>
-    `;
+followBtn.addEventListener("click", () => {
+  followBtn.classList.toggle("following");
 
-    portfolioContainer.appendChild(card);
-
-    const btn = card.querySelector(".expand-btn");
-
-    btn.addEventListener("click", e => {
-      e.stopPropagation();
-      toggleCard(card, btn);
-    });
-
-    card.addEventListener("click", () => {
-      toggleCard(card, btn);
-    });
-
-    cardNumber++;
-  }
-}
-
-/* Toggle card expansion */
-function toggleCard(card, btn) {
-  if (card.classList.contains("active")) {
-    card.classList.remove("active");
-    btn.textContent = "+";
+  if (followBtn.classList.contains("following")) {
+    btnText.textContent = "Connected ✓";
   } else {
-    document.querySelectorAll(".portfolio-card").forEach(c => {
-      c.classList.remove("active");
-      c.querySelector(".expand-btn").textContent = "+";
-    });
-    card.classList.add("active");
-    btn.textContent = "−";
+    btnText.textContent = "Connect";
   }
-}
-
-/* THEME TOGGLE */
-const themeToggle = document.getElementById("themeToggle");
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 });
 
-/* Initialize portfolio */
-loadPortfolio();
+// Theme Toggle (BlairPage style)
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click", () => {
+  // Toggle dark class on body
+  document.body.classList.toggle("dark");
+
+  // Update button text to moon/sun
+  if (document.body.classList.contains("dark")) {
+    themeToggle.textContent = "☀️"; // light mode indicator
+  } else {
+    themeToggle.textContent = "🌙"; // dark mode indicator
+  }
+
+  // Optional: smooth gradient & glass background transition
+  document.body.style.transition = "background 0.7s ease";
+});
+
+// Optional: Persist theme across reloads
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("blairTheme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.textContent = "☀️";
+  }
+
+  // Listen to toggle and save preference
+  themeToggle.addEventListener("click", () => {
+    const theme = document.body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("blairTheme", theme);
+  });
+});
