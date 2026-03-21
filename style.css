@@ -65,8 +65,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.6s cubic-bezier(0.4,0,0.2,1),
-              color 0.45s cubic-bezier(0.4,0,0.2,1);
+  transition: background 0.45s ease-in, color 0.35s ease-in;
 }
 
 .container {
@@ -92,11 +91,11 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE BUTTON (PILL)
+   THEME TOGGLE BUTTON (BLOG STYLE PILL)
    ========================= */
 .theme-btn {
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--glass-border); /* always visible */
   border-radius: 20px; /* pill shape */
   padding: 0.4rem 1rem;
   font-size: 0.85rem;
@@ -104,32 +103,28 @@ body {
   color: var(--text-light);
   backdrop-filter: blur(10px);
   transition: 
-    background 0.25s cubic-bezier(0.4,0,0.2,1),
-    border 0.25s cubic-bezier(0.4,0,0.2,1),
-    transform 0.12s cubic-bezier(0.4,0,0.2,1),
-    color 0.25s cubic-bezier(0.4,0,0.2,1);
+    background 0.2s ease,
+    border 0.2s ease,
+    transform 0.12s ease,
+    color 0.2s ease;
 }
 
 .theme-btn:hover {
   background: rgba(240, 239, 244, 0.12);
-  border: 1px solid rgba(240, 239, 244, 0.22);
 }
 
 .theme-btn:active {
   transform: scale(0.95);
   background: rgba(240, 239, 244, 0.18);
-  border: 1px solid rgba(240, 239, 244, 0.25);
 }
 
 /* Dark mode pill hover/active */
 body.dark .theme-btn:hover {
   background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(240, 239, 244, 0.12);
 }
 
 body.dark .theme-btn:active {
   background: rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(240, 239, 244, 0.18);
 }
 
 /* =========================
