@@ -35,7 +35,6 @@
 /* =========================
    DARK MODE (DEEP EDITORIAL)
    ========================= */
-
 body.dark {
   --bg-light: linear-gradient(
     135deg,
@@ -53,7 +52,6 @@ body.dark {
 /* =========================
    BASE STYLES
    ========================= */
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -62,7 +60,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.7s ease;
+  transition: background 0.7s ease, color 0.7s ease;
 }
 
 .container {
@@ -76,7 +74,6 @@ body {
 /* =========================
    TOP BAR
    ========================= */
-
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -89,7 +86,6 @@ body {
 /* =========================
    PROFILE CARD
    ========================= */
-
 .profile-card {
   backdrop-filter: blur(20px);
   background: var(--glass-bg);
@@ -111,7 +107,6 @@ body {
 /* =========================
    PROFILE IMAGE
    ========================= */
-
 .profile-img {
   width: 180px;
   height: 180px;
@@ -126,7 +121,6 @@ body {
 /* =========================
    PROFILE INFO
    ========================= */
-
 .profile-info h2 {
   margin: 0;
   font-size: 1.5rem;
@@ -152,7 +146,6 @@ body {
 /* =========================
    SOCIAL LINKS
    ========================= */
-
 .social-links {
   margin: 1.6rem 0;
   display: flex;
@@ -175,7 +168,6 @@ body {
 /* =========================
    TOOLTIP
    ========================= */
-
 .tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -200,9 +192,8 @@ body {
 }
 
 /* =========================
-   BUTTON
+   FOLLOW BUTTON
    ========================= */
-
 .follow-btn {
   margin-top: 1rem;
   background: linear-gradient(
@@ -235,38 +226,21 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE
+   THEME TOGGLE BUTTON
    ========================= */
-
 .theme-btn {
-  background: rgba(240, 239, 244, 0.18);
-  border: 1px solid rgba(240, 239, 244, 0.35);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  color: var(--ghost-white);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-}
-
-/* =========================
-   THEME TOGGLE FORCED OVERRIDE
-   ========================= */
-
-.theme-btn {
-  background: var(--dusty-mauve) !important;       /* light mode button color */
-  border: 1px solid var(--charcoal-brown) !important; /* forced border */
+  background: var(--dusty-mauve) !important;       /* light mode */
+  border: 1px solid var(--charcoal-brown) !important;
   border-radius: 20px !important;
   padding: 0.4rem 1rem !important;
-  color: var(--ghost-white) !important;           /* text color */
+  color: var(--ghost-white) !important;
   cursor: pointer !important;
-  backdrop-filter: none !important;               /* remove haze/frost */
-  transition: background 0.4s ease !important, color 0.4s ease !important;
+  backdrop-filter: none !important;               /* crystal clear */
+  transition: background 0.4s ease, color 0.4s ease !important;
 }
 
-/* Dark mode variant forced */
 body.dark .theme-btn {
-  background: var(--midnight-violet) !important;   /* secondary color dark mode */
-  border: 1px solid var(--dusty-mauve) !important; /* forced contrast */
-  color: var(--text-light) !important;            /* readable text */
+  background: var(--midnight-violet) !important;   /* dark mode secondary color */
+  border: 1px solid var(--dusty-mauve) !important;
+  color: var(--text-light) !important;
 }
-
