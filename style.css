@@ -26,8 +26,34 @@
 
   /* Toggle Colors */
   --toggle-light-bg: transparent;
-  --toggle-dark-bg: rgba(58, 62, 59, 0.9); /* same as responsive element dark */
+   /* same as responsive element dark */
+   /* Toggle uses SAME glass system as blog cards */
+.theme-btn {
+  border: 2px solid rgba(240, 239, 244, 0.35);
+  border-radius: 20px;
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+
+  /* LIGHT MODE = transparent */
+  background: transparent;
+
+  color: var(--text-light);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.4s ease, backdrop-filter 0.4s ease;
 }
+
+/* 🔥 DARK MODE — EXACT SAME AS BLOG CARDS */
+body.dark .theme-btn {
+  background: rgba(58,62,59,0.15);   /* EXACT blog value */
+  backdrop-filter: blur(14px);       /* CRITICAL MATCH */
+}
+}
+
 
 /* =========================
    DARK MODE
