@@ -84,41 +84,32 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 0.9rem 1.6rem;
   font-size: 0.72rem;
   letter-spacing: 0.65px;
-
   position: relative;
   z-index: 100;
 }
 
 /* =========================
-   THEME BUTTON (PERFECT MATCH)
+   THEME BUTTON (BLOG STYLE) 
    ========================= */
 .theme-btn {
   appearance: none;
   border: none;
   outline: none;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 30px;
   height: 30px;
-
   font-size: 14px;
   line-height: 1;
-
   cursor: pointer;
-
   background: transparent;
   color: var(--text-light);
-
   border-radius: 50%;
   border: 1px solid transparent;
-
   transition:
     background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.25s cubic-bezier(0.4, 0, 0.2, 1),
