@@ -1,23 +1,17 @@
 /* =========================
    COLOR SYSTEM
-   Based on Provided Swatch
-   Dark → Light Contrast
    ========================= */
-
 :root {
-  /* Core palette */
   --black: #000000ff;
   --midnight-violet: #291528ff;
   --charcoal-brown: #3a3e3bff;
   --ghost-white: #f0eff4ff;
   --dusty-mauve: #9e829cff;
 
-  /* Existing variable usage (structure unchanged) */
   --deep-blue: var(--midnight-violet);
   --vibrant-orange: var(--dusty-mauve);
   --text-light: var(--ghost-white);
 
-  /* Background gradient (dark → light, cinematic) */
   --bg-light: linear-gradient(
     135deg,
     #000000ff 0%,
@@ -27,13 +21,12 @@
     #f0eff4ff 100%
   );
 
-  /* Glass */
   --glass-bg: rgba(240, 239, 244, 0.08);
   --glass-border: rgba(240, 239, 244, 0.22);
 }
 
 /* =========================
-   DARK MODE (DEEP EDITORIAL)
+   DARK MODE
    ========================= */
 body.dark {
   --bg-light: linear-gradient(
@@ -43,7 +36,6 @@ body.dark {
     #291528ff 70%,
     #3a3e3bff 100%
   );
-
   --glass-bg: rgba(0, 0, 0, 0.65);
   --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
@@ -56,10 +48,10 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: var(--bg-light);
+  color: var(--text-light);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  color: var(--text-light);
   transition: background 0.7s ease, color 0.7s ease;
 }
 
@@ -226,21 +218,21 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE BUTTON (MATCH BLOG.HTML)
    ========================= */
 .theme-btn {
-  background: var(--dusty-mauve) !important;       /* light mode */
-  border: 1px solid var(--charcoal-brown) !important;
+  background: rgba(58,62,59,0.15) !important;   /* crystal clear glass in light mode */
+  border: 1px solid rgba(240,239,244,0.22) !important;
   border-radius: 20px !important;
   padding: 0.4rem 1rem !important;
-  color: var(--ghost-white) !important;
   cursor: pointer !important;
-  backdrop-filter: none !important;               /* crystal clear */
+  color: var(--ghost-white) !important;
+  backdrop-filter: blur(10px) !important;
   transition: background 0.4s ease, color 0.4s ease !important;
 }
 
 body.dark .theme-btn {
-  background: var(--midnight-violet) !important;   /* dark mode secondary color */
+  background: var(--midnight-violet) !important; /* dark mode secondary color */
   border: 1px solid var(--dusty-mauve) !important;
   color: var(--text-light) !important;
 }
