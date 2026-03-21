@@ -12,28 +12,6 @@ if (followBtn && btnText) {
   });
 }
 
-// ===== THEME TOGGLE =====
-const themeToggle = document.getElementById("themeToggle");
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    // Toggle dark mode class
-    document.body.classList.toggle("dark");
-
-    // Update icon
-    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-
-    // Force toggle button to match responsive card colors
-    const card = document.querySelector(".profile-card");
-    if (card) {
-      const style = window.getComputedStyle(card);
-      themeToggle.style.backgroundColor = style.backgroundColor;
-      themeToggle.style.border = style.border;
-      themeToggle.style.color = style.color;
-    }
-  });
-}
-
 // ===== HERO VIDEO =====
 const heroVideo = document.getElementById("heroVideo");
 if (heroVideo) {
@@ -125,5 +103,39 @@ if (carousel && lightbox && lightboxImg) {
     arrowRight.addEventListener("click", () => {
       carousel.scrollBy({ left: 220, behavior: 'smooth' });
     });
+  }
+}
+
+// ===== THEME TOGGLE =====
+const themeToggleBtn = document.getElementById("themeToggle");
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener("click", () => {
+    // Toggle dark class on body
+    document.body.classList.toggle("dark");
+
+    // Update sun/moon icon
+    themeToggleBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+    // Force toggle button to match responsive element (.profile-card)
+    const card = document.querySelector(".profile-card");
+    if (card) {
+      const computed = window.getComputedStyle(card);
+      // Match background color
+      themeToggleBtn.style.backgroundColor = computed.backgroundColor;
+      // Match border style
+      themeToggleBtn.style.border = computed.border;
+      // Match text color
+      themeToggleBtn.style.color = computed.color;
+    }
+  });
+
+  // Initial sync to match card on page load
+  const card = document.querySelector(".profile-card");
+  if (card) {
+    const computed = window.getComputedStyle(card);
+    themeToggleBtn.style.backgroundColor = computed.backgroundColor;
+    themeToggleBtn.style.border = computed.border;
+    themeToggleBtn.style.color = computed.color;
   }
 }
