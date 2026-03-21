@@ -41,3 +41,21 @@ themeToggle.addEventListener("click", () => {
   // Only change text color for readability if needed
   btnText.style.color = "#f0eff4"; // matches blog light text
 });
+
+// ===== THEME TOGGLE (FORCED CSS CONTROL) =====
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  // Update icon only
+  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+  // Remove any previous inline style overrides (force CSS control)
+  themeToggle.style.background = "" !important;
+  themeToggle.style.border = "" !important;
+  themeToggle.style.backdropFilter = "" !important;
+  themeToggle.style.color = "" !important;
+
+  // Keep follow button text readable
+  btnText.style.color = "#f0eff4"; // matches blog light text
+});
+
