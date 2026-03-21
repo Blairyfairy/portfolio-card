@@ -4,13 +4,11 @@ const btnText = document.querySelector(".btn-text");
 
 if (followBtn && btnText) {
   followBtn.addEventListener("click", () => {
+    // Toggle visual "following" state
     followBtn.classList.toggle("following");
 
-    if (followBtn.classList.contains("following")) {
-      btnText.textContent = "Connected ✓";
-    } else {
-      btnText.textContent = "Connect";
-    }
+    // Keep button text constant
+    btnText.textContent = "Connect";
   });
 }
 
