@@ -1,3 +1,4 @@
+/* ===== ORIGINAL PORTFOLIO-CARD STYLES ===== */
 :root {
   --black: #000000ff;
   --midnight-violet: #291528ff;
@@ -38,21 +39,17 @@
   color:var(--link-hover);
 }
 
-/* ===== THEME BUTTON ===== */
+/* ===== THEME BUTTON MATCH BLOG.HTML ===== */
 .theme-btn {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  border-radius: 20px;
+  border-radius: 20px; /* pill shape */
   padding: 0.4rem 1rem;
   cursor: pointer;
   backdrop-filter: blur(10px);
   color: var(--text-light);
   font-size: 0.875rem;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    transform 0.12s ease,
-    border 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
 }
 
 .theme-btn:active {
@@ -60,32 +57,10 @@
 }
 
 body.dark .theme-btn {
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--glass-border); /* keeps border always visible */
 }
 
-/* ===== LOGO ===== */
-.logo-top-left{
-  position:absolute;
-  top:100px;
-  left:16px;
-  z-index:1000;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  overflow:hidden;
-  cursor:pointer;
-  border:3px solid rgba(240,239,244,.45);
-  box-shadow:0 8px 20px rgba(0,0,0,.7);
-  transition:transform .3s ease, box-shadow .3s ease;
-}
-
-.logo-top-left img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ===== PORTFOLIO GRID ===== */
+/* ===== PORTFOLIO-CARD STYLES (UNCHANGED) ===== */
 .portfolio-wrapper{
   max-width:1200px;
   margin:auto;
@@ -95,7 +70,6 @@ body.dark .theme-btn {
   gap:2rem;
 }
 
-/* ===== PORTFOLIO CARD ===== */
 .portfolio-card{
   position:relative;
   background:var(--glass-bg);
@@ -121,10 +95,6 @@ body.dark .theme-btn {
   transition: background 0.3s ease;
 }
 
-.portfolio-card:nth-child(3n+1)::before{ background: rgba(0,0,0,0.15); }
-.portfolio-card:nth-child(3n+2)::before{ background: rgba(0,0,0,0.18); }
-.portfolio-card:nth-child(3n+3)::before{ background: rgba(0,0,0,0.20); }
-
 .portfolio-card *{
   position:relative;
   z-index:1;
@@ -135,7 +105,6 @@ body.dark .theme-btn {
   box-shadow:0 18px 40px rgba(0,0,0,.8);
 }
 
-/* ===== EXPAND BUTTON ===== */
 .card-header{
   display:flex;
   justify-content:flex-end;
@@ -183,7 +152,6 @@ body.dark .theme-btn {
   max-height:10000px;
 }
 
-/* MOBILE */
 @media(max-width:900px){
   .logo-top-left{top:80px;width:50px;height:50px;}
   .portfolio-wrapper{grid-template-columns:1fr;}
