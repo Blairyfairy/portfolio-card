@@ -1,5 +1,5 @@
 /* =========================
-   COLOR SYSTEM & BASE
+   COLOR SYSTEM
    ========================= */
 
 :root {
@@ -9,9 +9,10 @@
   --ghost-white: #f0eff4ff;
   --dusty-mauve: #9e829cff;
 
+  --deep-blue: var(--midnight-violet);
+  --vibrant-orange: var(--dusty-mauve);
   --text-light: var(--ghost-white);
 
-  /* Portfolio Card Backgrounds */
   --bg-light: linear-gradient(
     135deg,
     #000000ff 0%,
@@ -23,41 +24,12 @@
 
   --glass-bg: rgba(240, 239, 244, 0.08);
   --glass-border: rgba(240, 239, 244, 0.22);
-
-  /* Toggle Colors */
-  --toggle-light-bg: transparent;
-   /* same as responsive element dark */
-   /* Toggle uses SAME glass system as blog cards */
-.theme-btn {
-  border: 2px solid rgba(240, 239, 244, 0.35);
-  border-radius: 20px;
-  padding: 0.35rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-
-  /* LIGHT MODE = transparent */
-  background: transparent;
-
-  color: var(--text-light);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: background 0.4s ease, backdrop-filter 0.4s ease;
 }
-
-/* 🔥 DARK MODE — EXACT SAME AS BLOG CARDS */
-body.dark .theme-btn {
-  background: rgba(58,62,59,0.15);   /* EXACT blog value */
-  backdrop-filter: blur(14px);       /* CRITICAL MATCH */
-}
-}
-
 
 /* =========================
    DARK MODE
    ========================= */
+
 body.dark {
   --bg-light: linear-gradient(
     135deg,
@@ -67,14 +39,15 @@ body.dark {
     #3a3e3bff 100%
   );
 
-  --glass-bg: rgba(0, 0, 0, 0.65);
+  --glass-bg: rgba(0, 0, 0, 0.65); /* SAME value used by card */
   --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
 }
 
 /* =========================
-   BODY & CONTAINER
+   BASE
    ========================= */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -97,6 +70,7 @@ body {
 /* =========================
    TOP BAR
    ========================= */
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -109,6 +83,7 @@ body {
 /* =========================
    PROFILE CARD
    ========================= */
+
 .profile-card {
   backdrop-filter: blur(20px);
   background: var(--glass-bg);
@@ -130,6 +105,7 @@ body {
 /* =========================
    PROFILE IMAGE
    ========================= */
+
 .profile-img {
   width: 180px;
   height: 180px;
@@ -144,6 +120,7 @@ body {
 /* =========================
    PROFILE INFO
    ========================= */
+
 .profile-info h2 {
   margin: 0;
   font-size: 1.5rem;
@@ -169,6 +146,7 @@ body {
 /* =========================
    SOCIAL LINKS
    ========================= */
+
 .social-links {
   margin: 1.6rem 0;
   display: flex;
@@ -191,6 +169,7 @@ body {
 /* =========================
    TOOLTIP
    ========================= */
+
 .tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -215,8 +194,9 @@ body {
 }
 
 /* =========================
-   BUTTONS
+   BUTTON
    ========================= */
+
 .follow-btn {
   margin-top: 1rem;
   background: linear-gradient(
@@ -249,22 +229,30 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE
+   THEME TOGGLE (FINAL FIX)
    ========================= */
+
 .theme-btn {
-  border: 2px solid var(--glass-border); /* slightly thicker */
+  border: 2px solid rgba(240, 239, 244, 0.35); /* same thickness */
   border-radius: 20px;
-  padding: 0.35rem 1rem;
+  padding: 0.4rem 1rem;
   font-size: 1rem;
+
   cursor: pointer;
-  background: var(--toggle-light-bg); /* transparent by default */
+
+  /* LIGHT MODE = transparent */
+  background: transparent;
+
   color: var(--text-light);
-  transition: background 0.4s ease, color 0.4s ease;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
+/* DARK MODE = EXACT SAME AS CARD */
 body.dark .theme-btn {
-  background: var(--toggle-dark-bg); /* dark fill behind sun/moon */
+  background: var(--glass-bg);
 }
