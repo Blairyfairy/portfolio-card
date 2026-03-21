@@ -65,8 +65,8 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.6s cubic-bezier(0.4,0,0.2,1),
+              color 0.45s cubic-bezier(0.4,0,0.2,1);
 }
 
 .container {
@@ -92,42 +92,36 @@ body {
 }
 
 /* =========================
-   THEME BUTTON (BLOG STYLE) 
+   THEME TOGGLE BUTTON (PILL)
    ========================= */
 .theme-btn {
-  appearance: none;
-  border: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  font-size: 14px;
-  line-height: 1;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px; /* pill shape */
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  background: transparent;
   color: var(--text-light);
-  border-radius: 50%;
-  border: 1px solid transparent;
-  transition:
-    background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    border 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.12s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  transition: 
+    background 0.25s cubic-bezier(0.4,0,0.2,1),
+    border 0.25s cubic-bezier(0.4,0,0.2,1),
+    transform 0.12s cubic-bezier(0.4,0,0.2,1),
+    color 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
 .theme-btn:hover {
-  background: rgba(240, 239, 244, 0.06);
-  border: 1px solid rgba(240, 239, 244, 0.18);
-}
-
-.theme-btn:active {
-  transform: scale(0.9);
-  background: rgba(240, 239, 244, 0.08);
+  background: rgba(240, 239, 244, 0.12);
   border: 1px solid rgba(240, 239, 244, 0.22);
 }
 
+.theme-btn:active {
+  transform: scale(0.95);
+  background: rgba(240, 239, 244, 0.18);
+  border: 1px solid rgba(240, 239, 244, 0.25);
+}
+
+/* Dark mode pill hover/active */
 body.dark .theme-btn:hover {
   background: rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(240, 239, 244, 0.12);
@@ -275,9 +269,8 @@ body.dark .theme-btn:active {
   }
 
   .theme-btn {
-    width: 28px;
-    height: 28px;
-    font-size: 13px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.78rem;
   }
 
   .container {
