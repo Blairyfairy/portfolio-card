@@ -20,8 +20,17 @@ if (themeToggle) {
     // Toggle dark mode class
     document.body.classList.toggle("dark");
 
-    // Update button icon
+    // Update icon
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+    // Force toggle button to match responsive card colors
+    const card = document.querySelector(".profile-card");
+    if (card) {
+      const style = window.getComputedStyle(card);
+      themeToggle.style.backgroundColor = style.backgroundColor;
+      themeToggle.style.border = style.border;
+      themeToggle.style.color = style.color;
+    }
   });
 }
 
@@ -117,20 +126,4 @@ if (carousel && lightbox && lightboxImg) {
       carousel.scrollBy({ left: 220, behavior: 'smooth' });
     });
   }
-}
-
-const themeToggle = document.getElementById("themeToggle");
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    // Update icon
-    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-
-    // Force toggle button to match responsive card
-    themeToggle.style.backgroundColor = window.getComputedStyle(document.querySelector(".profile-card")).backgroundColor;
-    themeToggle.style.border = window.getComputedStyle(document.querySelector(".profile-card")).border;
-    themeToggle.style.color = window.getComputedStyle(document.querySelector(".profile-card")).color;
-  });
 }
