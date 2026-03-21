@@ -50,7 +50,7 @@ body.dark {
   );
 
   --glass-bg: rgba(0, 0, 0, 0.65);
-  --glass-border: rgba(240, 239, 244, 0.12);
+  --glass-border: rgba(240, 239, 244, 0.22); /* keep line same */
   --text-light: #f8f7fb;
 }
 
@@ -65,7 +65,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.45s ease-in, color 0.35s ease-in;
+  transition: background 0.2s ease-in, color 0.15s ease-in;
 }
 
 .container {
@@ -91,7 +91,7 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE BUTTON (BLOG STYLE PILL)
+   THEME TOGGLE BUTTON (BLOG STYLE PILL) FAST TRANSITION
    ========================= */
 .theme-btn {
   background: var(--glass-bg);
@@ -118,7 +118,10 @@ body {
   background: rgba(240, 239, 244, 0.18);
 }
 
-/* Dark mode pill hover/active */
+body.dark .theme-btn {
+  border: 1px solid var(--glass-border); /* keep same in dark */
+}
+
 body.dark .theme-btn:hover {
   background: rgba(0, 0, 0, 0.45);
 }
@@ -264,8 +267,9 @@ body.dark .theme-btn:active {
   }
 
   .theme-btn {
+    width: auto;
     padding: 0.35rem 0.9rem;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
 
   .container {
