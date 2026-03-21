@@ -17,15 +17,13 @@ if (followBtn && btnText) {
 }
 
 // =========================
-// THEME TOGGLE (BLOG PILL STYLE)
+// THEME TOGGLE
 // =========================
 const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
-
-    // update pill icon with faster transition
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
   });
 }
