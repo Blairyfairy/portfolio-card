@@ -2,76 +2,121 @@
 const followBtn = document.getElementById("followBtn");
 const btnText = document.querySelector(".btn-text");
 
-followBtn.addEventListener("click", () => {
-  followBtn.classList.toggle("following");
+if (followBtn && btnText) {
+  followBtn.addEventListener("click", () => {
+    followBtn.classList.toggle("following");
 
-  if (followBtn.classList.contains("following")) {
-    btnText.textContent = "Connected ✓";
-  } else {
-    btnText.textContent = "Connect";
-  }
-});
+    if (followBtn.classList.contains("following")) {
+      btnText.textContent = "Connected ✓";
+    } else {
+      btnText.textContent = "Connect";
+    }
+  });
+}
 
 // ===== THEME TOGGLE =====
 const themeToggle = document.getElementById("themeToggle");
 
-themeToggle.addEventListener("click", () => {
-  // Toggle dark class on body
-  document.body.classList.toggle("dark");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    // Toggle dark mode class
+    document.body.classList.toggle("dark");
 
-  // Update toggle button text like blog.html
-  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    // Update button icon
+    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  });
+}
 
-  // Remove glass/frosted effect on theme button to match blog.html
-  themeToggle.style.background = "none";
-  themeToggle.style.border = "1px solid var(--glass-border)";
-  themeToggle.style.backdropFilter = "none";
-  themeToggle.style.color = "var(--text-light)";
+// ===== HERO VIDEO =====
+const heroVideo = document.getElementById("heroVideo");
+if (heroVideo) {
+  heroVideo.addEventListener("click", () => {
+    heroVideo.paused ? heroVideo.play() : heroVideo.pause();
+  });
+}
 
-  // Set body dark/light colors exactly like blog.html
-  if (document.body.classList.contains("dark")) {
-    document.body.style.background = "linear-gradient(135deg, #000000ff 0%, #291528ff 30%, #3a3e3bff 60%, #9e829cff 85%, #f0eff4ff 100%)";
-    document.body.style.color = "var(--text-light)";
-  } else {
-    document.body.style.background = "linear-gradient(135deg, #000000ff 0%, #291528ff 30%, #3a3e3bff 60%, #9e829cff 85%, #f0eff4ff 100%)";
-    document.body.style.color = "var(--text-light)";
+// ===== LOAD IMAGES =====
+const carousel = document.getElementById("galleryCarousel");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+if (carousel && lightbox && lightboxImg) {
+  fetch('images.json')
+    .then(res => res.json())
+    .then(images => {
+      const shuffled = images.sort(() => Math.random() - 0.5);
+
+      shuffled.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.onclick = () => {
+          lightboxImg.src = src;
+          lightbox.classList.add("show");
+        };
+        carousel.appendChild(img);
+      });
+    });
+
+  // ===== LIGHTBOX CLICK =====
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("show");
+  });
+
+  // ===== DRAG SCROLL =====
+  let isDown = false,
+      startX,
+      scrollLeft;
+
+  carousel.addEventListener('mousedown', e => {
+    isDown = true;
+    carousel.classList.add('dragging');
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    carousel.classList.remove('dragging');
+  });
+
+  carousel.addEventListener('mouseup', () => {
+    isDown = false;
+    carousel.classList.remove('dragging');
+  });
+
+  carousel.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // ===== TOUCH EVENTS =====
+  carousel.addEventListener('touchstart', e => {
+    startX = e.touches[0].pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('touchmove', e => {
+    const x = e.touches[0].pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // ===== ARROWS =====
+  const arrowLeft = document.querySelector(".arrow-left");
+  const arrowRight = document.querySelector(".arrow-right");
+
+  if (arrowLeft) {
+    arrowLeft.addEventListener("click", () => {
+      carousel.scrollBy({ left: -220, behavior: 'smooth' });
+    });
   }
 
-  // Keep connect button exactly as original (gradient, hover)
-  // Only change text color for readability if needed
-  btnText.style.color = "#f0eff4"; // matches blog light text
-});
-
-// ===== THEME TOGGLE (FORCED CSS CONTROL) =====
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  // Update icon only
-  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-
-  // Remove any previous inline style overrides (force CSS control)
-  themeToggle.style.background = "" !important;
-  themeToggle.style.border = "" !important;
-  themeToggle.style.backdropFilter = "" !important;
-  themeToggle.style.color = "" !important;
-
-  // Keep follow button text readable
-  btnText.style.color = "#f0eff4"; // matches blog light text
-});
-
-
-// ===== THEME TOGGLE FIX (APPEND) =====
-const themeToggle = document.getElementById("themeToggle");
-
-// Remove any previous conflicting listeners if necessary
-themeToggle.replaceWith(themeToggle.cloneNode(true));
-const newThemeToggle = document.getElementById("themeToggle");
-
-newThemeToggle.addEventListener("click", () => {
-  // Toggle dark mode class on body
-  document.body.classList.toggle("dark");
-
-  // Update the button icon
-  newThemeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-});
-
+  if (arrowRight) {
+    arrowRight.addEventListener("click", () => {
+      carousel.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  }
+}
