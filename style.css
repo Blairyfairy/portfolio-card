@@ -247,3 +247,26 @@ body {
   cursor: pointer;
   backdrop-filter: blur(10px);
 }
+
+/* =========================
+   THEME TOGGLE FORCED OVERRIDE
+   ========================= */
+
+.theme-btn {
+  background: var(--dusty-mauve) !important;       /* light mode button color */
+  border: 1px solid var(--charcoal-brown) !important; /* forced border */
+  border-radius: 20px !important;
+  padding: 0.4rem 1rem !important;
+  color: var(--ghost-white) !important;           /* text color */
+  cursor: pointer !important;
+  backdrop-filter: none !important;               /* remove haze/frost */
+  transition: background 0.4s ease !important, color 0.4s ease !important;
+}
+
+/* Dark mode variant forced */
+body.dark .theme-btn {
+  background: var(--midnight-violet) !important;   /* secondary color dark mode */
+  border: 1px solid var(--dusty-mauve) !important; /* forced contrast */
+  color: var(--text-light) !important;            /* readable text */
+}
+
