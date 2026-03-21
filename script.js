@@ -118,3 +118,19 @@ if (carousel && lightbox && lightboxImg) {
     });
   }
 }
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    // Update icon
+    themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+    // Force toggle button to match responsive card
+    themeToggle.style.backgroundColor = window.getComputedStyle(document.querySelector(".profile-card")).backgroundColor;
+    themeToggle.style.border = window.getComputedStyle(document.querySelector(".profile-card")).border;
+    themeToggle.style.color = window.getComputedStyle(document.querySelector(".profile-card")).color;
+  });
+}
