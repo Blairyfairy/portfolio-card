@@ -59,3 +59,19 @@ themeToggle.addEventListener("click", () => {
   btnText.style.color = "#f0eff4"; // matches blog light text
 });
 
+
+// ===== THEME TOGGLE FIX (APPEND) =====
+const themeToggle = document.getElementById("themeToggle");
+
+// Remove any previous conflicting listeners if necessary
+themeToggle.replaceWith(themeToggle.cloneNode(true));
+const newThemeToggle = document.getElementById("themeToggle");
+
+newThemeToggle.addEventListener("click", () => {
+  // Toggle dark mode class on body
+  document.body.classList.toggle("dark");
+
+  // Update the button icon
+  newThemeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
