@@ -2,6 +2,7 @@
    COLOR SYSTEM
    ========================= */
 :root {
+  /* Core palette */
   --black: #000000ff;
   --midnight-violet: #291528ff;
   --charcoal-brown: #3a3e3bff;
@@ -26,7 +27,7 @@
 }
 
 /* =========================
-   DARK MODE (BlairPage style)
+   DARK MODE
    ========================= */
 body.dark {
   --bg-light: linear-gradient(
@@ -36,6 +37,7 @@ body.dark {
     #291528ff 70%,
     #3a3e3bff 100%
   );
+
   --glass-bg: rgba(0, 0, 0, 0.65);
   --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
@@ -76,6 +78,24 @@ body {
 }
 
 /* =========================
+   THEME TOGGLE BUTTON FIXED
+   ========================= */
+.theme-btn {
+  display: flex;                /* ensures perfect centering */
+  align-items: center;          /* vertical center */
+  justify-content: center;      /* horizontal center */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  line-height: 1;               /* removes extra vertical spacing */
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
    PROFILE CARD
    ========================= */
 .profile-card {
@@ -113,27 +133,53 @@ body {
 /* =========================
    PROFILE INFO
    ========================= */
-.profile-info h2 { margin: 0; font-size: 1.5rem; }
-.sub-name { font-size: 0.75rem; opacity: 0.7; margin-bottom: 0.5rem; }
-.profile-info h4 { margin: 0.6rem 0 1rem; color: var(--dusty-mauve); font-weight: 500; }
-.bio { font-size: 0.95rem; line-height: 1.55; }
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.sub-name {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info h4 {
+  margin: 0.6rem 0 1rem;
+  color: var(--dusty-mauve);
+  font-weight: 500;
+}
+
+.bio {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
 
 /* =========================
    SOCIAL LINKS
    ========================= */
-.social-links { margin: 1.6rem 0; display: flex; justify-content: center; gap: 2rem; }
+.social-links {
+  margin: 1.6rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
 .social-links a {
   font-size: 1.7rem;
   text-decoration: none;
   position: relative;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 .social-links a:hover {
   transform: translateY(-6px);
   filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.75));
 }
 
-/* TOOLTIP */
+/* =========================
+   TOOLTIP
+   ========================= */
 .tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -151,17 +197,23 @@ body {
   pointer-events: none;
   transition: all 0.25s ease;
 }
+
 .tooltip:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
 
 /* =========================
-   BUTTON
+   FOLLOW BUTTON
    ========================= */
 .follow-btn {
   margin-top: 1rem;
-  background: linear-gradient(135deg, #291528ff, #3a3e3bff, #9e829cff);
+  background: linear-gradient(
+    135deg,
+    #291528ff,
+    #3a3e3bff,
+    #9e829cff
+  );
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 30px;
@@ -171,22 +223,16 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
 }
-.follow-btn:hover { transform: scale(1.06); }
-.following {
-  background: linear-gradient(135deg, #9e829cff, #291528ff, #000000ff);
+
+.follow-btn:hover {
+  transform: scale(1.06);
 }
 
-/* =========================
-   THEME TOGGLE
-   ========================= */
-.theme-btn {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  color: var(--text-light);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.2s ease, color 0.2s ease, transform 0.12s ease;
+.following {
+  background: linear-gradient(
+    135deg,
+    #9e829cff,
+    #291528ff,
+    #000000ff
+  );
 }
-.theme-btn:active { transform: scale(0.93); }
