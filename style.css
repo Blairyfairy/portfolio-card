@@ -1,5 +1,6 @@
 /* =========================
    COLOR SYSTEM
+   Based on Provided Swatch
    ========================= */
 :root {
   --black: #000000ff;
@@ -36,6 +37,7 @@ body.dark {
     #291528ff 70%,
     #3a3e3bff 100%
   );
+
   --glass-bg: rgba(0, 0, 0, 0.65);
   --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
@@ -48,11 +50,11 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: var(--bg-light);
-  color: var(--text-light);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  transition: background 0.7s ease, color 0.7s ease;
+  color: var(--text-light);
+  transition: background 0.7s ease, color 0.5s ease;
 }
 
 .container {
@@ -73,6 +75,8 @@ body {
   padding: 1rem 2rem;
   font-size: 0.75rem;
   letter-spacing: 0.6px;
+  position: relative;
+  z-index: 100;
 }
 
 /* =========================
@@ -80,20 +84,27 @@ body {
    ========================= */
 .profile-card {
   backdrop-filter: blur(20px);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: rgba(240, 239, 244, 0.08);
+  border: none; /* remove visible line */
   border-radius: 22px;
   padding: 2.2rem;
   text-align: center;
   max-width: 420px;
   width: 100%;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
-  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.5s ease;
 }
 
 .profile-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
+}
+
+/* Dark mode for profile card matches blog */
+.profile-card.dark {
+  background: rgba(0, 0, 0, 0.65);
+  border: none; /* keep border hidden */
+  color: #f8f7fb;
 }
 
 /* =========================
@@ -166,7 +177,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0,0,0,0.95);
   color: var(--ghost-white);
   padding: 6px 12px;
   border-radius: 8px;
@@ -208,56 +219,23 @@ body {
   transform: scale(1.06);
 }
 
-.following {
-  background: linear-gradient(
-    135deg,
-    #9e829cff,
-    #291528ff,
-    #000000ff
-  );
-}
-
 /* =========================
-   THEME TOGGLE BUTTON (MATCH BLOG.HTML)
+   THEME TOGGLE
    ========================= */
 .theme-btn {
-  background: rgba(58,62,59,0.15) !important;   /* crystal clear glass in light mode */
-  border: 1px solid rgba(240,239,244,0.22) !important;
-  border-radius: 20px !important;
-  padding: 0.4rem 1rem !important;
-  cursor: pointer !important;
-  color: var(--ghost-white) !important;
-  backdrop-filter: blur(10px) !important;
-  transition: background 0.4s ease, color 0.4s ease !important;
+  background: rgba(240, 239, 244, 0.18);
+  border: 1px solid rgba(240, 239, 244, 0.35);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  color: var(--ghost-white);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
+/* Ensure theme toggle matches profile-card dark mode */
 body.dark .theme-btn {
-  background: var(--midnight-violet) !important; /* dark mode secondary color */
-  border: 1px solid var(--dusty-mauve) !important;
-  color: var(--text-light) !important;
+  background: rgba(0,0,0,0.65);
+  border: none;
+  color: #f8f7fb;
 }
-/* =========================
-   REMOVE BORDER LINE ON RESPONSIVE CARD
-   ========================= */
-.profile-card,
-.gallery-wrapper {
-  border: none !important; /* remove any visible borders */
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85) !important; /* keep shadow only */
-}
-
-/* =========================
-   MAKE THEME TOGGLE MATCH CARD COLORS
-   ========================= */
-.theme-btn {
-  background-color: var(--glass-bg) !important;
-  border: 1px solid var(--glass-border) !important;
-  color: var(--text-light) !important;
-}
-
-/* DARK MODE MATCH */
-body.dark .theme-btn {
-  background-color: rgba(58,62,59,0.15) !important; /* matches dark card glass effect */
-  border: 1px solid rgba(240,239,244,0.12) !important;
-  color: var(--text-light) !important;
-}
-
