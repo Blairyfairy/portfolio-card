@@ -29,10 +29,10 @@ if (themeToggle) {
     // Update icon
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 
-    // Optional: add tiny scale animation like blog.html
-    themeToggle.style.transform = "scale(0.92)";
+    // Tiny click animation (blog.html style)
+    themeToggle.style.transform = "scale(0.93)";
     setTimeout(() => {
       themeToggle.style.transform = "scale(1)";
-    }, 120); // matches blog.html subtle active press
+    }, 100); // fast but not instant, matches blog.html
   });
 }
