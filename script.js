@@ -23,10 +23,16 @@ const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    // toggle theme
+    // Toggle dark mode on body
     document.body.classList.toggle("dark");
 
-    // update icon
+    // Update icon
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+    // Optional: add tiny scale animation like blog.html
+    themeToggle.style.transform = "scale(0.92)";
+    setTimeout(() => {
+      themeToggle.style.transform = "scale(1)";
+    }, 120); // matches blog.html subtle active press
   });
 }
