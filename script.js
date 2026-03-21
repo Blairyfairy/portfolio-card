@@ -1,26 +1,21 @@
-// ===== THEME TOGGLE (MATCH BLOG.HTML) =====
+// ===== THEME TOGGLE MATCH BLOG.HTML =====
 const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    // Toggle dark mode
     document.body.classList.toggle("dark");
-
-    // Keep border/line visible always
-    themeToggle.style.border = "1px solid var(--glass-border)";
-
-    // Update icon
     themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
 
-    // Small click scale animation like blog.html
+    // Border always visible
+    themeToggle.style.border = "1px solid var(--glass-border)";
+
+    // Small click animation like blog.html
     themeToggle.style.transform = "scale(0.93)";
-    setTimeout(() => {
-      themeToggle.style.transform = "scale(1)";
-    }, 100);
+    setTimeout(() => themeToggle.style.transform = "scale(1)", 100);
   });
 }
 
-// ===== PORTFOLIO CARDS LOADER =====
+// ===== PORTFOLIO CARD EXPAND/COLLAPSE =====
 const container = document.getElementById("portfolioContainer");
 let cardNumber = 1;
 
