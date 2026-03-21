@@ -1,6 +1,5 @@
 /* =========================
    COLOR SYSTEM
-   Based on Provided Swatch
    ========================= */
 :root {
   --black: #000000ff;
@@ -8,11 +7,15 @@
   --charcoal-brown: #3a3e3bff;
   --ghost-white: #f0eff4ff;
   --dusty-mauve: #9e829cff;
-
-  --deep-blue: var(--midnight-violet);
-  --vibrant-orange: var(--dusty-mauve);
   --text-light: var(--ghost-white);
 
+  /* Glass effect */
+  --glass-bg: rgba(58, 62, 59, 0.15);
+  --glass-border: rgba(240, 239, 244, 0.22);
+
+  /* Extra palette */
+  --deep-blue: var(--midnight-violet);
+  --vibrant-orange: var(--dusty-mauve);
   --bg-light: linear-gradient(
     135deg,
     #000000ff 0%,
@@ -21,9 +24,6 @@
     #9e829cff 85%,
     #f0eff4ff 100%
   );
-
-  --glass-bg: rgba(240, 239, 244, 0.08);
-  --glass-border: rgba(240, 239, 244, 0.22);
 }
 
 /* =========================
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.7s ease, color 0.5s ease;
+  transition: background 0.7s ease;
 }
 
 .container {
@@ -75,8 +75,6 @@ body {
   padding: 1rem 2rem;
   font-size: 0.75rem;
   letter-spacing: 0.6px;
-  position: relative;
-  z-index: 100;
 }
 
 /* =========================
@@ -84,27 +82,20 @@ body {
    ========================= */
 .profile-card {
   backdrop-filter: blur(20px);
-  background: rgba(240, 239, 244, 0.08);
-  border: none; /* remove visible line */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 22px;
   padding: 2.2rem;
   text-align: center;
   max-width: 420px;
   width: 100%;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
-  transition: transform 0.45s ease, box-shadow 0.45s ease, background 0.5s ease;
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .profile-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
-}
-
-/* Dark mode for profile card matches blog */
-.profile-card.dark {
-  background: rgba(0, 0, 0, 0.65);
-  border: none; /* keep border hidden */
-  color: #f8f7fb;
 }
 
 /* =========================
@@ -177,7 +168,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(0,0,0,0.95);
+  background: rgba(0, 0, 0, 0.95);
   color: var(--ghost-white);
   padding: 6px 12px;
   border-radius: 8px;
@@ -195,7 +186,7 @@ body {
 }
 
 /* =========================
-   FOLLOW BUTTON
+   BUTTON
    ========================= */
 .follow-btn {
   margin-top: 1rem;
@@ -219,23 +210,57 @@ body {
   transform: scale(1.06);
 }
 
-/* =========================
-   THEME TOGGLE
-   ========================= */
-.theme-btn {
-  background: rgba(240, 239, 244, 0.18);
-  border: 1px solid rgba(240, 239, 244, 0.35);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  color: var(--ghost-white);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.5s ease, color 0.5s ease;
+.following {
+  background: linear-gradient(
+    135deg,
+    #9e829cff,
+    #291528ff,
+    #000000ff
+  );
 }
 
-/* Ensure theme toggle matches profile-card dark mode */
-body.dark .theme-btn {
-  background: rgba(0,0,0,0.65);
-  border: none;
-  color: #f8f7fb;
+/* =========================
+   THEME TOGGLE (Exact Blog.html Match)
+   ========================= */
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.4rem 1rem;                 /* matches blog.html spacing */
+  border-radius: 20px;
+  border: 2px solid rgba(240, 239, 244, 0.35); /* slightly thicker border */
+  background: rgba(58, 62, 59, 0.15);   /* transparent base */
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, transform 0.3s ease;
+  color: var(--text-light);
+}
+
+.theme-btn:hover {
+  background: rgba(58, 62, 59, 0.25); 
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media(max-width:900px){
+  .profile-card {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .social-links {
+    gap: 1.5rem;
+  }
+
+  .follow-btn {
+    padding: 0.6rem 1.5rem;
+  }
 }
