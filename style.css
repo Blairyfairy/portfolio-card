@@ -9,13 +9,9 @@
   --dusty-mauve: #9e829cff;
   --text-light: var(--ghost-white);
 
-  /* Glass effect */
-  --glass-bg: rgba(58, 62, 59, 0.15);
+  --glass-bg: rgba(58, 62, 59, 0.15); /* responsive element color */
   --glass-border: rgba(240, 239, 244, 0.22);
 
-  /* Extra palette */
-  --deep-blue: var(--midnight-violet);
-  --vibrant-orange: var(--dusty-mauve);
   --bg-light: linear-gradient(
     135deg,
     #000000ff 0%,
@@ -26,9 +22,6 @@
   );
 }
 
-/* =========================
-   DARK MODE
-   ========================= */
 body.dark {
   --bg-light: linear-gradient(
     135deg,
@@ -37,8 +30,7 @@ body.dark {
     #291528ff 70%,
     #3a3e3bff 100%
   );
-
-  --glass-bg: rgba(0, 0, 0, 0.65);
+  --glass-bg: rgba(58, 62, 59, 0.6); /* fills behind sun/moon in dark mode */
   --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
 }
@@ -186,7 +178,7 @@ body {
 }
 
 /* =========================
-   BUTTON
+   BUTTONS
    ========================= */
 .follow-btn {
   margin-top: 1rem;
@@ -220,7 +212,7 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE (Exact Blog.html Match)
+   THEME TOGGLE BUTTON
    ========================= */
 .theme-btn {
   display: flex;
@@ -228,18 +220,23 @@ body {
   justify-content: center;
   font-size: 1rem;
   line-height: 1;
-  padding: 0.4rem 1rem;                 /* matches blog.html spacing */
+  padding: 0.4rem 1rem;
   border-radius: 20px;
-  border: 2px solid rgba(240, 239, 244, 0.35); /* slightly thicker border */
-  background: rgba(58, 62, 59, 0.15);   /* transparent base */
+  border: 2px solid rgba(240, 239, 244, 0.35); /* keeps thickness */
+  background: rgba(58, 62, 59, 0); /* transparent in light mode */
   cursor: pointer;
   backdrop-filter: blur(10px);
   transition: background 0.3s ease, transform 0.3s ease;
   color: var(--text-light);
 }
 
+body.dark .theme-btn {
+  background: var(--glass-bg); /* fills behind sun/moon in dark mode */
+  border: 2px solid rgba(240, 239, 244, 0.35);
+}
+
 .theme-btn:hover {
-  background: rgba(58, 62, 59, 0.25); 
+  background: rgba(58, 62, 59, 0.15); /* light hover in light mode */
 }
 
 /* =========================
