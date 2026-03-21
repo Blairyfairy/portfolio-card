@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Card</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blair Page | WordPress Developer (Internship)</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-<header class="top-bar">
-  <div class="credential-header">
-    RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate
-  </div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="blog.html">Blog</a>
-  </nav>
-  <button id="themeToggle" class="theme-btn">🌙</button>
-</header>
+  <!-- 🌟 Executive Header: Credentials and credibility -->
+  <header class="top-bar">
+    <div class="credential-header">
+      RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)
+    </div>
+    <button id="themeToggle" class="theme-btn">🌙</button>
+  </header>
 
-<a href="index.html" class="logo-top-left">
-  <img src="https://i.postimg.cc/wjBSDH9v/1000045246.jpg">
-</a>
+  <main class="container">
+    <article class="profile-card">
 
-<main class="portfolio-wrapper" id="portfolioContainer"></main>
+      <!-- 📸 Profile Image -->
+      <img src="https://i.postimg.cc/wjBSDH9v/1000045246.jpg"
+           alt="Blair Page"
+           class="profile-img"
+           onerror="this.onerror=null; this.src='https://via.placeholder.com/180';">
 
-<script src="script.js"></script>
+      <section class="profile-info">
+        <h2>Blair Page</h2>
+        <div class="sub-name">(Burness Drake McCoy)</div>
+        <h4>WordPress Developer Intern Premium Technologies UK (premiumtech.uk)</h4>
+        <p class="bio">
+          Hybrid Cloud Full Stack Engineer RHCE 6 certification and AWS credentials.
+          Architecting scalable web systems, cloud-integrated solutions,
+          and performance-driven infrastructure for modern businesses. 
+        </p>
+      </section>
+
+      <nav class="social-links">
+        <a href="https://blairyfairy.github.io/BlairPage/" class="tooltip" data-tooltip="BlairPage" target="_blank" rel="noopener noreferrer">💼</a>
+        <a href="https://shocktherapyrebuilding.com/" class="tooltip" data-tooltip="Website" target="_blank" rel="noopener noreferrer">🌐</a>
+        <a href="https://github.com/Blairyfairy" class="tooltip" data-tooltip="GitHub" target="_blank" rel="noopener noreferrer">🖥️</a>
+      </nav>
+
+      <button id="followBtn" class="follow-btn">
+        <span class="btn-text">Connect</span>
+      </button>
+ 
+    </article>
+  </main>
+
 </body>
 </html>
