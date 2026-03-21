@@ -50,7 +50,7 @@ body.dark {
   );
 
   --glass-bg: rgba(0, 0, 0, 0.65);
-  --glass-border: rgba(240, 239, 244, 0.22); /* keep line same */
+  --glass-border: rgba(240, 239, 244, 0.12);
   --text-light: #f8f7fb;
 }
 
@@ -65,7 +65,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-light);
-  transition: background 0.2s ease-in, color 0.15s ease-in;
+  transition: background 0.45s ease, color 0.35s ease;
 }
 
 .container {
@@ -91,18 +91,23 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE BUTTON (BLOG STYLE PILL) FAST TRANSITION
+   THEME BUTTON (BLOG MATCH)
    ========================= */
 .theme-btn {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border); /* always visible */
+  appearance: none;
+  border: 2px solid var(--glass-border); /* thicker border like blog.html */
   border-radius: 20px; /* pill shape */
   padding: 0.4rem 1rem;
   font-size: 0.85rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
   color: var(--text-light);
   backdrop-filter: blur(10px);
-  transition: 
+
+  transition:
     background 0.2s ease,
     border 0.2s ease,
     transform 0.12s ease,
@@ -110,24 +115,28 @@ body {
 }
 
 .theme-btn:hover {
-  background: rgba(240, 239, 244, 0.12);
+  background: rgba(240, 239, 244, 0.06);
+  border: 2px solid rgba(240, 239, 244, 0.22);
 }
 
 .theme-btn:active {
-  transform: scale(0.95);
-  background: rgba(240, 239, 244, 0.18);
+  transform: scale(0.92);
+  background: rgba(240, 239, 244, 0.08);
+  border: 2px solid rgba(240, 239, 244, 0.22);
 }
 
 body.dark .theme-btn {
-  border: 1px solid var(--glass-border); /* keep same in dark */
+  border: 2px solid var(--glass-border); /* keep same thickness in dark */
 }
 
 body.dark .theme-btn:hover {
   background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(240, 239, 244, 0.12);
 }
 
 body.dark .theme-btn:active {
   background: rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(240, 239, 244, 0.12);
 }
 
 /* =========================
@@ -267,9 +276,9 @@ body.dark .theme-btn:active {
   }
 
   .theme-btn {
-    width: auto;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.8rem;
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
   }
 
   .container {
