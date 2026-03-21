@@ -22,7 +22,12 @@ const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
 
+  // Icon switches
   themeToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+
+  // Smooth transition for background
+  themeToggle.style.transition = "background 0.4s ease, color 0.4s ease";
+  document.body.style.transition = "background 0.7s ease";
 });
 
 // Persist theme
