@@ -1,6 +1,5 @@
 /* =========================
    COLOR SYSTEM
-   Based on Provided Swatch
    ========================= */
 :root {
   --black: #000000ff;
@@ -80,12 +79,40 @@ body {
 }
 
 /* =========================
+   THEME TOGGLE BUTTON
+   ========================= */
+.theme-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  color: var(--text-light);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.5s ease, border 0.5s ease, color 0.5s ease;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.dark .theme-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-light);
+}
+
+body.dark .theme-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* =========================
    PROFILE CARD
    ========================= */
 .profile-card {
   backdrop-filter: blur(20px);
-  background: rgba(240, 239, 244, 0.08);
-  border: none; /* remove visible line */
+  background: var(--glass-bg);
+  border: none;
   border-radius: 22px;
   padding: 2.2rem;
   text-align: center;
@@ -100,11 +127,9 @@ body {
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
 }
 
-/* Dark mode for profile card matches blog */
-.profile-card.dark {
-  background: rgba(0, 0, 0, 0.65);
-  border: none; /* keep border hidden */
-  color: #f8f7fb;
+body.dark .profile-card {
+  background: var(--glass-bg);
+  color: var(--text-light);
 }
 
 /* =========================
@@ -177,7 +202,7 @@ body {
   bottom: 160%;
   left: 50%;
   transform: translateX(-50%) translateY(6px);
-  background: rgba(0,0,0,0.95);
+  background: rgba(0, 0, 0, 0.95);
   color: var(--ghost-white);
   padding: 6px 12px;
   border-radius: 8px;
@@ -220,22 +245,28 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE
+   RESPONSIVE ADJUSTMENTS
    ========================= */
-.theme-btn {
-  background: rgba(240, 239, 244, 0.18);
-  border: 1px solid rgba(240, 239, 244, 0.35);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  color: var(--ghost-white);
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.5s ease, color 0.5s ease;
-}
+@media(max-width: 900px) {
+  .container {
+    padding: 1rem;
+  }
 
-/* Ensure theme toggle matches profile-card dark mode */
-body.dark .theme-btn {
-  background: rgba(0,0,0,0.65);
-  border: none;
-  color: #f8f7fb;
+  .profile-card {
+    padding: 1.8rem;
+    max-width: 360px;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .social-links a {
+    font-size: 1.5rem;
+  }
+
+  .follow-btn {
+    padding: 0.65rem 1.8rem;
+  }
 }
