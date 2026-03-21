@@ -1,27 +1,36 @@
+// =========================
+// FOLLOW BUTTON
+// =========================
 const followBtn = document.getElementById("followBtn");
 const btnText = document.querySelector(".btn-text");
 
-followBtn.addEventListener("click", () => {
-  followBtn.classList.toggle("following");
+if (followBtn && btnText) {
+  followBtn.addEventListener("click", () => {
+    followBtn.classList.toggle("following");
 
-  if (followBtn.classList.contains("following")) {
-    btnText.textContent = "Connected ✓";
-  } else {
-    btnText.textContent = "Connect";
-  }
-});
+    if (followBtn.classList.contains("following")) {
+      btnText.textContent = "Connected ✓";
+    } else {
+      btnText.textContent = "Connect";
+    }
+  });
+}
 
+// =========================
+// THEME TOGGLE (STABLE)
+// =========================
 const themeToggle = document.getElementById("themeToggle");
 
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    // toggle theme
+    document.body.classList.toggle("dark");
 
-  // tight snap (matches blog behavior)
-  themeToggle.style.transform = "scale(0.88)";
-  requestAnimationFrame(() => {
-    themeToggle.style.transform = "scale(1)";
+    // update icon
+    if (document.body.classList.contains("dark")) {
+      themeToggle.textContent = "☀️";
+    } else {
+      themeToggle.textContent = "🌙";
+    }
   });
-
-  themeToggle.textContent =
-    document.body.classList.contains("dark") ? "☀️" : "🌙";
-});
+}
