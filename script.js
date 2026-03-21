@@ -2,49 +2,43 @@
 // Portfolio Card JS
 // =========================
 
-// Follow / Connect button
+// --- Follow / Connect button ---
 const followBtn = document.getElementById("followBtn");
-const btnText = document.querySelector(".btn-text");
+const btnText = followBtn.querySelector(".btn-text");
 
 followBtn.addEventListener("click", () => {
   followBtn.classList.toggle("following");
-
-  if (followBtn.classList.contains("following")) {
-    btnText.textContent = "Connected ✓";
-  } else {
-    btnText.textContent = "Connect";
-  }
+  btnText.textContent = followBtn.classList.contains("following") ? "Connected ✓" : "Connect";
 });
 
-// Theme Toggle (BlairPage style)
+// --- Theme Toggle (Exact Blog.html Style) ---
 const themeToggle = document.getElementById("themeToggle");
 
+// --- Load saved theme from localStorage ---
+const savedTheme = localStorage.getItem("blairTheme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  themeToggle.textContent = "☀️";
+} else {
+  themeToggle.textContent = "🌙";
+}
+
+// --- Single click listener for toggle ---
 themeToggle.addEventListener("click", () => {
-  // Toggle dark class on body
   document.body.classList.toggle("dark");
 
-  // Update button text to moon/sun
-  if (document.body.classList.contains("dark")) {
-    themeToggle.textContent = "☀️"; // light mode indicator
-  } else {
-    themeToggle.textContent = "🌙"; // dark mode indicator
-  }
+  const isDark = document.body.classList.contains("dark");
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
 
-  // Optional: smooth gradient & glass background transition
-  document.body.style.transition = "background 0.7s ease";
+  // Save preference
+  localStorage.setItem("blairTheme", isDark ? "dark" : "light");
 });
 
-// Optional: Persist theme across reloads
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("blairTheme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-    themeToggle.textContent = "☀️";
-  }
-
-  // Listen to toggle and save preference
-  themeToggle.addEventListener("click", () => {
-    const theme = document.body.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("blairTheme", theme);
-  });
-});
+// --- Optional: prevent text shift (blog.html style) ---
+// Use same font-family, font-size, line-height as CSS
+themeToggle.style.display = "flex";
+themeToggle.style.alignItems = "center";
+themeToggle.style.justifyContent = "center";
+themeToggle.style.fontSize = "1rem"; // Match CSS
+themeToggle.style.lineHeight = "1";   // Important for perfect vertical centering
+themeToggle.style.padding = "0.4rem 1rem"; // Exact blog.html spacing
