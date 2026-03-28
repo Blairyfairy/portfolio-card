@@ -51,8 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ==========================================
    FINAL — PORTFOLIO CARD MENU / TOGGLE MATCH
-   gallery.html + blog.html source of truth
-   append-only / non-destructive
+   exact gallery/blog match
    ========================================== */
 (() => {
   const STYLE_ID = 'portfolio-card-final-menu-toggle-exact-match';
@@ -87,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       body.portfolio-card-final-menu-match .credential-header{
-        font-size:inherit !important;
+        font-size:.85rem !important;
         line-height:1.2 !important;
         letter-spacing:0 !important;
         margin:0 !important;
@@ -101,13 +100,10 @@ document.addEventListener("DOMContentLoaded", () => {
         align-items:center !important;
         justify-content:center !important;
         background:var(--glass-bg) !important;
-        border:1px solid var(--glass-border) !important;
+        border:2px solid var(--glass-border) !important;
         border-radius:20px !important;
         padding:.4rem 1rem !important;
-        min-width:44px !important;
-        min-height:34px !important;
-        font-size:.85rem !important;
-        font-weight:400 !important;
+        font-size:1rem !important;
         line-height:1 !important;
         letter-spacing:0 !important;
         box-sizing:border-box !important;
@@ -122,9 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       @media (max-width:900px){
         body.portfolio-card-final-menu-match .top-bar{
-          width:100% !important;
-          left:0 !important;
-          box-sizing:border-box !important;
           padding:1rem 2rem !important;
           font-size:.85rem !important;
         }
@@ -137,14 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body.portfolio-card-final-menu-match #themeToggle,
         body.portfolio-card-final-menu-match .theme-btn{
           padding:.4rem 1rem !important;
-          min-width:44px !important;
-          min-height:34px !important;
-          font-size:.85rem !important;
-          line-height:1 !important;
-          background:var(--glass-bg) !important;
-          border:1px solid var(--glass-border) !important;
-          color:var(--text-light) !important;
-          box-shadow:none !important;
+          font-size:1rem !important;
+          border:2px solid var(--glass-border) !important;
           backdrop-filter:blur(10px) !important;
           -webkit-backdrop-filter:blur(10px) !important;
         }
@@ -154,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function syncThemeIcon() {
-    const themeBtn = document.getElementById('themeToggle') || document.querySelector('.theme-btn');
+    const themeBtn = document.getElementById('themeToggle');
     if (!themeBtn) return;
     themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
   }
