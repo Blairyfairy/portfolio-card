@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ==========================================
    FINAL — PORTFOLIO CARD MENU / TOGGLE MATCH
-   exact blog/gallery match
+   force-match blog.html top bar in desktop/mobile
    ========================================== */
 (() => {
   const STYLE_ID = 'portfolio-card-final-menu-toggle-exact-match';
@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body.portfolio-card-final-menu-match #themeToggle,
       body.portfolio-card-final-menu-match .theme-btn{
         transition:none !important;
+        font-family:'Segoe UI', sans-serif !important;
       }
 
       body.portfolio-card-final-menu-match .top-bar{
@@ -76,8 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
         align-items:center !important;
         padding:1rem 2rem !important;
         font-size:.85rem !important;
-        position:relative !important;
+        position:absolute !important;
         top:0 !important;
+        left:0 !important;
         width:100% !important;
         z-index:100 !important;
         box-sizing:border-box !important;
@@ -88,10 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
       body.portfolio-card-final-menu-match .credential-header{
         font-size:.85rem !important;
         line-height:1.2 !important;
+        font-weight:400 !important;
         letter-spacing:0 !important;
         margin:0 !important;
         padding:0 !important;
         white-space:nowrap !important;
+        flex:0 1 auto !important;
       }
 
       body.portfolio-card-final-menu-match #themeToggle,
@@ -106,23 +110,46 @@ document.addEventListener("DOMContentLoaded", () => {
         color:var(--text-light) !important;
         box-shadow:none !important;
         margin:0 !important;
-        font:inherit !important;
+        display:inline-flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        font-size:.85rem !important;
+        font-weight:400 !important;
+        line-height:1 !important;
         letter-spacing:0 !important;
-        line-height:normal !important;
+        min-width:unset !important;
+        min-height:unset !important;
+        width:auto !important;
+        height:auto !important;
+        vertical-align:middle !important;
+        appearance:auto !important;
+        -webkit-appearance:auto !important;
+        flex:0 0 auto !important;
       }
 
       @media (max-width:900px){
         body.portfolio-card-final-menu-match .top-bar{
+          display:flex !important;
+          justify-content:space-between !important;
+          align-items:center !important;
           width:100% !important;
           left:0 !important;
+          top:0 !important;
           box-sizing:border-box !important;
           padding:1rem 2rem !important;
           font-size:.85rem !important;
+          position:absolute !important;
         }
 
         body.portfolio-card-final-menu-match .credential-header{
           font-size:.425rem !important;
           line-height:1.2 !important;
+          font-weight:400 !important;
+          letter-spacing:0 !important;
+          margin:0 !important;
+          padding:0 !important;
+          white-space:nowrap !important;
+          flex:0 1 auto !important;
         }
 
         body.portfolio-card-final-menu-match #themeToggle,
@@ -137,9 +164,21 @@ document.addEventListener("DOMContentLoaded", () => {
           color:var(--text-light) !important;
           box-shadow:none !important;
           margin:0 !important;
-          font:inherit !important;
+          display:inline-flex !important;
+          align-items:center !important;
+          justify-content:center !important;
+          font-size:.85rem !important;
+          font-weight:400 !important;
+          line-height:1 !important;
           letter-spacing:0 !important;
-          line-height:normal !important;
+          min-width:unset !important;
+          min-height:unset !important;
+          width:auto !important;
+          height:auto !important;
+          vertical-align:middle !important;
+          appearance:auto !important;
+          -webkit-appearance:auto !important;
+          flex:0 0 auto !important;
         }
       }
     `;
@@ -147,13 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function syncThemeIcon() {
-    const themeBtn = document.getElementById('themeToggle');
+    const themeBtn = document.getElementById("themeToggle");
     if (!themeBtn) return;
-    themeBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
   }
 
   function applyMatch() {
-    document.body.classList.add('portfolio-card-final-menu-match');
+    document.body.classList.add("portfolio-card-final-menu-match");
     syncThemeIcon();
   }
 
@@ -162,12 +201,13 @@ document.addEventListener("DOMContentLoaded", () => {
     applyMatch();
 
     setTimeout(applyMatch, 0);
-    setTimeout(applyMatch, 80);
+    setTimeout(applyMatch, 50);
+    setTimeout(applyMatch, 120);
     setTimeout(applyMatch, 220);
 
-    window.addEventListener('resize', applyMatch);
-    window.addEventListener('orientationchange', applyMatch);
-    window.addEventListener('load', applyMatch);
+    window.addEventListener("resize", applyMatch);
+    window.addEventListener("orientationchange", applyMatch);
+    window.addEventListener("load", applyMatch);
 
     const mo = new MutationObserver(() => {
       requestAnimationFrame(applyMatch);
@@ -176,12 +216,12 @@ document.addEventListener("DOMContentLoaded", () => {
     mo.observe(document.body, {
       subtree: true,
       attributes: true,
-      attributeFilter: ['class', 'style']
+      attributeFilter: ["class", "style"]
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
