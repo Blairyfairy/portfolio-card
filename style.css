@@ -83,6 +83,12 @@ body {
   width: 100%;
 }
 
+.credential-header {
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 /* =========================
    PROFILE CARD
    ========================= */
@@ -237,7 +243,7 @@ body {
 
 .theme-btn {
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  border: 2px solid var(--glass-border);
   border-radius: 20px;
   padding: 0.4rem 1rem;
   font-size: 0.85rem;
@@ -293,6 +299,7 @@ body {
     min-height: 34px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
   }
 
 }
