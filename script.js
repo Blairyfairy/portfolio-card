@@ -69,12 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const topBar = document.querySelector(".top-bar");
     const credentialHeader = document.querySelector(".credential-header");
     const themeBtn = document.getElementById("themeToggle");
+    const container = document.querySelector(".container");
+    const profileCard = document.querySelector(".profile-card");
     const isMobile = window.innerWidth <= 900;
     const isDark = document.body.classList.contains("dark");
 
     if (!topBar || !credentialHeader || !themeBtn) return;
-
-    document.body.classList.add("portfolio-card-final-menu-match");
 
     /* ===== TOP BAR — exact blog layout ===== */
     setImp(topBar, "display", "flex");
@@ -117,19 +117,29 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(themeBtn, "box-shadow", "none");
     setImp(themeBtn, "margin", "0");
     setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
-    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-size", "inherit");
     setImp(themeBtn, "font-weight", "400");
-    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "line-height", "normal");
     setImp(themeBtn, "letter-spacing", "0");
-    setImp(themeBtn, "min-width", "unset");
-    setImp(themeBtn, "min-height", "unset");
+    setImp(themeBtn, "min-width", "0");
+    setImp(themeBtn, "min-height", "0");
     setImp(themeBtn, "width", "auto");
     setImp(themeBtn, "height", "auto");
     setImp(themeBtn, "vertical-align", "middle");
-    setImp(themeBtn, "appearance", "auto");
-    setImp(themeBtn, "-webkit-appearance", "auto");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
     setImp(themeBtn, "flex", "0 0 auto");
     setImp(themeBtn, "outline", "none");
+
+    /* ===== CARD SPACING BELOW MENU ===== */
+    if (container) {
+      setImp(container, "padding-top", isMobile ? "4.9rem" : "5.4rem");
+      setImp(container, "box-sizing", "border-box");
+    }
+
+    if (profileCard) {
+      setImp(profileCard, "margin-top", isMobile ? ".35rem" : ".5rem");
+    }
 
     syncThemeIcon();
   }
