@@ -11,15 +11,9 @@ followBtn.addEventListener("click", () => {
 
   if (followBtn.classList.contains("following")) {
     btnText.textContent = "Connected ✓";
+    window.open("mailto:blairpagedrakemccoy@gmail.com", "_self");
   } else {
     btnText.textContent = "Connect";
-  }
-});
-
-// ✅ ADDED EMAIL TRIGGER (DOES NOT MODIFY ANY EXISTING LINE)
-followBtn.addEventListener("click", () => {
-  if (followBtn.classList.contains("following")) {
-    window.location.href = "mailto:blairpagedrakemccoy@gmail.com";
   }
 });
 
