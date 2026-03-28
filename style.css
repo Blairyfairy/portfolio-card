@@ -297,3 +297,40 @@ body {
 
 }
 
+/* ==========================================
+   FINAL MENU MICRO-ADJUST (APPEND ONLY)
+   ========================================== */
+
+/* Slightly thicker toggle border (same style) */
+.theme-btn {
+  border: 1.5px solid var(--glass-border) !important;
+}
+
+/* Mobile text stacking + spacing fix */
+@media (max-width: 768px) {
+
+  .top-bar {
+    align-items: flex-start !important;
+  }
+
+  .credential-header {
+    display: block !important;
+    line-height: 1.35 !important;
+    max-width: 70% !important;
+    white-space: normal !important;
+  }
+
+  /* Forces natural 2-line wrap cleanly */
+  .credential-header br {
+    display: block;
+  }
+
+  /* Space between text and toggle */
+  #themeToggle,
+  .theme-btn {
+    margin-left: 0.75rem !important;
+    border: 1.5px solid var(--glass-border) !important;
+  }
+}
+
+
