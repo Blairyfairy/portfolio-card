@@ -16,6 +16,13 @@ followBtn.addEventListener("click", () => {
   }
 });
 
+// ✅ ADDED EMAIL TRIGGER (DOES NOT MODIFY ANY EXISTING LINE)
+followBtn.addEventListener("click", () => {
+  if (followBtn.classList.contains("following")) {
+    window.location.href = "mailto:blairpagedrakemccoy@gmail.com";
+  }
+});
+
 // Theme Toggle Button
 const themeToggle = document.getElementById("themeToggle");
 
