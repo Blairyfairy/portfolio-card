@@ -332,5 +332,43 @@ body {
     border: 1.5px solid var(--glass-border) !important;
   }
 }
+/* ==========================================
+   FINAL MENU MICRO-ADJUST v2 (APPEND ONLY)
+   ========================================== */
 
+/* Desktop/non-mobile: make credential text larger */
+.credential-header {
+  font-size: 0.85rem !important;
+  line-height: 1.2 !important;
+}
+
+/* Make toggle outline thicker everywhere, keep same look */
+#themeToggle,
+.theme-btn {
+  border: 2px solid var(--glass-border) !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile: split text into 2 lines and move it left-ish */
+@media (max-width: 768px) {
+
+  .top-bar {
+    align-items: flex-start !important;
+  }
+
+  .credential-header {
+    font-size: 0.5rem !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    max-width: 72% !important;
+    margin-left: 0.15rem !important;
+    text-align: left !important;
+  }
+
+  #themeToggle,
+  .theme-btn {
+    border: 2px solid var(--glass-border) !important;
+    margin-left: 0.75rem !important;
+  }
+}
 
