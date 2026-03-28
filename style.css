@@ -22,7 +22,7 @@
     #f0eff4ff 100%
   );
 
-  --glass-bg: rgba(240, 239, 244, 0.08);
+  --glass-bg: rgba(58, 62, 59, 0.15);
   --glass-border: rgba(240, 239, 244, 0.22);
 }
 
@@ -33,14 +33,15 @@
 body.dark {
   --bg-light: linear-gradient(
     135deg,
-    #000000ff 0%,
-    #1a0d19 35%,
-    #291528ff 70%,
-    #3a3e3bff 100%
+    #050507 0%,
+    #0d0f16 25%,
+    #141824 55%,
+    #1c1f2b 78%,
+    #26212d 100%
   );
 
-  --glass-bg: rgba(0, 0, 0, 0.65); /* SAME value used by card */
-  --glass-border: rgba(240, 239, 244, 0.12);
+  --glass-bg: rgba(8, 10, 14, 0.42);
+  --glass-border: rgba(240, 239, 244, 0.14);
   --text-light: #f8f7fb;
 }
 
@@ -76,8 +77,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.6px;
+  font-size: 0.85rem;
+  letter-spacing: 0;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 /* =========================
@@ -229,30 +232,67 @@ body {
 }
 
 /* =========================
-   THEME TOGGLE (FINAL FIX)
+   THEME TOGGLE
    ========================= */
 
 .theme-btn {
-  border: 2px solid rgba(240, 239, 244, 0.35); /* same thickness */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 0.4rem 1rem;
-  font-size: 1rem;
-
-  cursor: pointer;
-
-  /* LIGHT MODE = transparent */
-  background: transparent;
-
+  font-size: 0.85rem;
+  line-height: 1;
   color: var(--text-light);
-
-  display: flex;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  transition: background 0.4s ease, color 0.4s ease;
+  min-width: 44px;
+  min-height: 34px;
+  box-sizing: border-box;
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
-/* DARK MODE = EXACT SAME AS CARD */
-body.dark .theme-btn {
-  background: var(--glass-bg);
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .top-bar {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  .credential-header {
+    font-size: 0.425rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .identity-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .resume-shell {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .theme-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    min-width: 44px;
+    min-height: 34px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
 }
