@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         border:2px solid var(--glass-border) !important;
         border-radius:20px !important;
         padding:.4rem 1rem !important;
-        font-size:1rem !important;
+        font-size:.85rem !important;
         line-height:1 !important;
         letter-spacing:0 !important;
         box-sizing:border-box !important;
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body.portfolio-card-final-menu-match #themeToggle,
         body.portfolio-card-final-menu-match .theme-btn{
           padding:.4rem 1rem !important;
-          font-size:1rem !important;
+          font-size:.85rem !important;
           border:2px solid var(--glass-border) !important;
           backdrop-filter:blur(10px) !important;
           -webkit-backdrop-filter:blur(10px) !important;
