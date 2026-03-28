@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ==========================================
    FINAL — PORTFOLIO CARD MENU / TOGGLE MATCH
-   exact gallery/blog match
+   exact blog/gallery match
    ========================================== */
 (() => {
   const STYLE_ID = 'portfolio-card-final-menu-toggle-exact-match';
@@ -96,28 +96,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       body.portfolio-card-final-menu-match #themeToggle,
       body.portfolio-card-final-menu-match .theme-btn{
-        display:inline-flex !important;
-        align-items:center !important;
-        justify-content:center !important;
         background:var(--glass-bg) !important;
-        border:2px solid var(--glass-border) !important;
+        border:1px solid var(--glass-border) !important;
         border-radius:20px !important;
         padding:.4rem 1rem !important;
-        font-size:.85rem !important;
-        line-height:1 !important;
-        letter-spacing:0 !important;
-        box-sizing:border-box !important;
-        box-shadow:none !important;
-        margin:0 !important;
-        color:var(--text-light) !important;
         cursor:pointer !important;
         backdrop-filter:blur(10px) !important;
         -webkit-backdrop-filter:blur(10px) !important;
-        outline:none !important;
+        color:var(--text-light) !important;
+        box-shadow:none !important;
+        margin:0 !important;
+        font:inherit !important;
+        letter-spacing:0 !important;
+        line-height:normal !important;
       }
 
       @media (max-width:900px){
         body.portfolio-card-final-menu-match .top-bar{
+          width:100% !important;
+          left:0 !important;
+          box-sizing:border-box !important;
           padding:1rem 2rem !important;
           font-size:.85rem !important;
         }
@@ -129,11 +127,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         body.portfolio-card-final-menu-match #themeToggle,
         body.portfolio-card-final-menu-match .theme-btn{
+          background:var(--glass-bg) !important;
+          border:1px solid var(--glass-border) !important;
+          border-radius:20px !important;
           padding:.4rem 1rem !important;
-          font-size:.85rem !important;
-          border:2px solid var(--glass-border) !important;
+          cursor:pointer !important;
           backdrop-filter:blur(10px) !important;
           -webkit-backdrop-filter:blur(10px) !important;
+          color:var(--text-light) !important;
+          box-shadow:none !important;
+          margin:0 !important;
+          font:inherit !important;
+          letter-spacing:0 !important;
+          line-height:normal !important;
         }
       }
     `;
