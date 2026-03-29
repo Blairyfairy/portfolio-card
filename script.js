@@ -238,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 
-
 /* ==========================================
    FINAL TOGGLE SIZE / VISUAL LOCK
    APPEND ONLY — preserves existing theme logic
@@ -329,3 +328,4 @@ document.addEventListener("DOMContentLoaded", () => {
     initFinalToggleMatch();
   }
 })();
+
