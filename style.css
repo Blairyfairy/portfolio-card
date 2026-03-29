@@ -372,3 +372,69 @@ body {
   }
 }
 
+/* ==========================================
+   MOVE NAV UNDER RHCE6 ON LEFT
+   append-only / non-destructive
+   ========================================== */
+
+/* Desktop */
+.top-bar{
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-areas:
+    "cred toggle"
+    "nav  toggle" !important;
+  align-items: start !important;
+  row-gap: 0.35rem !important;
+}
+
+.credential-header{
+  grid-area: cred !important;
+}
+
+.site-nav{
+  grid-area: nav !important;
+  justify-self: start !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-nav a{
+  margin: 0 1rem 0 0 !important;
+}
+
+#themeToggle,
+.theme-btn{
+  grid-area: toggle !important;
+  align-self: start !important;
+  justify-self: end !important;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .top-bar{
+    grid-template-columns: 1fr auto !important;
+    grid-template-areas:
+      "cred toggle"
+      "nav  toggle" !important;
+    row-gap: 0.3rem !important;
+  }
+
+  .credential-header{
+    max-width: 100% !important;
+  }
+
+  .site-nav{
+    justify-self: start !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .site-nav a{
+    margin: 0 0.85rem 0 0 !important;
+  }
+}
+
