@@ -329,3 +329,51 @@ document.addEventListener("DOMContentLoaded", () => {
     initFinalToggleMatch();
   }
 })();
+
+/* ==========================================
+   +1px TOGGLE SIZE INCREASE (APPEND ONLY)
+   ========================================== */
+(() => {
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function bumpToggleSize() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    /* +1px increase from current perfect values */
+    setImp(themeBtn, "min-width", "45px");
+    setImp(themeBtn, "min-height", "35px");
+    setImp(themeBtn, "width", "45px");
+    setImp(themeBtn, "height", "35px");
+  }
+
+  function initBump() {
+    bumpToggleSize();
+
+    setTimeout(bumpToggleSize, 0);
+    setTimeout(bumpToggleSize, 60);
+    setTimeout(bumpToggleSize, 140);
+
+    window.addEventListener("load", bumpToggleSize);
+    window.addEventListener("resize", bumpToggleSize);
+    window.addEventListener("orientationchange", bumpToggleSize);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(bumpToggleSize, 0);
+        setTimeout(bumpToggleSize, 60);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initBump);
+  } else {
+    initBump();
+  }
+})();
+
