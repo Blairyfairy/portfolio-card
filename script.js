@@ -183,3 +183,73 @@ document.addEventListener("DOMContentLoaded", () => {
     init();
   }
 })();
+
+/* ==========================================
+   FINAL TOGGLE SIZE LOCK — EXACT MATCH
+   (APPEND ONLY — DO NOT REMOVE ANYTHING)
+   ========================================== */
+
+(function () {
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function forceExactToggleSize() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    // Exact match to blog + gallery
+    setImp(themeBtn, "padding", ".4rem 1rem");
+    setImp(themeBtn, "min-width", "44px");
+    setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "height", "34px");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+  }
+
+  function init() {
+    forceExactToggleSize();
+
+    // Run multiple times to override earlier JS
+    setTimeout(forceExactToggleSize, 0);
+    setTimeout(forceExactToggleSize, 60);
+    setTimeout(forceExactToggleSize, 120);
+    setTimeout(forceExactToggleSize, 200);
+    setTimeout(forceExactToggleSize, 400);
+
+    window.addEventListener("resize", forceExactToggleSize);
+    window.addEventListener("orientationchange", forceExactToggleSize);
+    window.addEventListener("load", forceExactToggleSize);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(forceExactToggleSize, 0);
+        setTimeout(forceExactToggleSize, 80);
+        setTimeout(forceExactToggleSize, 160);
+      });
+    }
+
+    const observer = new MutationObserver(() => {
+      requestAnimationFrame(forceExactToggleSize);
+    });
+
+    observer.observe(document.body, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class", "style"]
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
