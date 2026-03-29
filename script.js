@@ -241,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ==========================================
    FINAL TOGGLE SIZE / VISUAL LOCK
    APPEND ONLY — preserves existing theme logic
+   FIXED ICON DIRECTION
    ========================================== */
 (() => {
   function setImp(el, prop, value) {
@@ -254,8 +255,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isDark = document.body.classList.contains("dark");
 
-    /* keep the EXISTING light/dark behavior */
-    themeBtn.textContent = isDark ? "☀️" : "🌙";
+    /* FIXED: light first, dark after toggle */
+    themeBtn.textContent = isDark ? "🌙" : "☀️";
 
     /* exact visual match to blog/gallery */
     setImp(themeBtn, "display", "inline-flex");
@@ -281,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(themeBtn, "box-shadow", "none");
     setImp(themeBtn, "cursor", "pointer");
 
-    /* match the same light-first / dark-after visual system */
+    /* match visual light/dark states */
     if (isDark) {
       setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
       setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
@@ -328,4 +329,3 @@ document.addEventListener("DOMContentLoaded", () => {
     initFinalToggleMatch();
   }
 })();
-
