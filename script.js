@@ -237,3 +237,95 @@ document.addEventListener("DOMContentLoaded", () => {
     initToggleSizeFix();
   }
 })();
+
+
+/* ==========================================
+   FINAL TOGGLE SIZE / VISUAL LOCK
+   APPEND ONLY — preserves existing theme logic
+   ========================================== */
+(() => {
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function applyFinalToggleMatch() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    const isDark = document.body.classList.contains("dark");
+
+    /* keep the EXISTING light/dark behavior */
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    /* exact visual match to blog/gallery */
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "padding", ".4rem 1rem");
+    setImp(themeBtn, "min-width", "44px");
+    setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "width", "44px");
+    setImp(themeBtn, "height", "34px");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "vertical-align", "middle");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+
+    /* match the same light-first / dark-after visual system */
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+
+    if (window.innerWidth <= 900) {
+      setImp(themeBtn, "backdrop-filter", "none");
+      setImp(themeBtn, "-webkit-backdrop-filter", "none");
+    } else {
+      setImp(themeBtn, "backdrop-filter", "blur(10px)");
+      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
+    }
+  }
+
+  function initFinalToggleMatch() {
+    applyFinalToggleMatch();
+
+    setTimeout(applyFinalToggleMatch, 0);
+    setTimeout(applyFinalToggleMatch, 60);
+    setTimeout(applyFinalToggleMatch, 140);
+
+    window.addEventListener("load", applyFinalToggleMatch);
+    window.addEventListener("resize", applyFinalToggleMatch);
+    window.addEventListener("orientationchange", applyFinalToggleMatch);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(applyFinalToggleMatch, 0);
+        setTimeout(applyFinalToggleMatch, 60);
+        setTimeout(applyFinalToggleMatch, 140);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFinalToggleMatch);
+  } else {
+    initFinalToggleMatch();
+  }
+})();
