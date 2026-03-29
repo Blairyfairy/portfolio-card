@@ -185,71 +185,55 @@ document.addEventListener("DOMContentLoaded", () => {
 })();
 
 /* ==========================================
-   FINAL TOGGLE SIZE LOCK — EXACT MATCH
-   (APPEND ONLY — DO NOT REMOVE ANYTHING)
+   FINAL TOGGLE SIZE CORRECTION — CLEAN APPEND
    ========================================== */
-
-(function () {
+(() => {
   function setImp(el, prop, value) {
     if (!el) return;
     el.style.setProperty(prop, value, "important");
   }
 
-  function forceExactToggleSize() {
+  function fixPortfolioToggleSize() {
     const themeBtn = document.getElementById("themeToggle");
     if (!themeBtn) return;
 
-    // Exact match to blog + gallery
     setImp(themeBtn, "padding", ".4rem 1rem");
     setImp(themeBtn, "min-width", "44px");
     setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "width", "44px");
     setImp(themeBtn, "height", "34px");
-    setImp(themeBtn, "line-height", "1");
-    setImp(themeBtn, "font-size", ".85rem");
     setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "line-height", "1");
     setImp(themeBtn, "box-sizing", "border-box");
     setImp(themeBtn, "display", "inline-flex");
     setImp(themeBtn, "align-items", "center");
     setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "vertical-align", "middle");
   }
 
-  function init() {
-    forceExactToggleSize();
+  function initToggleSizeFix() {
+    fixPortfolioToggleSize();
+    setTimeout(fixPortfolioToggleSize, 0);
+    setTimeout(fixPortfolioToggleSize, 80);
+    setTimeout(fixPortfolioToggleSize, 160);
 
-    // Run multiple times to override earlier JS
-    setTimeout(forceExactToggleSize, 0);
-    setTimeout(forceExactToggleSize, 60);
-    setTimeout(forceExactToggleSize, 120);
-    setTimeout(forceExactToggleSize, 200);
-    setTimeout(forceExactToggleSize, 400);
-
-    window.addEventListener("resize", forceExactToggleSize);
-    window.addEventListener("orientationchange", forceExactToggleSize);
-    window.addEventListener("load", forceExactToggleSize);
+    window.addEventListener("load", fixPortfolioToggleSize);
+    window.addEventListener("resize", fixPortfolioToggleSize);
+    window.addEventListener("orientationchange", fixPortfolioToggleSize);
 
     const themeBtn = document.getElementById("themeToggle");
     if (themeBtn) {
       themeBtn.addEventListener("click", () => {
-        setTimeout(forceExactToggleSize, 0);
-        setTimeout(forceExactToggleSize, 80);
-        setTimeout(forceExactToggleSize, 160);
+        setTimeout(fixPortfolioToggleSize, 0);
+        setTimeout(fixPortfolioToggleSize, 80);
       });
     }
-
-    const observer = new MutationObserver(() => {
-      requestAnimationFrame(forceExactToggleSize);
-    });
-
-    observer.observe(document.body, {
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["class", "style"]
-    });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", initToggleSizeFix);
   } else {
-    init();
+    initToggleSizeFix();
   }
 })();
