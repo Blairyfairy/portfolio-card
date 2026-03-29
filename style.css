@@ -812,4 +812,10 @@ body {
   }
 }
 
+/* =========================
+   FORCE BOLD ROLE TITLE (APPEND ONLY)
+   ========================= */
 
+.profile-info h4 {
+  font-weight: 700 !important;
+}
