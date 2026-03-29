@@ -377,3 +377,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 
+/* ==========================================
+   +1px HEIGHT ONLY (NO WIDTH CHANGE)
+   ========================================== */
+(() => {
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function adjustToggleHeightOnly() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    /* ONLY height increased by 1px */
+    setImp(themeBtn, "min-height", "35px");
+    setImp(themeBtn, "height", "35px");
+  }
+
+  function initHeightFix() {
+    adjustToggleHeightOnly();
+
+    setTimeout(adjustToggleHeightOnly, 0);
+    setTimeout(adjustToggleHeightOnly, 60);
+    setTimeout(adjustToggleHeightOnly, 140);
+
+    window.addEventListener("load", adjustToggleHeightOnly);
+    window.addEventListener("resize", adjustToggleHeightOnly);
+    window.addEventListener("orientationchange", adjustToggleHeightOnly);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(adjustToggleHeightOnly, 0);
+        setTimeout(adjustToggleHeightOnly, 60);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeightFix);
+  } else {
+    initHeightFix();
+  }
+})();
+
+
