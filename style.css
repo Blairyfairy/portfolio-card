@@ -281,69 +281,56 @@ body {
 
 @media (max-width: 768px) {
   .top-bar {
-    padding: 1rem 2rem;
-    font-size: 0.85rem;
-  }
-
-  .credential-header {
-    font-size: 0.5rem;
-    line-height: 1.15;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .container {
-    padding: 4.9rem 1rem 1rem;
-  }
-
-  .theme-btn {
-    border: 1px solid var(--glass-border);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    min-width: 44px;
-    min-height: 34px;
-    padding: 0.4rem 1rem;
-    font-size: 0.85rem;
-    line-height: 1;
-  }
-
-  /* fixed mobile menu layer */
-  .top-bar {
-    position: fixed !important;
+    position: absolute !important;
     top: 0 !important;
     left: 0 !important;
-    right: 0 !important;
+    right: auto !important;
     width: 100% !important;
-    height: 0 !important;
+    height: 56px !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
     z-index: 120 !important;
-    pointer-events: none !important;
+    pointer-events: auto !important;
     display: block !important;
+    box-sizing: border-box !important;
   }
 
   .credential-header {
-    position: fixed !important;
+    position: absolute !important;
+    top: 12px !important;
     left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
     transform: translateX(-50%) !important;
+    -webkit-transform: translateX(-50%) !important;
     width: auto !important;
-    max-width: calc(100vw - 100px) !important;
+    max-width: calc(100vw - 110px) !important;
     min-width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    font-size: 0.5rem !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+    text-align: center !important;
     z-index: 121 !important;
     pointer-events: none !important;
   }
 
+  .container {
+    padding: 5.6rem 1rem 1rem !important;
+  }
+
   #themeToggle,
   .theme-btn {
-    position: fixed !important;
-    top: 16px !important;
-    right: 32px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 16px !important;
     left: auto !important;
     bottom: auto !important;
     margin: 0 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
     z-index: 122 !important;
     pointer-events: auto !important;
     width: auto !important;
@@ -367,238 +354,3 @@ body {
 .profile-info h4{
   font-weight: 700 !important;
 }
-
-
-@media (max-width: 768px) {
-  .top-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: visible !important;
-    z-index: 120 !important;
-    pointer-events: none !important;
-    display: block !important;
-  }
-
-  .credential-header {
-    position: fixed !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 121 !important;
-    pointer-events: none !important;
-  }
-
-  #themeToggle,
-  .theme-btn {
-    position: fixed !important;
-    top: 16px !important;
-    right: 32px !important;
-    left: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    z-index: 122 !important;
-    pointer-events: auto !important;
-  }
-}
-
-/* ==========================================
-   FINAL MOBILE MENU FIX
-   keeps text and toggle visible and fixed
-   ========================================== */
-
-@media (max-width: 768px) {
-  html,
-  body {
-    overflow-x: hidden !important;
-  }
-
-  body {
-    position: relative !important;
-  }
-
-  .top-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    overflow: visible !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-  }
-
-  .credential-header {
-    position: fixed !important;
-    top: 18px !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-    -webkit-transform: translateX(-50%) !important;
-    width: auto !important;
-    max-width: calc(100vw - 110px) !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    text-align: center !important;
-    white-space: normal !important;
-    line-height: 1.15 !important;
-    z-index: 10000 !important;
-    pointer-events: none !important;
-  }
-
-  #themeToggle,
-  .theme-btn {
-    position: fixed !important;
-    top: 16px !important;
-    right: 32px !important;
-    left: auto !important;
-    bottom: auto !important;
-    margin: 0 !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-    z-index: 10001 !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
-
-/* ==========================================
-   FINAL STATIC MOBILE MENU LOCK
-   keeps credential text + toggle pinned in place
-   ========================================== */
-@media (max-width: 768px) {
-  html,
-  body {
-    overflow-x: hidden !important;
-  }
-
-  body {
-    position: relative !important;
-  }
-
-  .top-bar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    overflow: visible !important;
-    z-index: 9999 !important;
-    pointer-events: none !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-  }
-
-  .credential-header {
-    position: fixed !important;
-    top: 18px !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-    -webkit-transform: translateX(-50%) !important;
-    width: auto !important;
-    max-width: calc(100vw - 110px) !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    text-align: center !important;
-    white-space: normal !important;
-    line-height: 1.15 !important;
-    z-index: 10000 !important;
-    pointer-events: none !important;
-  }
-
-  #themeToggle,
-  .theme-btn {
-    position: fixed !important;
-    top: 16px !important;
-    right: 32px !important;
-    left: auto !important;
-    bottom: auto !important;
-    margin: 0 !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-    z-index: 10001 !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
-
-/* ==========================================
-   ABSOLUTE FINAL MOBILE MENU PIN
-   ========================================== */
-@media (max-width: 768px) {
-  html,
-  body {
-    overflow-x: hidden !important;
-  }
-
-  .top-bar {
-    position: fixed !important;
-    inset: 0 auto auto 0 !important;
-    width: 100% !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    overflow: visible !important;
-    z-index: 2147483000 !important;
-    pointer-events: none !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-  }
-
-  .credential-header {
-    position: fixed !important;
-    top: 18px !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-    -webkit-transform: translateX(-50%) !important;
-    width: auto !important;
-    max-width: calc(100vw - 110px) !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 2147483001 !important;
-    pointer-events: none !important;
-  }
-
-  #themeToggle,
-  .theme-btn {
-    position: fixed !important;
-    top: 16px !important;
-    right: 32px !important;
-    left: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    -webkit-transform: none !important;
-    margin: 0 !important;
-    z-index: 2147483002 !important;
-    pointer-events: auto !important;
-  }
-}
-
