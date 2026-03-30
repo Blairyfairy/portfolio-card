@@ -293,3 +293,220 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
+
+/* ==========================================
+   FINAL MOBILE FREEZE LOCK
+   freezes menu text + toggle exactly in place
+   after initial placement, never moves on scroll
+   APPEND ONLY
+   ========================================== */
+(() => {
+  const MOBILE_BREAKPOINT = 768;
+  const MOBILE_HTML = `
+    <span class="cred-line-1">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span class="cred-line-2">Associate (Renewal Scheduled)</span>
+  `;
+  const DESKTOP_TEXT =
+    "RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)";
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function freezeMobileMenu() {
+    const topBar = document.querySelector(".top-bar");
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeBtn = document.getElementById("themeToggle");
+    const profileCard = document.querySelector(".profile-card");
+
+    if (!topBar || !credentialHeader || !themeBtn) return;
+
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    const isDark = document.body.classList.contains("dark");
+
+    if (!isMobile) {
+      credentialHeader.textContent = DESKTOP_TEXT;
+
+      setImp(topBar, "position", "absolute");
+      setImp(topBar, "top", "0");
+      setImp(topBar, "left", "0");
+      setImp(topBar, "right", "auto");
+      setImp(topBar, "width", "100%");
+      setImp(topBar, "height", "auto");
+      setImp(topBar, "display", "flex");
+      setImp(topBar, "justify-content", "space-between");
+      setImp(topBar, "align-items", "center");
+      setImp(topBar, "padding", "1rem 2rem");
+      setImp(topBar, "margin", "0");
+      setImp(topBar, "overflow", "visible");
+      setImp(topBar, "z-index", "100");
+      setImp(topBar, "pointer-events", "auto");
+
+      setImp(credentialHeader, "position", "static");
+      setImp(credentialHeader, "top", "auto");
+      setImp(credentialHeader, "left", "auto");
+      setImp(credentialHeader, "right", "auto");
+      setImp(credentialHeader, "bottom", "auto");
+      setImp(credentialHeader, "transform", "none");
+      setImp(credentialHeader, "width", "auto");
+      setImp(credentialHeader, "max-width", "none");
+      setImp(credentialHeader, "text-align", "left");
+      setImp(credentialHeader, "white-space", "nowrap");
+      setImp(credentialHeader, "pointer-events", "auto");
+
+      setImp(themeBtn, "position", "static");
+      setImp(themeBtn, "top", "auto");
+      setImp(themeBtn, "right", "auto");
+      setImp(themeBtn, "left", "auto");
+      setImp(themeBtn, "bottom", "auto");
+      setImp(themeBtn, "transform", "none");
+
+      return;
+    }
+
+    /* top bar itself is fixed and inert */
+    setImp(topBar, "position", "fixed");
+    setImp(topBar, "top", "0");
+    setImp(topBar, "left", "0");
+    setImp(topBar, "right", "0");
+    setImp(topBar, "width", "100%");
+    setImp(topBar, "height", "0");
+    setImp(topBar, "display", "block");
+    setImp(topBar, "padding", "0");
+    setImp(topBar, "margin", "0");
+    setImp(topBar, "overflow", "visible");
+    setImp(topBar, "z-index", "120");
+    setImp(topBar, "pointer-events", "none");
+
+    /* lock 2-line text */
+    credentialHeader.innerHTML = MOBILE_HTML;
+    setImp(credentialHeader, "position", "fixed");
+    setImp(credentialHeader, "left", "50%");
+    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "bottom", "auto");
+    setImp(credentialHeader, "transform", "translateX(-50%)");
+    setImp(credentialHeader, "width", "auto");
+    setImp(credentialHeader, "max-width", "calc(100vw - 100px)");
+    setImp(credentialHeader, "min-width", "0");
+    setImp(credentialHeader, "margin", "0");
+    setImp(credentialHeader, "padding", "0");
+    setImp(credentialHeader, "text-align", "center");
+    setImp(credentialHeader, "white-space", "normal");
+    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
+    setImp(credentialHeader, "font-size", ".5rem");
+    setImp(credentialHeader, "font-weight", "400");
+    setImp(credentialHeader, "line-height", "1.15");
+    setImp(credentialHeader, "letter-spacing", "0");
+    setImp(credentialHeader, "z-index", "121");
+    setImp(credentialHeader, "pointer-events", "none");
+
+    const line1 = credentialHeader.querySelector(".cred-line-1");
+    const line2 = credentialHeader.querySelector(".cred-line-2");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "line-height", "1.15");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "margin", "0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "line-height", "1.15");
+    }
+
+    /* compute ONCE per load/resize only */
+    let frozenTop = 14;
+    if (profileCard) {
+      const cardRect = profileCard.getBoundingClientRect();
+      const headerHeight = credentialHeader.offsetHeight || 20;
+      frozenTop = Math.max(12, Math.round((cardRect.top - headerHeight) / 2));
+    }
+    setImp(credentialHeader, "top", `${frozenTop}px`);
+
+    /* exact blog/gallery-style right lock */
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+    setImp(themeBtn, "position", "fixed");
+    setImp(themeBtn, "top", "16px");
+    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "left", "auto");
+    setImp(themeBtn, "bottom", "auto");
+    setImp(themeBtn, "transform", "none");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "z-index", "122");
+    setImp(themeBtn, "pointer-events", "auto");
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "width", "47px");
+    setImp(themeBtn, "min-width", "47px");
+    setImp(themeBtn, "max-width", "47px");
+    setImp(themeBtn, "height", "35px");
+    setImp(themeBtn, "min-height", "35px");
+    setImp(themeBtn, "max-height", "35px");
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "text-indent", "0");
+    setImp(themeBtn, "white-space", "nowrap");
+    setImp(themeBtn, "overflow", "visible");
+    setImp(themeBtn, "backdrop-filter", "none");
+    setImp(themeBtn, "-webkit-backdrop-filter", "none");
+
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+  }
+
+  function initFreezeMobileMenu() {
+    freezeMobileMenu();
+
+    setTimeout(freezeMobileMenu, 0);
+    setTimeout(freezeMobileMenu, 80);
+    setTimeout(freezeMobileMenu, 160);
+
+    window.addEventListener("load", freezeMobileMenu);
+    window.addEventListener("resize", freezeMobileMenu);
+    window.addEventListener("orientationchange", freezeMobileMenu);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn && !themeBtn.dataset.freezeMenuBound) {
+      themeBtn.dataset.freezeMenuBound = "true";
+      themeBtn.addEventListener("click", () => {
+        setTimeout(freezeMobileMenu, 0);
+        setTimeout(freezeMobileMenu, 80);
+        setTimeout(freezeMobileMenu, 160);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFreezeMobileMenu);
+  } else {
+    initFreezeMobileMenu();
+  }
+})();
+
