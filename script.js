@@ -14,23 +14,26 @@
 
     const isDark = document.body.classList.contains("dark");
 
-    /* keep your now-correct icon direction */
-    themeBtn.textContent = isDark ? "🌙" : "☀️";
+    /* CORRECT icon direction:
+       light page = moon button
+       dark page = sun button */
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
 
-    /* keep exact left/right size, only increase up/down a little */
+    /* keep exact left/right size */
     setImp(themeBtn, "width", "46px");
     setImp(themeBtn, "min-width", "46px");
     setImp(themeBtn, "max-width", "46px");
 
-    setImp(themeBtn, "height", "37px");
-    setImp(themeBtn, "min-height", "37px");
-    setImp(themeBtn, "max-height", "37px");
+    /* only a tiny up/down increase */
+    setImp(themeBtn, "height", "36px");
+    setImp(themeBtn, "min-height", "36px");
+    setImp(themeBtn, "max-height", "36px");
 
     setImp(themeBtn, "padding-top", "0");
     setImp(themeBtn, "padding-bottom", "0");
     setImp(themeBtn, "padding-left", "0");
     setImp(themeBtn, "padding-right", "0");
-    setImp(themeBtn, "line-height", "37px");
+    setImp(themeBtn, "line-height", "36px");
 
     /* perfect centering */
     setImp(themeBtn, "display", "inline-flex");
