@@ -407,25 +407,20 @@ body {
 }
 
 /* ==========================================
-   FINAL HARD LOCK — MOBILE MENU STATIC FREEZE
-   this overrides ALL prior rules and JS movement
+   FINAL MOBILE MENU FIX
+   keeps text and toggle visible and fixed
    ========================================== */
 
 @media (max-width: 768px) {
-
-  /* kill any transform/scroll side effects */
-  html, body {
-    transform: none !important;
-    -webkit-transform: none !important;
+  html,
+  body {
     overflow-x: hidden !important;
-    will-change: auto !important;
   }
 
   body {
     position: relative !important;
   }
 
-  /* HARD LOCK CONTAINER */
   .top-bar {
     position: fixed !important;
     top: 0 !important;
@@ -433,68 +428,50 @@ body {
     right: 0 !important;
     width: 100% !important;
     height: 0 !important;
-
+    min-height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
-
     display: block !important;
     overflow: visible !important;
-
-    z-index: 99999 !important;
-
+    z-index: 9999 !important;
     pointer-events: none !important;
-
     transform: none !important;
     -webkit-transform: none !important;
-
-    will-change: auto !important;
-    contain: layout style paint !important;
   }
 
-  /* HARD LOCK TEXT — NEVER MOVES */
   .credential-header {
     position: fixed !important;
-
-    top: 18px !important; /* fixed vertical anchor */
+    top: 18px !important;
     left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
     transform: translateX(-50%) !important;
-
+    -webkit-transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: calc(100vw - 110px) !important;
+    min-width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-
-    width: auto !important;
-    max-width: calc(100vw - 100px) !important;
-
     text-align: center !important;
     white-space: normal !important;
-
-    z-index: 100000 !important;
+    line-height: 1.15 !important;
+    z-index: 10000 !important;
     pointer-events: none !important;
-
-    will-change: auto !important;
   }
 
-  /* HARD LOCK TOGGLE — NEVER MOVES */
   #themeToggle,
   .theme-btn {
     position: fixed !important;
-
     top: 16px !important;
     right: 32px !important;
-
     left: auto !important;
     bottom: auto !important;
-
     margin: 0 !important;
-
     transform: none !important;
     -webkit-transform: none !important;
-
-    z-index: 100001 !important;
-
+    z-index: 10001 !important;
     pointer-events: auto !important;
-
-    will-change: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
-
 }
