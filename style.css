@@ -819,3 +819,27 @@ body {
 .profile-info h4 {
   font-weight: 700 !important;
 }
+
+/* ==========================================
+   FINAL MOBILE CREDENTIAL CENTERING
+   APPEND ONLY
+   ========================================== */
+@media (max-width: 768px) {
+  .top-bar {
+    align-items: flex-start !important;
+  }
+
+  .credential-header {
+    display: block !important;
+    width: 100% !important;
+    max-width: calc(100% - 64px) !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    font-size: 0.5rem !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
+}
+
