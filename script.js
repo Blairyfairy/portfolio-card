@@ -161,6 +161,7 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   `;
 
   setImp(credentialHeader, "position", "fixed");
+  setImp(credentialHeader, "top", "18px");
   setImp(credentialHeader, "left", "50%");
   setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
@@ -224,14 +225,6 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
 
   if (profileCard) {
     setImp(profileCard, "margin-top", ".35rem");
-
-    // Calculate once per layout event, not on scroll.
-    const cardRect = profileCard.getBoundingClientRect();
-    const headerHeight = credentialHeader.offsetHeight || 20;
-    const targetTop = Math.max(12, Math.round((cardRect.top - headerHeight) / 2));
-    setImp(credentialHeader, "top", `${targetTop}px`);
-  } else {
-    setImp(credentialHeader, "top", "18vh");
   }
 }
 
@@ -389,6 +382,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
     /* lock 2-line text */
     credentialHeader.innerHTML = MOBILE_HTML;
     setImp(credentialHeader, "position", "fixed");
+    setImp(credentialHeader, "top", "18px");
     setImp(credentialHeader, "left", "50%");
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
@@ -428,15 +422,6 @@ window.addEventListener("orientationchange", applyMenuLayout);
       setImp(line2, "text-align", "center");
       setImp(line2, "line-height", "1.15");
     }
-
-    /* compute ONCE per load/resize only */
-    let frozenTop = 14;
-    if (profileCard) {
-      const cardRect = profileCard.getBoundingClientRect();
-      const headerHeight = credentialHeader.offsetHeight || 20;
-      frozenTop = Math.max(12, Math.round((cardRect.top - headerHeight) / 2));
-    }
-    setImp(credentialHeader, "top", `${frozenTop}px`);
 
     /* exact blog/gallery-style right lock */
     themeBtn.textContent = isDark ? "☀️" : "🌙";
