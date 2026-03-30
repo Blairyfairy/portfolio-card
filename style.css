@@ -843,3 +843,26 @@ body {
   }
 }
 
+
+
+/* ==========================================
+   MICRO TOGGLE SIZE BUMP (CSS APPEND ONLY)
+   +1px width +1px height
+   does NOT affect border thickness
+   ========================================== */
+#themeToggle {
+  width: 47px !important;
+  min-width: 47px !important;
+  max-width: 47px !important;
+
+  height: 35px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
