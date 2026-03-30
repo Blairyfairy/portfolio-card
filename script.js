@@ -525,10 +525,13 @@ document.addEventListener("DOMContentLoaded", () => {
     initFinalPerfectLock();
   }
 })();
+
 /* ==========================================
-   FINAL HARD-LOCK MOBILE CREDENTIAL HEADER
-   THINNER TOGGLE OUTLINE / SAME SIZE + SPACING
-   NO JUMP / NO FLICKER / APPEND ONLY
+   FINAL SAFE MOBILE MENU FIX
+   keeps everything else intact
+   fixes 2-line mobile credential layout
+   re-locks toggle to a stable middle size
+   no observer / no spin / no endless loop
    ========================================== */
 (() => {
   const MOBILE_BREAKPOINT = 768;
@@ -544,9 +547,9 @@ document.addEventListener("DOMContentLoaded", () => {
     el.style.setProperty(prop, value, "important");
   }
 
-  function applyLineStyles(scope) {
-    const line1 = scope.querySelector(".cred-line-1");
-    const line2 = scope.querySelector(".cred-line-2");
+  function styleMobileLines(credentialHeader) {
+    const line1 = credentialHeader.querySelector(".cred-line-1");
+    const line2 = credentialHeader.querySelector(".cred-line-2");
 
     if (line1) {
       setImp(line1, "display", "block");
@@ -567,470 +570,136 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function lockThinToggleBorder(themeBtn) {
-    if (!themeBtn) return;
-
-    const isDark = document.body.classList.contains("dark");
-
-    /* keep exact size/location */
-    setImp(themeBtn, "width", "48px");
-    setImp(themeBtn, "min-width", "48px");
-    setImp(themeBtn, "max-width", "48px");
-    setImp(themeBtn, "height", "34px");
-    setImp(themeBtn, "min-height", "34px");
-    setImp(themeBtn, "max-height", "34px");
-    setImp(themeBtn, "padding", "0");
-    setImp(themeBtn, "line-height", "34px");
-    setImp(themeBtn, "display", "inline-flex");
-    setImp(themeBtn, "align-items", "center");
-    setImp(themeBtn, "justify-content", "center");
-    setImp(themeBtn, "box-sizing", "border-box");
-    setImp(themeBtn, "border-radius", "20px");
-    setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
-    setImp(themeBtn, "font-size", ".85rem");
-    setImp(themeBtn, "font-weight", "400");
-    setImp(themeBtn, "letter-spacing", "0");
-    setImp(themeBtn, "vertical-align", "middle");
-    setImp(themeBtn, "appearance", "none");
-    setImp(themeBtn, "-webkit-appearance", "none");
-    setImp(themeBtn, "outline", "none");
-    setImp(themeBtn, "box-shadow", "none");
-    setImp(themeBtn, "cursor", "pointer");
-    setImp(themeBtn, "flex", "0 0 auto");
-
-    /* thinner border than the earlier thick forced versions */
-    if (isDark) {
-      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
-      setImp(themeBtn, "color", "#f0eff4");
-    } else {
-      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
-      setImp(themeBtn, "color", "#f0eff4");
-    }
-
-    if (window.innerWidth <= MOBILE_BREAKPOINT) {
-      setImp(themeBtn, "backdrop-filter", "none");
-      setImp(themeBtn, "-webkit-backdrop-filter", "none");
-    } else {
-      setImp(themeBtn, "backdrop-filter", "blur(10px)");
-      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
-    }
-  }
-
-  function applyMobileLayout(topBar, credentialHeader, themeBtn) {
-    setImp(topBar, "display", "grid");
-    setImp(topBar, "grid-template-columns", "1fr auto");
-    setImp(topBar, "align-items", "start");
-    setImp(topBar, "column-gap", "0.75rem");
-    setImp(topBar, "row-gap", "0");
-    setImp(topBar, "padding", "1rem 2rem");
-    setImp(topBar, "width", "100%");
-    setImp(topBar, "box-sizing", "border-box");
-    setImp(topBar, "position", "absolute");
-    setImp(topBar, "top", "0");
-    setImp(topBar, "left", "0");
-    setImp(topBar, "z-index", "100");
-    setImp(topBar, "overflow", "visible");
-
-    setImp(credentialHeader, "display", "block");
-    setImp(credentialHeader, "width", "100%");
-    setImp(credentialHeader, "max-width", "calc(100% - 60px)");
-    setImp(credentialHeader, "min-width", "0");
-    setImp(credentialHeader, "margin", "0 auto");
-    setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "box-sizing", "border-box");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "white-space", "normal");
-    setImp(credentialHeader, "overflow", "hidden");
-    setImp(credentialHeader, "text-overflow", "clip");
-    setImp(credentialHeader, "line-height", "1.15");
-    setImp(credentialHeader, "font-size", "0.5rem");
-    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
-    setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "letter-spacing", "0");
-    setImp(credentialHeader, "justify-self", "center");
-    setImp(credentialHeader, "align-self", "start");
-    setImp(credentialHeader, "transform", "none");
-    setImp(credentialHeader, "min-height", "1.2rem");
-
-    setImp(themeBtn, "justify-self", "end");
-    setImp(themeBtn, "align-self", "start");
-    setImp(themeBtn, "margin", "0");
-    setImp(themeBtn, "position", "relative");
-    setImp(themeBtn, "z-index", "101");
-
-    applyLineStyles(credentialHeader);
-    lockThinToggleBorder(themeBtn);
-  }
-
-  function applyDesktopLayout(topBar, credentialHeader, themeBtn) {
-    setImp(topBar, "display", "flex");
-    setImp(topBar, "justify-content", "space-between");
-    setImp(topBar, "align-items", "center");
-    setImp(topBar, "padding", "1rem 2rem");
-    setImp(topBar, "width", "100%");
-    setImp(topBar, "box-sizing", "border-box");
-
-    setImp(credentialHeader, "display", "block");
-    setImp(credentialHeader, "width", "auto");
-    setImp(credentialHeader, "max-width", "none");
-    setImp(credentialHeader, "min-width", "0");
-    setImp(credentialHeader, "margin", "0");
-    setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "box-sizing", "border-box");
-    setImp(credentialHeader, "text-align", "left");
-    setImp(credentialHeader, "white-space", "nowrap");
-    setImp(credentialHeader, "overflow", "visible");
-    setImp(credentialHeader, "line-height", "1.2");
-    setImp(credentialHeader, "font-size", "0.85rem");
-    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
-    setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "letter-spacing", "0");
-    setImp(credentialHeader, "justify-self", "auto");
-    setImp(credentialHeader, "align-self", "center");
-    setImp(credentialHeader, "min-height", "0");
-
-    setImp(themeBtn, "margin", "0");
-    setImp(themeBtn, "position", "relative");
-    setImp(themeBtn, "z-index", "101");
-
-    lockThinToggleBorder(themeBtn);
-  }
-
-  function ensureCorrectContent(credentialHeader, isMobile) {
-    const currentMode = credentialHeader.dataset.credMode || "";
-
-    if (isMobile) {
-      if (currentMode !== "mobile") {
-        credentialHeader.innerHTML = MOBILE_HTML;
-        credentialHeader.dataset.credMode = "mobile";
-      }
-      applyLineStyles(credentialHeader);
-    } else {
-      if (currentMode !== "desktop") {
-        credentialHeader.textContent = DESKTOP_TEXT;
-        credentialHeader.dataset.credMode = "desktop";
-      }
-    }
-  }
-
-  function lockCredentialHeader() {
+  function applySafeMobileMenuFix() {
     const topBar = document.querySelector(".top-bar");
     const credentialHeader = document.querySelector(".credential-header");
     const themeBtn = document.getElementById("themeToggle");
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    const isDark = document.body.classList.contains("dark");
 
     if (!topBar || !credentialHeader || !themeBtn) return;
 
-    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
-
-    ensureCorrectContent(credentialHeader, isMobile);
-
     if (isMobile) {
-      applyMobileLayout(topBar, credentialHeader, themeBtn);
-    } else {
-      applyDesktopLayout(topBar, credentialHeader, themeBtn);
-    }
-  }
+      if (credentialHeader.dataset.mobileMenuFixed !== "true") {
+        credentialHeader.innerHTML = MOBILE_HTML;
+        credentialHeader.dataset.mobileMenuFixed = "true";
+      }
 
-  function initCredentialHardLock() {
-    lockCredentialHeader();
+      setImp(topBar, "display", "grid");
+      setImp(topBar, "grid-template-columns", "1fr auto");
+      setImp(topBar, "align-items", "start");
+      setImp(topBar, "column-gap", "0.75rem");
+      setImp(topBar, "row-gap", "0");
+      setImp(topBar, "padding", "1rem 2rem");
+      setImp(topBar, "width", "100%");
+      setImp(topBar, "box-sizing", "border-box");
 
-    requestAnimationFrame(lockCredentialHeader);
-    setTimeout(lockCredentialHeader, 0);
-    setTimeout(lockCredentialHeader, 80);
-    setTimeout(lockCredentialHeader, 160);
-    setTimeout(lockCredentialHeader, 260);
-    setTimeout(lockCredentialHeader, 420);
+      setImp(credentialHeader, "display", "block");
+      setImp(credentialHeader, "width", "100%");
+      setImp(credentialHeader, "max-width", "calc(100% - 58px)");
+      setImp(credentialHeader, "min-width", "0");
+      setImp(credentialHeader, "margin", "0 auto");
+      setImp(credentialHeader, "padding", "0");
+      setImp(credentialHeader, "box-sizing", "border-box");
+      setImp(credentialHeader, "text-align", "center");
+      setImp(credentialHeader, "white-space", "normal");
+      setImp(credentialHeader, "overflow", "hidden");
+      setImp(credentialHeader, "text-overflow", "clip");
+      setImp(credentialHeader, "line-height", "1.15");
+      setImp(credentialHeader, "font-size", "0.5rem");
+      setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
+      setImp(credentialHeader, "font-weight", "400");
+      setImp(credentialHeader, "letter-spacing", "0");
+      setImp(credentialHeader, "justify-self", "center");
+      setImp(credentialHeader, "align-self", "start");
+      setImp(credentialHeader, "position", "relative");
+      setImp(credentialHeader, "top", "6px");
+      setImp(credentialHeader, "transform", "none");
+      setImp(credentialHeader, "min-height", "1.2rem");
 
-    window.addEventListener("load", lockCredentialHeader, { passive: true });
-    window.addEventListener("resize", lockCredentialHeader, { passive: true });
-    window.addEventListener("orientationchange", lockCredentialHeader, { passive: true });
+      styleMobileLines(credentialHeader);
 
-    const themeBtn = document.getElementById("themeToggle");
-    if (themeBtn) {
-      themeBtn.addEventListener("click", () => {
-        requestAnimationFrame(lockCredentialHeader);
-        setTimeout(lockCredentialHeader, 0);
-        setTimeout(lockCredentialHeader, 80);
-        setTimeout(lockCredentialHeader, 160);
-      });
-    }
+      /* best-fit stable toggle size */
+      themeBtn.textContent = isDark ? "☀️" : "🌙";
 
-    const mo = new MutationObserver(() => {
-      requestAnimationFrame(lockCredentialHeader);
-    });
-
-    mo.observe(document.body, {
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["class", "style"]
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCredentialHardLock);
-  } else {
-    initCredentialHardLock();
-  }
-})();
-
-/* ==========================================
-   FINAL MOBILE RHCE6 POSITION LOCK
-   keeps toggle working correctly
-   APPEND ONLY
-   ========================================== */
-(() => {
-  const MOBILE_BREAKPOINT = 768;
-
-  function setImp(el, prop, value) {
-    if (!el) return;
-    el.style.setProperty(prop, value, "important");
-  }
-
-  function keepToggleWorking(themeBtn) {
-    if (!themeBtn) return;
-
-    const isDark = document.body.classList.contains("dark");
-
-    /* keep exact working size */
-    setImp(themeBtn, "width", "48px");
-    setImp(themeBtn, "min-width", "48px");
-    setImp(themeBtn, "max-width", "48px");
-    setImp(themeBtn, "height", "34px");
-    setImp(themeBtn, "min-height", "34px");
-    setImp(themeBtn, "max-height", "34px");
-
-    /* keep clickability + proper rendering */
-    setImp(themeBtn, "display", "inline-flex");
-    setImp(themeBtn, "align-items", "center");
-    setImp(themeBtn, "justify-content", "center");
-    setImp(themeBtn, "padding", "0");
-    setImp(themeBtn, "line-height", "34px");
-    setImp(themeBtn, "box-sizing", "border-box");
-    setImp(themeBtn, "border-radius", "20px");
-    setImp(themeBtn, "position", "relative");
-    setImp(themeBtn, "z-index", "101");
-    setImp(themeBtn, "pointer-events", "auto");
-    setImp(themeBtn, "cursor", "pointer");
-    setImp(themeBtn, "flex", "0 0 auto");
-    setImp(themeBtn, "transform", "none");
-    setImp(themeBtn, "margin", "0");
-    setImp(themeBtn, "vertical-align", "middle");
-    setImp(themeBtn, "appearance", "none");
-    setImp(themeBtn, "-webkit-appearance", "none");
-    setImp(themeBtn, "outline", "none");
-    setImp(themeBtn, "box-shadow", "none");
-
-    /* preserve correct icon behavior */
-    themeBtn.textContent = isDark ? "☀️" : "🌙";
-
-    /* preserve thin border + theme colors */
-    if (isDark) {
-      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
-      setImp(themeBtn, "color", "#f0eff4");
-    } else {
-      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
-      setImp(themeBtn, "color", "#f0eff4");
-    }
-
-    if (window.innerWidth <= MOBILE_BREAKPOINT) {
-      setImp(themeBtn, "backdrop-filter", "none");
-      setImp(themeBtn, "-webkit-backdrop-filter", "none");
-    } else {
-      setImp(themeBtn, "backdrop-filter", "blur(10px)");
-      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
-    }
-  }
-
-  function lockRHCE6PositionWithoutBreakingToggle() {
-    const credential = document.querySelector(".credential-header");
-    const themeBtn = document.getElementById("themeToggle");
-
-    if (!credential || !themeBtn) return;
-
-    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
-
-    if (isMobile) {
-      /* only nudge RHCE6 block visually */
-      setImp(credential, "position", "relative");
-      setImp(credential, "top", "6px");
-      setImp(credential, "margin", "0 auto");
-      setImp(credential, "transform", "none");
-      setImp(credential, "z-index", "100");
-      setImp(credential, "pointer-events", "auto");
-
-      /* keep toggle untouched in its own layer */
+      setImp(themeBtn, "width", "46px");
+      setImp(themeBtn, "min-width", "46px");
+      setImp(themeBtn, "max-width", "46px");
+      setImp(themeBtn, "height", "34px");
+      setImp(themeBtn, "min-height", "34px");
+      setImp(themeBtn, "max-height", "34px");
+      setImp(themeBtn, "padding", "0");
+      setImp(themeBtn, "margin", "0");
+      setImp(themeBtn, "line-height", "1");
+      setImp(themeBtn, "display", "inline-flex");
+      setImp(themeBtn, "align-items", "center");
+      setImp(themeBtn, "justify-content", "center");
+      setImp(themeBtn, "box-sizing", "border-box");
+      setImp(themeBtn, "border-radius", "20px");
+      setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
+      setImp(themeBtn, "font-size", ".85rem");
+      setImp(themeBtn, "font-weight", "400");
+      setImp(themeBtn, "letter-spacing", "0");
+      setImp(themeBtn, "vertical-align", "middle");
+      setImp(themeBtn, "appearance", "none");
+      setImp(themeBtn, "-webkit-appearance", "none");
+      setImp(themeBtn, "outline", "none");
+      setImp(themeBtn, "box-shadow", "none");
+      setImp(themeBtn, "cursor", "pointer");
+      setImp(themeBtn, "pointer-events", "auto");
+      setImp(themeBtn, "position", "relative");
+      setImp(themeBtn, "z-index", "101");
       setImp(themeBtn, "justify-self", "end");
       setImp(themeBtn, "align-self", "start");
-    } else {
-      setImp(credential, "top", "0");
-      setImp(credential, "position", "relative");
-      setImp(credential, "transform", "none");
-    }
+      setImp(themeBtn, "backdrop-filter", "none");
+      setImp(themeBtn, "-webkit-backdrop-filter", "none");
 
-    keepToggleWorking(themeBtn);
+      if (isDark) {
+        setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+        setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+        setImp(themeBtn, "color", "#f0eff4");
+      } else {
+        setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+        setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+        setImp(themeBtn, "color", "#f0eff4");
+      }
+    } else {
+      if (credentialHeader.dataset.mobileMenuFixed === "true") {
+        credentialHeader.textContent = DESKTOP_TEXT;
+        credentialHeader.dataset.mobileMenuFixed = "false";
+      }
+
+      setImp(credentialHeader, "position", "relative");
+      setImp(credentialHeader, "top", "0");
+      setImp(credentialHeader, "text-align", "left");
+      setImp(credentialHeader, "white-space", "nowrap");
+    }
   }
 
-  function initRHCE6LockSafe() {
-    lockRHCE6PositionWithoutBreakingToggle();
+  function initSafeMobileMenuFix() {
+    applySafeMobileMenuFix();
 
-    requestAnimationFrame(lockRHCE6PositionWithoutBreakingToggle);
-    setTimeout(lockRHCE6PositionWithoutBreakingToggle, 0);
-    setTimeout(lockRHCE6PositionWithoutBreakingToggle, 80);
-    setTimeout(lockRHCE6PositionWithoutBreakingToggle, 160);
-    setTimeout(lockRHCE6PositionWithoutBreakingToggle, 260);
+    setTimeout(applySafeMobileMenuFix, 0);
+    setTimeout(applySafeMobileMenuFix, 80);
+    setTimeout(applySafeMobileMenuFix, 160);
 
-    window.addEventListener("load", lockRHCE6PositionWithoutBreakingToggle);
-    window.addEventListener("resize", lockRHCE6PositionWithoutBreakingToggle);
-    window.addEventListener("orientationchange", lockRHCE6PositionWithoutBreakingToggle);
+    window.addEventListener("load", applySafeMobileMenuFix);
+    window.addEventListener("resize", applySafeMobileMenuFix);
+    window.addEventListener("orientationchange", applySafeMobileMenuFix);
 
     const themeBtn = document.getElementById("themeToggle");
     if (themeBtn) {
       themeBtn.addEventListener("click", () => {
-        setTimeout(lockRHCE6PositionWithoutBreakingToggle, 0);
-        setTimeout(lockRHCE6PositionWithoutBreakingToggle, 80);
-        setTimeout(lockRHCE6PositionWithoutBreakingToggle, 160);
+        setTimeout(applySafeMobileMenuFix, 0);
+        setTimeout(applySafeMobileMenuFix, 80);
+        setTimeout(applySafeMobileMenuFix, 160);
       });
     }
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initRHCE6LockSafe);
+    document.addEventListener("DOMContentLoaded", initSafeMobileMenuFix);
   } else {
-    initRHCE6LockSafe();
-  }
-})();
-
-
-/* ==========================================
-   FINAL TOGGLE RESCUE LOCK
-   fixes broken toggle behavior
-   keeps thin outline
-   corrects size slightly
-   APPEND ONLY
-   ========================================== */
-(() => {
-  const MOBILE_BREAKPOINT = 768;
-
-  function setImp(el, prop, value) {
-    if (!el) return;
-    el.style.setProperty(prop, value, "important");
-  }
-
-  function applyToggleRescue() {
-    const themeBtn = document.getElementById("themeToggle");
-    if (!themeBtn) return;
-
-    const isDark = document.body.classList.contains("dark");
-    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
-
-    /* IMPORTANT: correct icon direction */
-    themeBtn.textContent = isDark ? "☀️" : "🌙";
-
-    /* slightly smaller than 48px, slightly larger than 44px */
-    setImp(themeBtn, "width", "46px");
-    setImp(themeBtn, "min-width", "46px");
-    setImp(themeBtn, "max-width", "46px");
-
-    setImp(themeBtn, "height", "34px");
-    setImp(themeBtn, "min-height", "34px");
-    setImp(themeBtn, "max-height", "34px");
-
-    setImp(themeBtn, "padding", "0");
-    setImp(themeBtn, "margin", "0");
-    setImp(themeBtn, "line-height", "34px");
-    setImp(themeBtn, "display", "inline-flex");
-    setImp(themeBtn, "align-items", "center");
-    setImp(themeBtn, "justify-content", "center");
-    setImp(themeBtn, "box-sizing", "border-box");
-    setImp(themeBtn, "border-radius", "20px");
-    setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
-    setImp(themeBtn, "font-size", ".85rem");
-    setImp(themeBtn, "font-weight", "400");
-    setImp(themeBtn, "letter-spacing", "0");
-    setImp(themeBtn, "vertical-align", "middle");
-    setImp(themeBtn, "appearance", "none");
-    setImp(themeBtn, "-webkit-appearance", "none");
-    setImp(themeBtn, "outline", "none");
-    setImp(themeBtn, "box-shadow", "none");
-    setImp(themeBtn, "cursor", "pointer");
-    setImp(themeBtn, "pointer-events", "auto");
-    setImp(themeBtn, "position", "relative");
-    setImp(themeBtn, "z-index", "999");
-    setImp(themeBtn, "flex", "0 0 auto");
-    setImp(themeBtn, "transform", "none");
-    setImp(themeBtn, "overflow", "hidden");
-    setImp(themeBtn, "user-select", "none");
-    setImp(themeBtn, "-webkit-user-select", "none");
-    setImp(themeBtn, "touch-action", "manipulation");
-
-    /* keep the thinner border */
-    if (isDark) {
-      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
-      setImp(themeBtn, "color", "#f0eff4");
-    } else {
-      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
-      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
-      setImp(themeBtn, "color", "#f0eff4");
-    }
-
-    if (isMobile) {
-      setImp(themeBtn, "backdrop-filter", "none");
-      setImp(themeBtn, "-webkit-backdrop-filter", "none");
-      setImp(themeBtn, "justify-self", "end");
-      setImp(themeBtn, "align-self", "start");
-    } else {
-      setImp(themeBtn, "backdrop-filter", "blur(10px)");
-      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
-    }
-  }
-
-  function bindSafeToggleClick() {
-    const themeBtn = document.getElementById("themeToggle");
-    if (!themeBtn || themeBtn.dataset.toggleRescueBound === "true") return;
-
-    themeBtn.dataset.toggleRescueBound = "true";
-
-    themeBtn.addEventListener("click", () => {
-      setTimeout(applyToggleRescue, 0);
-      setTimeout(applyToggleRescue, 60);
-      setTimeout(applyToggleRescue, 140);
-    });
-  }
-
-  function initToggleRescue() {
-    applyToggleRescue();
-    bindSafeToggleClick();
-
-    requestAnimationFrame(applyToggleRescue);
-    setTimeout(applyToggleRescue, 0);
-    setTimeout(applyToggleRescue, 80);
-    setTimeout(applyToggleRescue, 160);
-    setTimeout(applyToggleRescue, 260);
-    setTimeout(applyToggleRescue, 420);
-
-    window.addEventListener("load", applyToggleRescue);
-    window.addEventListener("resize", applyToggleRescue);
-    window.addEventListener("orientationchange", applyToggleRescue);
-
-    const mo = new MutationObserver(() => {
-      requestAnimationFrame(applyToggleRescue);
-    });
-
-    mo.observe(document.body, {
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["class", "style"]
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initToggleRescue);
-  } else {
-    initToggleRescue();
+    initSafeMobileMenuFix();
   }
 })();
