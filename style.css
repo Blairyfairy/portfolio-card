@@ -363,3 +363,7 @@ body {
     -webkit-backdrop-filter: none !important;
   }
 }
+
+.profile-info h4{
+  font-weight: 700 !important;
+}
