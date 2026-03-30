@@ -1,6 +1,6 @@
 /* ==========================================
    FINAL ABSOLUTE PERFECT LOCK
-   keeps exact height/behavior, restores correct width
+   keeps exact width/behavior, slightly taller only
    ========================================== */
 (() => {
   function setImp(el, prop, value) {
@@ -17,19 +17,20 @@
     /* keep your now-correct icon direction */
     themeBtn.textContent = isDark ? "🌙" : "☀️";
 
-    /* exact vertical match */
-    setImp(themeBtn, "min-height", "35px");
-    setImp(themeBtn, "height", "35px");
-    setImp(themeBtn, "padding-top", "0");
-    setImp(themeBtn, "padding-bottom", "0");
-    setImp(themeBtn, "line-height", "35px");
-
-    /* FINAL width lock — 1–2px wider */
+    /* keep exact left/right size, only increase up/down a little */
     setImp(themeBtn, "width", "46px");
     setImp(themeBtn, "min-width", "46px");
     setImp(themeBtn, "max-width", "46px");
+
+    setImp(themeBtn, "height", "37px");
+    setImp(themeBtn, "min-height", "37px");
+    setImp(themeBtn, "max-height", "37px");
+
+    setImp(themeBtn, "padding-top", "0");
+    setImp(themeBtn, "padding-bottom", "0");
     setImp(themeBtn, "padding-left", "0");
     setImp(themeBtn, "padding-right", "0");
+    setImp(themeBtn, "line-height", "37px");
 
     /* perfect centering */
     setImp(themeBtn, "display", "inline-flex");
