@@ -764,3 +764,215 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 
+/* ==========================================
+   FINAL MOBILE MIDPOINT CREDENTIAL + TOGGLE LOCK
+   APPEND ONLY
+   ========================================== */
+(() => {
+  const MOBILE_BREAKPOINT = 768;
+  const MOBILE_HTML = `
+    <span class="cred-line-1">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span class="cred-line-2">Associate (Renewal Scheduled)</span>
+  `;
+  const DESKTOP_TEXT =
+    "RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)";
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function styleLines(header) {
+    const line1 = header.querySelector(".cred-line-1");
+    const line2 = header.querySelector(".cred-line-2");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "line-height", "1.15");
+      setImp(line1, "white-space", "nowrap");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "margin", "0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "line-height", "1.15");
+      setImp(line2, "white-space", "nowrap");
+    }
+  }
+
+  function lockToggle(themeBtn) {
+    if (!themeBtn) return;
+
+    const isDark = document.body.classList.contains("dark");
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    setImp(themeBtn, "width", "46px");
+    setImp(themeBtn, "min-width", "46px");
+    setImp(themeBtn, "max-width", "46px");
+    setImp(themeBtn, "height", "34px");
+    setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "max-height", "34px");
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "vertical-align", "middle");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "pointer-events", "auto");
+    setImp(themeBtn, "position", "relative");
+    setImp(themeBtn, "z-index", "101");
+    setImp(themeBtn, "overflow", "visible");
+    setImp(themeBtn, "text-indent", "0");
+    setImp(themeBtn, "white-space", "nowrap");
+    setImp(themeBtn, "justify-self", "end");
+    setImp(themeBtn, "align-self", "start");
+
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+
+    if (isMobile) {
+      setImp(themeBtn, "backdrop-filter", "none");
+      setImp(themeBtn, "-webkit-backdrop-filter", "none");
+    } else {
+      setImp(themeBtn, "backdrop-filter", "blur(10px)");
+      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
+    }
+  }
+
+  function positionCredentialAtMidpoint() {
+    const topBar = document.querySelector(".top-bar");
+    const header = document.querySelector(".credential-header");
+    const themeBtn = document.getElementById("themeToggle");
+    const card = document.querySelector(".profile-card");
+
+    if (!topBar || !header || !themeBtn || !card) return;
+
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+    if (!isMobile) {
+      if (header.dataset.midpointMobile === "true") {
+        header.textContent = DESKTOP_TEXT;
+        header.dataset.midpointMobile = "false";
+      }
+      setImp(header, "position", "relative");
+      setImp(header, "top", "0");
+      setImp(header, "left", "0");
+      setImp(header, "transform", "none");
+      setImp(header, "text-align", "left");
+      setImp(header, "white-space", "nowrap");
+      lockToggle(themeBtn);
+      return;
+    }
+
+    if (header.dataset.midpointMobile !== "true") {
+      header.innerHTML = MOBILE_HTML;
+      header.dataset.midpointMobile = "true";
+    }
+
+    setImp(topBar, "display", "grid");
+    setImp(topBar, "grid-template-columns", "1fr auto");
+    setImp(topBar, "align-items", "start");
+    setImp(topBar, "column-gap", "0.75rem");
+    setImp(topBar, "row-gap", "0");
+    setImp(topBar, "padding", "1rem 2rem");
+    setImp(topBar, "width", "100%");
+    setImp(topBar, "box-sizing", "border-box");
+    setImp(topBar, "position", "absolute");
+    setImp(topBar, "top", "0");
+    setImp(topBar, "left", "0");
+    setImp(topBar, "z-index", "100");
+    setImp(topBar, "overflow", "visible");
+
+    setImp(header, "display", "block");
+    setImp(header, "width", "100%");
+    setImp(header, "max-width", "calc(100% - 58px)");
+    setImp(header, "min-width", "0");
+    setImp(header, "margin", "0 auto");
+    setImp(header, "padding", "0");
+    setImp(header, "box-sizing", "border-box");
+    setImp(header, "text-align", "center");
+    setImp(header, "white-space", "normal");
+    setImp(header, "overflow", "visible");
+    setImp(header, "text-overflow", "clip");
+    setImp(header, "line-height", "1.15");
+    setImp(header, "font-size", "0.5rem");
+    setImp(header, "font-family", "'Segoe UI', sans-serif");
+    setImp(header, "font-weight", "400");
+    setImp(header, "letter-spacing", "0");
+    setImp(header, "justify-self", "center");
+    setImp(header, "align-self", "start");
+    setImp(header, "position", "fixed");
+    setImp(header, "left", "50%");
+    setImp(header, "transform", "translateX(-50%)");
+    setImp(header, "z-index", "100");
+    setImp(header, "pointer-events", "none");
+
+    styleLines(header);
+    lockToggle(themeBtn);
+
+    const cardRect = card.getBoundingClientRect();
+    const headerHeight = header.offsetHeight || 20;
+    const topPadding = 16; /* same visual top zone as top-bar padding */
+    const midpointTop = ((cardRect.top - headerHeight) / 2) + (topPadding / 2);
+
+    setImp(header, "top", `${Math.max(10, Math.round(midpointTop))}px`);
+  }
+
+  function initMidpointLock() {
+    const themeBtn = document.getElementById("themeToggle");
+
+    positionCredentialAtMidpoint();
+
+    requestAnimationFrame(positionCredentialAtMidpoint);
+    setTimeout(positionCredentialAtMidpoint, 0);
+    setTimeout(positionCredentialAtMidpoint, 80);
+    setTimeout(positionCredentialAtMidpoint, 160);
+    setTimeout(positionCredentialAtMidpoint, 260);
+
+    window.addEventListener("load", positionCredentialAtMidpoint);
+    window.addEventListener("resize", positionCredentialAtMidpoint);
+    window.addEventListener("orientationchange", positionCredentialAtMidpoint);
+
+    if (themeBtn && !themeBtn.dataset.midpointToggleBound) {
+      themeBtn.dataset.midpointToggleBound = "true";
+      themeBtn.addEventListener("click", () => {
+        setTimeout(positionCredentialAtMidpoint, 0);
+        setTimeout(positionCredentialAtMidpoint, 80);
+        setTimeout(positionCredentialAtMidpoint, 160);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMidpointLock);
+  } else {
+    initMidpointLock();
+  }
+})();
+
