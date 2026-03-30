@@ -156,21 +156,22 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "box-sizing", "border-box");
 
   credentialHeader.innerHTML = `
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">Associate (Renewal Scheduled)</span>
+    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:left;line-height:1.15;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:left;line-height:1.15;">Associate (Renewal Scheduled)</span>
   `;
 
   setImp(credentialHeader, "position", "fixed");
-  setImp(credentialHeader, "left", "50%");
-  setImp(credentialHeader, "right", "auto");
+  setImp(credentialHeader, "top", "16px");
+  setImp(credentialHeader, "left", "16px");
+  setImp(credentialHeader, "right", "92px");
   setImp(credentialHeader, "bottom", "auto");
-  setImp(credentialHeader, "transform", "translateX(-50%)");
+  setImp(credentialHeader, "transform", "none");
   setImp(credentialHeader, "width", "auto");
-  setImp(credentialHeader, "max-width", "calc(100vw - 100px)");
+  setImp(credentialHeader, "max-width", "none");
   setImp(credentialHeader, "min-width", "0");
   setImp(credentialHeader, "margin", "0");
   setImp(credentialHeader, "padding", "0");
-  setImp(credentialHeader, "text-align", "center");
+  setImp(credentialHeader, "text-align", "left");
   setImp(credentialHeader, "white-space", "normal");
   setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
   setImp(credentialHeader, "font-size", ".5rem");
@@ -182,7 +183,7 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
 
   setImp(themeToggle, "position", "fixed");
   setImp(themeToggle, "top", "16px");
-  setImp(themeToggle, "right", "32px");
+  setImp(themeToggle, "right", "16px");
   setImp(themeToggle, "left", "auto");
   setImp(themeToggle, "bottom", "auto");
   setImp(themeToggle, "transform", "none");
@@ -224,8 +225,6 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
 
   if (profileCard) {
     setImp(profileCard, "margin-top", ".35rem");
-  } else {
-    setImp(credentialHeader, "top", "18vh");
   }
 }
 
@@ -383,17 +382,17 @@ window.addEventListener("orientationchange", applyMenuLayout);
     /* lock 2-line text */
     credentialHeader.innerHTML = MOBILE_HTML;
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18vh");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "top", "16px");
+    setImp(credentialHeader, "left", "16px");
+    setImp(credentialHeader, "right", "92px");
     setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
+    setImp(credentialHeader, "transform", "none");
     setImp(credentialHeader, "width", "auto");
-    setImp(credentialHeader, "max-width", "calc(100vw - 100px)");
+    setImp(credentialHeader, "max-width", "none");
     setImp(credentialHeader, "min-width", "0");
     setImp(credentialHeader, "margin", "0");
     setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "text-align", "center");
+    setImp(credentialHeader, "text-align", "left");
     setImp(credentialHeader, "white-space", "normal");
     setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
     setImp(credentialHeader, "font-size", ".5rem");
@@ -411,7 +410,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
       setImp(line1, "margin", "0");
       setImp(line1, "padding", "0");
       setImp(line1, "white-space", "nowrap");
-      setImp(line1, "text-align", "center");
+      setImp(line1, "text-align", "left");
       setImp(line1, "line-height", "1.15");
     }
 
@@ -420,7 +419,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
       setImp(line2, "margin", "0");
       setImp(line2, "padding", "0");
       setImp(line2, "white-space", "nowrap");
-      setImp(line2, "text-align", "center");
+      setImp(line2, "text-align", "left");
       setImp(line2, "line-height", "1.15");
     }
 
@@ -428,7 +427,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
     themeBtn.textContent = isDark ? "☀️" : "🌙";
     setImp(themeBtn, "position", "fixed");
     setImp(themeBtn, "top", "16px");
-    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "right", "16px");
     setImp(themeBtn, "left", "auto");
     setImp(themeBtn, "bottom", "auto");
     setImp(themeBtn, "transform", "none");
@@ -542,22 +541,22 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
     /* freeze text exactly in place */
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18vh");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "top", "16px");
+    setImp(credentialHeader, "left", "16px");
+    setImp(credentialHeader, "right", "92px");
     setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "-webkit-transform", "translateX(-50%)");
+    setImp(credentialHeader, "transform", "none");
+    setImp(credentialHeader, "-webkit-transform", "none");
     setImp(credentialHeader, "margin", "0");
     setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
+    setImp(credentialHeader, "max-width", "none");
     setImp(credentialHeader, "z-index", "10000");
     setImp(credentialHeader, "pointer-events", "none");
 
     /* freeze toggle exactly in place */
     setImp(themeBtn, "position", "fixed");
     setImp(themeBtn, "top", "16px");
-    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "right", "16px");
     setImp(themeBtn, "left", "auto");
     setImp(themeBtn, "bottom", "auto");
     setImp(themeBtn, "margin", "0");
@@ -601,7 +600,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
 /* ==========================================
    ABSOLUTE FINAL MOBILE MENU PIN
-   forces fixed coordinates on load/resize/scroll
+   forces fixed coordinates on load/resize only
    ========================================== */
 (() => {
   const MOBILE_BP = 768;
@@ -641,14 +640,14 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
     /* text */
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18vh");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "top", "16px");
+    setImp(credentialHeader, "left", "16px");
+    setImp(credentialHeader, "right", "92px");
     setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "-webkit-transform", "translateX(-50%)");
+    setImp(credentialHeader, "transform", "none");
+    setImp(credentialHeader, "-webkit-transform", "none");
     setImp(credentialHeader, "width", "auto");
-    setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
+    setImp(credentialHeader, "max-width", "none");
     setImp(credentialHeader, "min-width", "0");
     setImp(credentialHeader, "margin", "0");
     setImp(credentialHeader, "padding", "0");
@@ -658,7 +657,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
     /* toggle */
     setImp(themeBtn, "position", "fixed");
     setImp(themeBtn, "top", "16px");
-    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "right", "16px");
     setImp(themeBtn, "left", "auto");
     setImp(themeBtn, "bottom", "auto");
     setImp(themeBtn, "margin", "0");
