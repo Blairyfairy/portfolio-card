@@ -612,3 +612,96 @@ window.addEventListener("orientationchange", applyMenuLayout);
     });
   }
 })();
+
+/* ==========================================
+   ABSOLUTE FINAL MOBILE MENU PIN
+   forces fixed coordinates on load/resize/scroll
+   ========================================== */
+(() => {
+  const MOBILE_BP = 768;
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function hardPinMobileMenu() {
+    if (window.innerWidth > MOBILE_BP) return;
+
+    const topBar = document.querySelector(".top-bar");
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeBtn =
+      document.getElementById("themeToggle") ||
+      document.querySelector(".theme-btn");
+
+    if (!topBar || !credentialHeader || !themeBtn) return;
+
+    /* top shell */
+    setImp(topBar, "position", "fixed");
+    setImp(topBar, "top", "0");
+    setImp(topBar, "left", "0");
+    setImp(topBar, "right", "0");
+    setImp(topBar, "width", "100%");
+    setImp(topBar, "height", "0");
+    setImp(topBar, "min-height", "0");
+    setImp(topBar, "padding", "0");
+    setImp(topBar, "margin", "0");
+    setImp(topBar, "display", "block");
+    setImp(topBar, "overflow", "visible");
+    setImp(topBar, "z-index", "2147483000");
+    setImp(topBar, "pointer-events", "none");
+    setImp(topBar, "transform", "none");
+    setImp(topBar, "-webkit-transform", "none");
+
+    /* text */
+    setImp(credentialHeader, "position", "fixed");
+    setImp(credentialHeader, "top", "18px");
+    setImp(credentialHeader, "left", "50%");
+    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "bottom", "auto");
+    setImp(credentialHeader, "transform", "translateX(-50%)");
+    setImp(credentialHeader, "-webkit-transform", "translateX(-50%)");
+    setImp(credentialHeader, "width", "auto");
+    setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
+    setImp(credentialHeader, "min-width", "0");
+    setImp(credentialHeader, "margin", "0");
+    setImp(credentialHeader, "padding", "0");
+    setImp(credentialHeader, "z-index", "2147483001");
+    setImp(credentialHeader, "pointer-events", "none");
+
+    /* toggle */
+    setImp(themeBtn, "position", "fixed");
+    setImp(themeBtn, "top", "16px");
+    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "left", "auto");
+    setImp(themeBtn, "bottom", "auto");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "transform", "none");
+    setImp(themeBtn, "-webkit-transform", "none");
+    setImp(themeBtn, "z-index", "2147483002");
+    setImp(themeBtn, "pointer-events", "auto");
+    setImp(themeBtn, "visibility", "visible");
+    setImp(themeBtn, "opacity", "1");
+  }
+
+  function runPin() {
+    hardPinMobileMenu();
+    setTimeout(hardPinMobileMenu, 0);
+    setTimeout(hardPinMobileMenu, 50);
+    setTimeout(hardPinMobileMenu, 120);
+    setTimeout(hardPinMobileMenu, 220);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", runPin);
+  } else {
+    runPin();
+  }
+
+  window.addEventListener("load", runPin);
+  window.addEventListener("resize", runPin);
+  window.addEventListener("orientationchange", runPin);
+
+  /* this is the key difference: re-pin on scroll too */
+  window.addEventListener("scroll", hardPinMobileMenu, { passive: true });
+})();
