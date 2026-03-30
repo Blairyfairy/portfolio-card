@@ -903,3 +903,134 @@ document.addEventListener("DOMContentLoaded", () => {
     initRHCE6LockSafe();
   }
 })();
+
+
+/* ==========================================
+   FINAL TOGGLE RESCUE LOCK
+   fixes broken toggle behavior
+   keeps thin outline
+   corrects size slightly
+   APPEND ONLY
+   ========================================== */
+(() => {
+  const MOBILE_BREAKPOINT = 768;
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function applyToggleRescue() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    const isDark = document.body.classList.contains("dark");
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+    /* IMPORTANT: correct icon direction */
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    /* slightly smaller than 48px, slightly larger than 44px */
+    setImp(themeBtn, "width", "46px");
+    setImp(themeBtn, "min-width", "46px");
+    setImp(themeBtn, "max-width", "46px");
+
+    setImp(themeBtn, "height", "34px");
+    setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "max-height", "34px");
+
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "line-height", "34px");
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "vertical-align", "middle");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "pointer-events", "auto");
+    setImp(themeBtn, "position", "relative");
+    setImp(themeBtn, "z-index", "999");
+    setImp(themeBtn, "flex", "0 0 auto");
+    setImp(themeBtn, "transform", "none");
+    setImp(themeBtn, "overflow", "hidden");
+    setImp(themeBtn, "user-select", "none");
+    setImp(themeBtn, "-webkit-user-select", "none");
+    setImp(themeBtn, "touch-action", "manipulation");
+
+    /* keep the thinner border */
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+
+    if (isMobile) {
+      setImp(themeBtn, "backdrop-filter", "none");
+      setImp(themeBtn, "-webkit-backdrop-filter", "none");
+      setImp(themeBtn, "justify-self", "end");
+      setImp(themeBtn, "align-self", "start");
+    } else {
+      setImp(themeBtn, "backdrop-filter", "blur(10px)");
+      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
+    }
+  }
+
+  function bindSafeToggleClick() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn || themeBtn.dataset.toggleRescueBound === "true") return;
+
+    themeBtn.dataset.toggleRescueBound = "true";
+
+    themeBtn.addEventListener("click", () => {
+      setTimeout(applyToggleRescue, 0);
+      setTimeout(applyToggleRescue, 60);
+      setTimeout(applyToggleRescue, 140);
+    });
+  }
+
+  function initToggleRescue() {
+    applyToggleRescue();
+    bindSafeToggleClick();
+
+    requestAnimationFrame(applyToggleRescue);
+    setTimeout(applyToggleRescue, 0);
+    setTimeout(applyToggleRescue, 80);
+    setTimeout(applyToggleRescue, 160);
+    setTimeout(applyToggleRescue, 260);
+    setTimeout(applyToggleRescue, 420);
+
+    window.addEventListener("load", applyToggleRescue);
+    window.addEventListener("resize", applyToggleRescue);
+    window.addEventListener("orientationchange", applyToggleRescue);
+
+    const mo = new MutationObserver(() => {
+      requestAnimationFrame(applyToggleRescue);
+    });
+
+    mo.observe(document.body, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["class", "style"]
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToggleRescue);
+  } else {
+    initToggleRescue();
+  }
+})();
