@@ -222,6 +222,168 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(applyMenuLayout, 160);
 });
 
+/* ==========================================
+   FINAL MOBILE EXACT TOGGLE MATCH
+   blog/gallery top-right lock
+   APPEND ONLY
+   ========================================== */
+(() => {
+  const MOBILE_BREAKPOINT = 768;
+  const MOBILE_HTML = `
+    <span class="cred-line-1">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span class="cred-line-2">Associate (Renewal Scheduled)</span>
+  `;
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function forceExactMobileMenuMatch() {
+    const topBar = document.querySelector(".top-bar");
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeBtn = document.getElementById("themeToggle");
+
+    if (!topBar || !credentialHeader || !themeBtn) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    const isDark = document.body.classList.contains("dark");
+
+    /* top area locked to viewport */
+    setImp(topBar, "position", "fixed");
+    setImp(topBar, "top", "0");
+    setImp(topBar, "left", "0");
+    setImp(topBar, "right", "0");
+    setImp(topBar, "width", "100%");
+    setImp(topBar, "height", "0");
+    setImp(topBar, "padding", "0");
+    setImp(topBar, "margin", "0");
+    setImp(topBar, "overflow", "visible");
+    setImp(topBar, "z-index", "120");
+    setImp(topBar, "pointer-events", "none");
+
+    /* credential text fixed and centered */
+    credentialHeader.innerHTML = MOBILE_HTML;
+    setImp(credentialHeader, "position", "fixed");
+    setImp(credentialHeader, "top", "14px");
+    setImp(credentialHeader, "left", "50%");
+    setImp(credentialHeader, "right", "auto");
+    setImp(credentialHeader, "transform", "translateX(-50%)");
+    setImp(credentialHeader, "margin", "0");
+    setImp(credentialHeader, "padding", "0");
+    setImp(credentialHeader, "width", "auto");
+    setImp(credentialHeader, "max-width", "calc(100vw - 96px)");
+    setImp(credentialHeader, "text-align", "center");
+    setImp(credentialHeader, "white-space", "normal");
+    setImp(credentialHeader, "font-size", ".5rem");
+    setImp(credentialHeader, "line-height", "1.15");
+    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
+    setImp(credentialHeader, "font-weight", "400");
+    setImp(credentialHeader, "letter-spacing", "0");
+    setImp(credentialHeader, "z-index", "121");
+    setImp(credentialHeader, "pointer-events", "none");
+
+    const line1 = credentialHeader.querySelector(".cred-line-1");
+    const line2 = credentialHeader.querySelector(".cred-line-2");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "line-height", "1.15");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "margin", "0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "line-height", "1.15");
+    }
+
+    /* EXACT blog/gallery-style top-right placement */
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    setImp(themeBtn, "position", "fixed");
+    setImp(themeBtn, "top", "16px");
+    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "left", "auto");
+    setImp(themeBtn, "bottom", "auto");
+    setImp(themeBtn, "transform", "none");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "z-index", "122");
+    setImp(themeBtn, "pointer-events", "auto");
+
+    /* same mobile size/shape */
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "width", "47px");
+    setImp(themeBtn, "min-width", "47px");
+    setImp(themeBtn, "max-width", "47px");
+    setImp(themeBtn, "height", "35px");
+    setImp(themeBtn, "min-height", "35px");
+    setImp(themeBtn, "max-height", "35px");
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "backdrop-filter", "none");
+    setImp(themeBtn, "-webkit-backdrop-filter", "none");
+
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+  }
+
+  function initExactMobileMatch() {
+    forceExactMobileMenuMatch();
+
+    setTimeout(forceExactMobileMenuMatch, 0);
+    setTimeout(forceExactMobileMenuMatch, 80);
+    setTimeout(forceExactMobileMenuMatch, 160);
+
+    window.addEventListener("load", forceExactMobileMenuMatch);
+    window.addEventListener("resize", forceExactMobileMenuMatch);
+    window.addEventListener("orientationchange", forceExactMobileMenuMatch);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn && !themeBtn.dataset.exactMobileMatchBound) {
+      themeBtn.dataset.exactMobileMatchBound = "true";
+      themeBtn.addEventListener("click", () => {
+        setTimeout(forceExactMobileMenuMatch, 0);
+        setTimeout(forceExactMobileMenuMatch, 80);
+        setTimeout(forceExactMobileMenuMatch, 160);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initExactMobileMatch);
+  } else {
+    initExactMobileMatch();
+  }
+})();
+
+
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
