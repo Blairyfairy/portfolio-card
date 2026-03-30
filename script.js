@@ -142,37 +142,37 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
 function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   if (!topBar || !credentialHeader || !themeToggle) return;
 
-  setImp(topBar, "position", "fixed");
+  setImp(topBar, "position", "absolute");
   setImp(topBar, "top", "0");
   setImp(topBar, "left", "0");
-  setImp(topBar, "right", "0");
+  setImp(topBar, "right", "auto");
   setImp(topBar, "width", "100%");
-  setImp(topBar, "height", "0");
+  setImp(topBar, "height", "56px");
   setImp(topBar, "display", "block");
   setImp(topBar, "padding", "0");
   setImp(topBar, "margin", "0");
   setImp(topBar, "overflow", "visible");
   setImp(topBar, "z-index", "120");
-  setImp(topBar, "pointer-events", "none");
+  setImp(topBar, "pointer-events", "auto");
   setImp(topBar, "box-sizing", "border-box");
 
   credentialHeader.innerHTML = `
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:left;line-height:1.15;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:left;line-height:1.15;">Associate (Renewal Scheduled)</span>
+    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">Associate (Renewal Scheduled)</span>
   `;
 
-  setImp(credentialHeader, "position", "fixed");
+  setImp(credentialHeader, "position", "absolute");
   setImp(credentialHeader, "top", "12px");
-  setImp(credentialHeader, "left", "16px");
-  setImp(credentialHeader, "right", "88px");
+  setImp(credentialHeader, "left", "50%");
+  setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
-  setImp(credentialHeader, "transform", "none");
+  setImp(credentialHeader, "transform", "translateX(-50%)");
   setImp(credentialHeader, "width", "auto");
-  setImp(credentialHeader, "max-width", "none");
+  setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
   setImp(credentialHeader, "min-width", "0");
   setImp(credentialHeader, "margin", "0");
   setImp(credentialHeader, "padding", "0");
-  setImp(credentialHeader, "text-align", "left");
+  setImp(credentialHeader, "text-align", "center");
   setImp(credentialHeader, "white-space", "normal");
   setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
   setImp(credentialHeader, "font-size", ".5rem");
@@ -182,7 +182,7 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(credentialHeader, "z-index", "121");
   setImp(credentialHeader, "pointer-events", "none");
 
-  setImp(themeToggle, "position", "fixed");
+  setImp(themeToggle, "position", "absolute");
   setImp(themeToggle, "top", "12px");
   setImp(themeToggle, "right", "16px");
   setImp(themeToggle, "left", "auto");
