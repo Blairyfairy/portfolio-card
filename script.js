@@ -976,4 +976,191 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })();
 
+/* ==========================================
+   FINAL MOBILE FIXED HEADER + TOGGLE RIGHT LOCK
+   APPEND ONLY
+   ========================================== */
+(() => {
+  const MOBILE_BREAKPOINT = 768;
+  const MOBILE_HTML = `
+    <span class="cred-line-1">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
+    <span class="cred-line-2">Associate (Renewal Scheduled)</span>
+  `;
+  const DESKTOP_TEXT =
+    "RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)";
+
+  function setImp(el, prop, value) {
+    if (!el) return;
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function styleCredentialLines(header) {
+    const line1 = header.querySelector(".cred-line-1");
+    const line2 = header.querySelector(".cred-line-2");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "line-height", "1.15");
+      setImp(line1, "white-space", "nowrap");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "margin", "0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "line-height", "1.15");
+      setImp(line2, "white-space", "nowrap");
+    }
+  }
+
+  function lockToggleRight(themeBtn) {
+    if (!themeBtn) return;
+
+    const isDark = document.body.classList.contains("dark");
+
+    themeBtn.textContent = isDark ? "☀️" : "🌙";
+
+    setImp(themeBtn, "position", "fixed");
+    setImp(themeBtn, "top", "16px");
+    setImp(themeBtn, "right", "32px");
+    setImp(themeBtn, "left", "auto");
+    setImp(themeBtn, "margin", "0");
+    setImp(themeBtn, "z-index", "102");
+    setImp(themeBtn, "justify-self", "auto");
+    setImp(themeBtn, "align-self", "auto");
+
+    /* keep your current size/shape behavior */
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "width", "47px");
+    setImp(themeBtn, "min-width", "47px");
+    setImp(themeBtn, "max-width", "47px");
+    setImp(themeBtn, "height", "35px");
+    setImp(themeBtn, "min-height", "35px");
+    setImp(themeBtn, "max-height", "35px");
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "line-height", "1");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "pointer-events", "auto");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "backdrop-filter", "none");
+    setImp(themeBtn, "-webkit-backdrop-filter", "none");
+
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+  }
+
+  function applyFixedMobileCredential() {
+    const header = document.querySelector(".credential-header");
+    const themeBtn = document.getElementById("themeToggle");
+    const card = document.querySelector(".profile-card");
+
+    if (!header || !themeBtn || !card) return;
+
+    const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+    if (!isMobile) {
+      if (header.dataset.fixedMobileHeader === "true") {
+        header.textContent = DESKTOP_TEXT;
+        header.dataset.fixedMobileHeader = "false";
+      }
+
+      setImp(header, "position", "relative");
+      setImp(header, "top", "0");
+      setImp(header, "left", "0");
+      setImp(header, "right", "auto");
+      setImp(header, "transform", "none");
+      setImp(header, "width", "auto");
+      setImp(header, "max-width", "none");
+      setImp(header, "text-align", "left");
+      setImp(header, "white-space", "nowrap");
+
+      return;
+    }
+
+    if (header.dataset.fixedMobileHeader !== "true") {
+      header.innerHTML = MOBILE_HTML;
+      header.dataset.fixedMobileHeader = "true";
+    }
+
+    styleCredentialLines(header);
+    lockToggleRight(themeBtn);
+
+    const cardRect = card.getBoundingClientRect();
+    const headerHeight = header.offsetHeight || 20;
+
+    /* halfway between top of viewport and top of card */
+    const targetTop = Math.max(10, Math.round((cardRect.top - headerHeight) / 2));
+
+    setImp(header, "position", "fixed");
+    setImp(header, "top", `${targetTop}px`);
+    setImp(header, "left", "50%");
+    setImp(header, "right", "auto");
+    setImp(header, "transform", "translateX(-50%)");
+    setImp(header, "z-index", "101");
+    setImp(header, "width", "auto");
+    setImp(header, "max-width", "calc(100vw - 96px)");
+    setImp(header, "min-width", "0");
+    setImp(header, "margin", "0");
+    setImp(header, "padding", "0");
+    setImp(header, "box-sizing", "border-box");
+    setImp(header, "text-align", "center");
+    setImp(header, "white-space", "normal");
+    setImp(header, "line-height", "1.15");
+    setImp(header, "font-size", "0.5rem");
+    setImp(header, "font-family", "'Segoe UI', sans-serif");
+    setImp(header, "font-weight", "400");
+    setImp(header, "letter-spacing", "0");
+    setImp(header, "overflow", "visible");
+    setImp(header, "pointer-events", "none");
+  }
+
+  function initFixedMobileHeaderLock() {
+    applyFixedMobileCredential();
+
+    requestAnimationFrame(applyFixedMobileCredential);
+    setTimeout(applyFixedMobileCredential, 0);
+    setTimeout(applyFixedMobileCredential, 80);
+    setTimeout(applyFixedMobileCredential, 160);
+
+    window.addEventListener("load", applyFixedMobileCredential);
+    window.addEventListener("resize", applyFixedMobileCredential);
+    window.addEventListener("orientationchange", applyFixedMobileCredential);
+
+    const themeBtn = document.getElementById("themeToggle");
+    if (themeBtn && !themeBtn.dataset.fixedHeaderLockBound) {
+      themeBtn.dataset.fixedHeaderLockBound = "true";
+      themeBtn.addEventListener("click", () => {
+        setTimeout(applyFixedMobileCredential, 0);
+        setTimeout(applyFixedMobileCredential, 80);
+        setTimeout(applyFixedMobileCredential, 160);
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFixedMobileHeaderLock);
+  } else {
+    initFixedMobileHeaderLock();
+  }
+})();
+
 
