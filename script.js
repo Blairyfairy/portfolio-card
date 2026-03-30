@@ -525,9 +525,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initFinalPerfectLock();
   }
 })();
-
 /* ==========================================
    FINAL HARD-LOCK MOBILE CREDENTIAL HEADER
+   THINNER TOGGLE OUTLINE / SAME SIZE + SPACING
    NO JUMP / NO FLICKER / APPEND ONLY
    ========================================== */
 (() => {
@@ -567,8 +567,58 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function lockThinToggleBorder(themeBtn) {
+    if (!themeBtn) return;
+
+    const isDark = document.body.classList.contains("dark");
+
+    /* keep exact size/location */
+    setImp(themeBtn, "width", "48px");
+    setImp(themeBtn, "min-width", "48px");
+    setImp(themeBtn, "max-width", "48px");
+    setImp(themeBtn, "height", "34px");
+    setImp(themeBtn, "min-height", "34px");
+    setImp(themeBtn, "max-height", "34px");
+    setImp(themeBtn, "padding", "0");
+    setImp(themeBtn, "line-height", "34px");
+    setImp(themeBtn, "display", "inline-flex");
+    setImp(themeBtn, "align-items", "center");
+    setImp(themeBtn, "justify-content", "center");
+    setImp(themeBtn, "box-sizing", "border-box");
+    setImp(themeBtn, "border-radius", "20px");
+    setImp(themeBtn, "font-family", "'Segoe UI', sans-serif");
+    setImp(themeBtn, "font-size", ".85rem");
+    setImp(themeBtn, "font-weight", "400");
+    setImp(themeBtn, "letter-spacing", "0");
+    setImp(themeBtn, "vertical-align", "middle");
+    setImp(themeBtn, "appearance", "none");
+    setImp(themeBtn, "-webkit-appearance", "none");
+    setImp(themeBtn, "outline", "none");
+    setImp(themeBtn, "box-shadow", "none");
+    setImp(themeBtn, "cursor", "pointer");
+    setImp(themeBtn, "flex", "0 0 auto");
+
+    /* thinner border than the earlier thick forced versions */
+    if (isDark) {
+      setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
+      setImp(themeBtn, "color", "#f0eff4");
+    } else {
+      setImp(themeBtn, "background", "rgba(58,62,59,0.15)");
+      setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.22)");
+      setImp(themeBtn, "color", "#f0eff4");
+    }
+
+    if (window.innerWidth <= MOBILE_BREAKPOINT) {
+      setImp(themeBtn, "backdrop-filter", "none");
+      setImp(themeBtn, "-webkit-backdrop-filter", "none");
+    } else {
+      setImp(themeBtn, "backdrop-filter", "blur(10px)");
+      setImp(themeBtn, "-webkit-backdrop-filter", "blur(10px)");
+    }
+  }
+
   function applyMobileLayout(topBar, credentialHeader, themeBtn) {
-    /* top bar stays stable */
     setImp(topBar, "display", "grid");
     setImp(topBar, "grid-template-columns", "1fr auto");
     setImp(topBar, "align-items", "start");
@@ -583,7 +633,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(topBar, "z-index", "100");
     setImp(topBar, "overflow", "visible");
 
-    /* credential block hard lock */
     setImp(credentialHeader, "display", "block");
     setImp(credentialHeader, "width", "100%");
     setImp(credentialHeader, "max-width", "calc(100% - 60px)");
@@ -605,7 +654,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(credentialHeader, "transform", "none");
     setImp(credentialHeader, "min-height", "1.2rem");
 
-    /* toggle remains anchored */
     setImp(themeBtn, "justify-self", "end");
     setImp(themeBtn, "align-self", "start");
     setImp(themeBtn, "margin", "0");
@@ -613,6 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(themeBtn, "z-index", "101");
 
     applyLineStyles(credentialHeader);
+    lockThinToggleBorder(themeBtn);
   }
 
   function applyDesktopLayout(topBar, credentialHeader, themeBtn) {
@@ -645,6 +694,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(themeBtn, "margin", "0");
     setImp(themeBtn, "position", "relative");
     setImp(themeBtn, "z-index", "101");
+
+    lockThinToggleBorder(themeBtn);
   }
 
   function ensureCorrectContent(credentialHeader, isMobile) {
@@ -723,3 +774,4 @@ document.addEventListener("DOMContentLoaded", () => {
     initCredentialHardLock();
   }
 })();
+
