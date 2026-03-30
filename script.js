@@ -161,7 +161,6 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   `;
 
   setImp(credentialHeader, "position", "fixed");
-  setImp(credentialHeader, "top", "18px");
   setImp(credentialHeader, "left", "50%");
   setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
@@ -225,6 +224,8 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
 
   if (profileCard) {
     setImp(profileCard, "margin-top", ".35rem");
+  } else {
+    setImp(credentialHeader, "top", "18vh");
   }
 }
 
@@ -382,7 +383,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
     /* lock 2-line text */
     credentialHeader.innerHTML = MOBILE_HTML;
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18px");
+    setImp(credentialHeader, "top", "18vh");
     setImp(credentialHeader, "left", "50%");
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
@@ -541,7 +542,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
     /* freeze text exactly in place */
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18px");
+    setImp(credentialHeader, "top", "18vh");
     setImp(credentialHeader, "left", "50%");
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
@@ -640,7 +641,7 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
     /* text */
     setImp(credentialHeader, "position", "fixed");
-    setImp(credentialHeader, "top", "18px");
+    setImp(credentialHeader, "top", "18vh");
     setImp(credentialHeader, "left", "50%");
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
@@ -686,7 +687,4 @@ window.addEventListener("orientationchange", applyMenuLayout);
   window.addEventListener("load", runPin);
   window.addEventListener("resize", runPin);
   window.addEventListener("orientationchange", runPin);
-
-  /* this is the key difference: re-pin on scroll too */
-  window.addEventListener("scroll", hardPinMobileMenu, { passive: true });
 })();
