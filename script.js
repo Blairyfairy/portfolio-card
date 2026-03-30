@@ -703,3 +703,64 @@ document.addEventListener("DOMContentLoaded", () => {
     initSafeMobileMenuFix();
   }
 })();
+
+/* ==========================================
+   FINAL TOGGLE ICON + CLICK RESTORE
+   APPEND ONLY
+   keeps current size
+   restores sun/moon + working click
+   ========================================== */
+(() => {
+  function syncToggleIcon() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+  }
+
+  function restoreToggleBehavior() {
+    const themeBtn = document.getElementById("themeToggle");
+    if (!themeBtn) return;
+
+    /* keep the icon visible and centered */
+    themeBtn.innerHTML = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    themeBtn.style.setProperty("font-size", ".85rem", "important");
+    themeBtn.style.setProperty("line-height", "1", "important");
+    themeBtn.style.setProperty("display", "inline-flex", "important");
+    themeBtn.style.setProperty("align-items", "center", "important");
+    themeBtn.style.setProperty("justify-content", "center", "important");
+    themeBtn.style.setProperty("text-indent", "0", "important");
+    themeBtn.style.setProperty("overflow", "visible", "important");
+    themeBtn.style.setProperty("white-space", "nowrap", "important");
+    themeBtn.style.setProperty("font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif", "important");
+
+    /* bind only once */
+    if (themeBtn.dataset.iconRestoreBound === "true") return;
+    themeBtn.dataset.iconRestoreBound = "true";
+
+    themeBtn.addEventListener("click", () => {
+      setTimeout(syncToggleIcon, 0);
+      setTimeout(syncToggleIcon, 60);
+      setTimeout(syncToggleIcon, 140);
+    });
+  }
+
+  function initToggleIconRestore() {
+    restoreToggleBehavior();
+
+    setTimeout(restoreToggleBehavior, 0);
+    setTimeout(restoreToggleBehavior, 80);
+    setTimeout(restoreToggleBehavior, 160);
+
+    window.addEventListener("load", restoreToggleBehavior);
+    window.addEventListener("resize", restoreToggleBehavior);
+    window.addEventListener("orientationchange", restoreToggleBehavior);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToggleIconRestore);
+  } else {
+    initToggleIconRestore();
+  }
+})();
+
