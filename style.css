@@ -866,3 +866,73 @@ body {
   line-height: 1 !important;
   box-sizing: border-box !important;
 }
+
+/* ==========================================
+   FINAL MOBILE FIXED HEADER + TOGGLE RIGHT
+   CSS FORCE APPEND ONLY
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  /* ===== LOCK RHCE6 TEXT IN PLACE ===== */
+  .credential-header {
+    position: fixed !important;
+
+    /* horizontally centered */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+
+    /* halfway between top and card (visual tuned) */
+    top: 18vh !important;
+
+    z-index: 101 !important;
+
+    width: auto !important;
+    max-width: calc(100vw - 96px) !important;
+
+    text-align: center !important;
+    white-space: normal !important;
+
+    font-size: 0.5rem !important;
+    line-height: 1.15 !important;
+    font-family: 'Segoe UI', sans-serif !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    pointer-events: none !important; /* prevents blocking toggle */
+  }
+
+  /* force 2-line structure cleanly */
+  .credential-header span {
+    display: block !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ===== FORCE TOGGLE TO RIGHT (MATCH BLOG/GALLERY) ===== */
+  #themeToggle {
+    position: fixed !important;
+    top: 16px !important;
+    right: 32px !important;
+    left: auto !important;
+
+    z-index: 102 !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    /* KEEP YOUR CURRENT SIZE */
+    width: 47px !important;
+    height: 35px !important;
+
+    margin: 0 !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+}
