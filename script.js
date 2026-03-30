@@ -424,9 +424,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ==========================================
    FINAL ABSOLUTE PERFECT LOCK
-   settles to loaded/resting dimensions:
-   min-width 44px, min-height 34px
-   light mode shows moon, dark mode shows sun
+   +2px left and +2px right larger,
+   same vertical size, same functionality
    ========================================== */
 (() => {
   function setImp(el, prop, value) {
@@ -440,23 +439,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isDark = document.body.classList.contains("dark");
 
-    /* correct resting icon behavior */
+    /* preserve correct icon behavior */
     themeBtn.textContent = isDark ? "☀️" : "🌙";
 
-    /* settled size target */
-    setImp(themeBtn, "width", "auto");
-    setImp(themeBtn, "min-width", "44px");
-    setImp(themeBtn, "max-width", "none");
-
+    /* keep height exactly where it already worked */
     setImp(themeBtn, "height", "34px");
     setImp(themeBtn, "min-height", "34px");
     setImp(themeBtn, "max-height", "34px");
 
-    /* keep original padding so resting width matches the loaded pages */
-    setImp(themeBtn, "padding", ".4rem 1rem");
-    setImp(themeBtn, "line-height", "1");
+    /* force +2px left and +2px right wider */
+    setImp(themeBtn, "width", "48px");
+    setImp(themeBtn, "min-width", "48px");
+    setImp(themeBtn, "max-width", "48px");
 
-    /* center icon exactly */
+    /* keep same vertical footprint and centering */
+    setImp(themeBtn, "padding-top", "0");
+    setImp(themeBtn, "padding-bottom", "0");
+    setImp(themeBtn, "padding-left", "0");
+    setImp(themeBtn, "padding-right", "0");
+    setImp(themeBtn, "line-height", "34px");
+
     setImp(themeBtn, "display", "inline-flex");
     setImp(themeBtn, "align-items", "center");
     setImp(themeBtn, "justify-content", "center");
@@ -475,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setImp(themeBtn, "cursor", "pointer");
     setImp(themeBtn, "flex", "0 0 auto");
 
-    /* keep correct visual colors */
+    /* preserve exact working colors */
     if (isDark) {
       setImp(themeBtn, "background", "rgba(8,10,14,0.42)");
       setImp(themeBtn, "border", "1px solid rgba(240,239,244,0.14)");
