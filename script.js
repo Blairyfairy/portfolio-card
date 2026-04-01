@@ -519,3 +519,45 @@ window.addEventListener("orientationchange", applyMenuLayout);
   setTimeout(nudgeMobileHeaderText, 60);
   setTimeout(nudgeMobileHeaderText, 140);
 })();
+
+/* ==========================================
+   APPEND ONLY — MOBILE CARD CLOSER TO MENU
+   PULLS PROFILE CARD UP WITHOUT OVERLAP
+   DESKTOP/NON-MOBILE LEFT ALONE
+   ========================================== */
+
+(function () {
+  const MOBILE_BREAKPOINT = 768;
+
+  function pullMobileCardCloserToMenu() {
+    const container = document.querySelector(".container");
+    const profileCard = document.querySelector(".profile-card");
+    const topBar = document.querySelector(".top-bar");
+
+    if (!container || !profileCard || !topBar) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    /* keep menu height stable */
+    setImp(topBar, "height", "56px");
+    setImp(topBar, "min-height", "56px");
+    setImp(topBar, "max-height", "56px");
+
+    /* reduce the gap so card sits closer to menu */
+    setImp(container, "padding-top", "4.9rem");
+    setImp(container, "box-sizing", "border-box");
+    setImp(container, "align-items", "flex-start");
+
+    /* keep card pulled upward slightly but not overlapping */
+    setImp(profileCard, "margin-top", "0");
+  }
+
+  document.addEventListener("DOMContentLoaded", pullMobileCardCloserToMenu);
+  window.addEventListener("load", pullMobileCardCloserToMenu);
+  window.addEventListener("resize", pullMobileCardCloserToMenu);
+  window.addEventListener("orientationchange", pullMobileCardCloserToMenu);
+
+  setTimeout(pullMobileCardCloserToMenu, 0);
+  setTimeout(pullMobileCardCloserToMenu, 60);
+  setTimeout(pullMobileCardCloserToMenu, 140);
+  setTimeout(pullMobileCardCloserToMenu, 240);
+})();
