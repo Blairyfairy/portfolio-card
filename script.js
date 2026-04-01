@@ -290,14 +290,13 @@ window.addEventListener("orientationchange", applyMenuLayout);
 
 /* ==========================================
    APPEND ONLY — MOBILE ONLY
-   KEEP DESKTOP/NON-MOBILE COMPLETELY ALONE
-   FORCE 2 CENTERED ROWS
-   TOP ROW STAYS WHERE IT IS
-   SECOND ROW STARTS AT AWS SOLUTIONS
+   FORCE RHCE6 TO SAME ROW AS TOGGLE CENTER
+   FORCE TOGGLE TO GALLERY/BLOG-LIKE POSITION
+   LEAVE DESKTOP/NON-MOBILE ALONE
    ========================================== */
 
 (function () {
-  function forceMobileTwoRowHeaderOnly() {
+  function forceMobileHeaderMatch() {
     const topBar = document.querySelector(".top-bar");
     const credentialHeader = document.querySelector(".credential-header");
     const themeToggle = document.getElementById("themeToggle");
@@ -305,17 +304,15 @@ window.addEventListener("orientationchange", applyMenuLayout);
     const profileCard = document.querySelector(".profile-card");
 
     if (!topBar || !credentialHeader || !themeToggle) return;
-
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) return;
+    if (window.innerWidth > 768) return;
 
     setImp(topBar, "position", "absolute");
     setImp(topBar, "top", "0");
     setImp(topBar, "left", "0");
     setImp(topBar, "right", "auto");
     setImp(topBar, "width", "100%");
-    setImp(topBar, "height", "56px");
+    setImp(topBar, "min-height", "52px");
+    setImp(topBar, "height", "52px");
     setImp(topBar, "display", "block");
     setImp(topBar, "padding", "0");
     setImp(topBar, "margin", "0");
@@ -325,18 +322,18 @@ window.addEventListener("orientationchange", applyMenuLayout);
     setImp(topBar, "box-sizing", "border-box");
 
     credentialHeader.innerHTML = `
-      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">RHCE6 · AWS Cloud Practitioner ·</span>
-      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
+      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1;">RHCE6 · AWS Cloud Practitioner ·</span>
+      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
     `;
 
     setImp(credentialHeader, "position", "absolute");
-    setImp(credentialHeader, "top", "12px");
+    setImp(credentialHeader, "top", "10px");
     setImp(credentialHeader, "left", "50%");
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
     setImp(credentialHeader, "transform", "translateX(-50%)");
     setImp(credentialHeader, "width", "auto");
-    setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
+    setImp(credentialHeader, "max-width", "calc(100vw - 92px)");
     setImp(credentialHeader, "min-width", "0");
     setImp(credentialHeader, "margin", "0");
     setImp(credentialHeader, "padding", "0");
@@ -345,13 +342,13 @@ window.addEventListener("orientationchange", applyMenuLayout);
     setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
     setImp(credentialHeader, "font-size", ".5rem");
     setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "line-height", "1.15");
+    setImp(credentialHeader, "line-height", "1");
     setImp(credentialHeader, "letter-spacing", "0");
     setImp(credentialHeader, "z-index", "121");
     setImp(credentialHeader, "pointer-events", "none");
 
     setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "12px");
+    setImp(themeToggle, "top", "9px");
     setImp(themeToggle, "right", "16px");
     setImp(themeToggle, "left", "auto");
     setImp(themeToggle, "bottom", "auto");
@@ -397,14 +394,14 @@ window.addEventListener("orientationchange", applyMenuLayout);
     }
   }
 
-  document.addEventListener("DOMContentLoaded", forceMobileTwoRowHeaderOnly);
-  window.addEventListener("load", forceMobileTwoRowHeaderOnly);
-  window.addEventListener("resize", forceMobileTwoRowHeaderOnly);
-  window.addEventListener("orientationchange", forceMobileTwoRowHeaderOnly);
+  document.addEventListener("DOMContentLoaded", forceMobileHeaderMatch);
+  window.addEventListener("load", forceMobileHeaderMatch);
+  window.addEventListener("resize", forceMobileHeaderMatch);
+  window.addEventListener("orientationchange", forceMobileHeaderMatch);
 
-  setTimeout(forceMobileTwoRowHeaderOnly, 0);
-  setTimeout(forceMobileTwoRowHeaderOnly, 80);
-  setTimeout(forceMobileTwoRowHeaderOnly, 160);
-  setTimeout(forceMobileTwoRowHeaderOnly, 300);
+  setTimeout(forceMobileHeaderMatch, 0);
+  setTimeout(forceMobileHeaderMatch, 80);
+  setTimeout(forceMobileHeaderMatch, 160);
+  setTimeout(forceMobileHeaderMatch, 300);
 })();
 
