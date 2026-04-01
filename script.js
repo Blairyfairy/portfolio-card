@@ -138,6 +138,7 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   if (container) {
     setImp(container, "padding-top", "5.4rem");
     setImp(container, "box-sizing", "border-box");
+    setImp(container, "align-items", "center");
   }
 
   if (profileCard) {
@@ -156,9 +157,9 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "left", "0");
   setImp(topBar, "right", "auto");
   setImp(topBar, "width", "100%");
-  setImp(topBar, "height", "56px");
-  setImp(topBar, "min-height", "56px");
-  setImp(topBar, "max-height", "56px");
+  setImp(topBar, "height", "60px");
+  setImp(topBar, "min-height", "60px");
+  setImp(topBar, "max-height", "60px");
   setImp(topBar, "display", "block");
   setImp(topBar, "padding", "0");
   setImp(topBar, "margin", "0");
@@ -173,8 +174,8 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   `;
 
   setImp(credentialHeader, "position", "absolute");
-  setImp(credentialHeader, "top", "10px");
-  setImp(credentialHeader, "left", "50%");
+  setImp(credentialHeader, "top", "14px");
+  setImp(credentialHeader, "left", "calc(50% + 6px)");
   setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
   setImp(credentialHeader, "transform", "translateX(-50%)");
@@ -237,7 +238,7 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   }
 
   setImp(themeToggle, "position", "absolute");
-  setImp(themeToggle, "top", "10px");
+  setImp(themeToggle, "top", "14px");
   setImp(themeToggle, "right", "16px");
   setImp(themeToggle, "left", "auto");
   setImp(themeToggle, "bottom", "auto");
@@ -274,8 +275,9 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(themeToggle, "-webkit-backdrop-filter", "none");
 
   if (container) {
-    setImp(container, "padding-top", "5.6rem");
+    setImp(container, "padding-top", "4.9rem");
     setImp(container, "box-sizing", "border-box");
+    setImp(container, "align-items", "flex-start");
   }
 
   if (profileCard) {
@@ -346,218 +348,3 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
-
-/* ==========================================
-   APPEND ONLY — MOBILE TOGGLE LOWER ALIGNMENT
-   MATCH PORTFOLIO MOBILE TO GALLERY MOBILE
-   MOVE TOGGLE + TEXT DOWN TOGETHER
-   DESKTOP/NON-MOBILE LEFT ALONE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function forceGalleryLikeMobileTogglePosition() {
-    const topBar = document.querySelector(".top-bar");
-    const credentialHeader = document.querySelector(".credential-header");
-    const themeToggle = document.getElementById("themeToggle");
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
-
-    if (!topBar || !credentialHeader || !themeToggle) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* move whole mobile menu band slightly lower like gallery */
-    setImp(topBar, "height", "60px");
-    setImp(topBar, "min-height", "60px");
-    setImp(topBar, "max-height", "60px");
-
-    /* keep fixed 2-row text shape, just lower it to align with lowered toggle */
-    setImp(credentialHeader, "top", "14px");
-    setImp(credentialHeader, "width", "252px");
-    setImp(credentialHeader, "min-width", "252px");
-    setImp(credentialHeader, "max-width", "252px");
-    setImp(credentialHeader, "height", "24px");
-    setImp(credentialHeader, "min-height", "24px");
-    setImp(credentialHeader, "max-height", "24px");
-    setImp(credentialHeader, "line-height", "1.05");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "overflow", "hidden");
-
-    const line1 = credentialHeader.querySelector(".mobile-cred-line-1") ||
-                  credentialHeader.querySelector(".final-mobile-cred-line-1") ||
-                  credentialHeader.querySelector(".locked-mobile-cred-line-1");
-
-    const line2 = credentialHeader.querySelector(".mobile-cred-line-2") ||
-                  credentialHeader.querySelector(".final-mobile-cred-line-2") ||
-                  credentialHeader.querySelector(".locked-mobile-cred-line-2");
-
-    if (line1) {
-      setImp(line1, "width", "252px");
-      setImp(line1, "min-width", "252px");
-      setImp(line1, "max-width", "252px");
-      setImp(line1, "height", "11px");
-      setImp(line1, "min-height", "11px");
-      setImp(line1, "max-height", "11px");
-      setImp(line1, "margin", "0");
-      setImp(line1, "line-height", "1.05");
-      setImp(line1, "text-align", "center");
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "overflow", "hidden");
-    }
-
-    if (line2) {
-      setImp(line2, "width", "252px");
-      setImp(line2, "min-width", "252px");
-      setImp(line2, "max-width", "252px");
-      setImp(line2, "height", "11px");
-      setImp(line2, "min-height", "11px");
-      setImp(line2, "max-height", "11px");
-      setImp(line2, "margin", "2px 0 0 0");
-      setImp(line2, "line-height", "1.05");
-      setImp(line2, "text-align", "center");
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "overflow", "hidden");
-    }
-
-    /* force toggle lower to match gallery feel */
-    setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "14px");
-    setImp(themeToggle, "right", "16px");
-    setImp(themeToggle, "left", "auto");
-    setImp(themeToggle, "bottom", "auto");
-    setImp(themeToggle, "transform", "none");
-    setImp(themeToggle, "margin", "0");
-    setImp(themeToggle, "z-index", "122");
-    setImp(themeToggle, "display", "inline-flex");
-    setImp(themeToggle, "align-items", "center");
-    setImp(themeToggle, "justify-content", "center");
-    setImp(themeToggle, "min-width", "44px");
-    setImp(themeToggle, "min-height", "34px");
-    setImp(themeToggle, "padding", ".4rem 1rem");
-    setImp(themeToggle, "border-radius", "20px");
-    setImp(themeToggle, "font-size", ".85rem");
-    setImp(themeToggle, "line-height", "1");
-    setImp(themeToggle, "box-sizing", "border-box");
-    setImp(themeToggle, "box-shadow", "none");
-    setImp(themeToggle, "backdrop-filter", "none");
-    setImp(themeToggle, "-webkit-backdrop-filter", "none");
-
-    if (container) {
-      setImp(container, "padding-top", "5.9rem");
-      setImp(container, "box-sizing", "border-box");
-    }
-
-    if (profileCard) {
-      setImp(profileCard, "margin-top", "0");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", forceGalleryLikeMobileTogglePosition);
-  window.addEventListener("load", forceGalleryLikeMobileTogglePosition);
-  window.addEventListener("resize", forceGalleryLikeMobileTogglePosition);
-  window.addEventListener("orientationchange", forceGalleryLikeMobileTogglePosition);
-
-  setTimeout(forceGalleryLikeMobileTogglePosition, 0);
-  setTimeout(forceGalleryLikeMobileTogglePosition, 40);
-  setTimeout(forceGalleryLikeMobileTogglePosition, 120);
-  setTimeout(forceGalleryLikeMobileTogglePosition, 240);
-  setTimeout(forceGalleryLikeMobileTogglePosition, 500);
-})();
-
-
-/* ==========================================
-   APPEND ONLY — MICRO OFFSET TEXT ADJUSTMENT
-   SLIGHT LEFT/RIGHT SHIFT WITHOUT BREAKING
-   2-ROW SHAPE OR CENTERING BEHAVIOR
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function nudgeMobileHeaderText() {
-    const credentialHeader = document.querySelector(".credential-header");
-    if (!credentialHeader) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* keep center anchor but shift slightly */
-    setImp(credentialHeader, "left", "calc(50% + 6px)"); /* ← change 6px to tweak */
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-
-    /* lock width so text shape NEVER changes */
-    setImp(credentialHeader, "width", "252px");
-    setImp(credentialHeader, "min-width", "252px");
-    setImp(credentialHeader, "max-width", "252px");
-
-    /* ensure rows never reflow */
-    const line1 = credentialHeader.querySelector(
-      ".mobile-cred-line-1, .final-mobile-cred-line-1, .locked-mobile-cred-line-1"
-    );
-    const line2 = credentialHeader.querySelector(
-      ".mobile-cred-line-2, .final-mobile-cred-line-2, .locked-mobile-cred-line-2"
-    );
-
-    if (line1) {
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "overflow", "hidden");
-      setImp(line1, "text-align", "center");
-    }
-
-    if (line2) {
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "overflow", "hidden");
-      setImp(line2, "text-align", "center");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", nudgeMobileHeaderText);
-  window.addEventListener("load", nudgeMobileHeaderText);
-  window.addEventListener("resize", nudgeMobileHeaderText);
-  window.addEventListener("orientationchange", nudgeMobileHeaderText);
-
-  setTimeout(nudgeMobileHeaderText, 0);
-  setTimeout(nudgeMobileHeaderText, 60);
-  setTimeout(nudgeMobileHeaderText, 140);
-})();
-
-/* ==========================================
-   APPEND ONLY — MOBILE CARD CLOSER TO MENU
-   PULLS PROFILE CARD UP WITHOUT OVERLAP
-   DESKTOP/NON-MOBILE LEFT ALONE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function pullMobileCardCloserToMenu() {
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
-    const topBar = document.querySelector(".top-bar");
-
-    if (!container || !profileCard || !topBar) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* keep menu height stable */
-    setImp(topBar, "height", "56px");
-    setImp(topBar, "min-height", "56px");
-    setImp(topBar, "max-height", "56px");
-
-    /* reduce the gap so card sits closer to menu */
-    setImp(container, "padding-top", "4.9rem");
-    setImp(container, "box-sizing", "border-box");
-    setImp(container, "align-items", "flex-start");
-
-    /* keep card pulled upward slightly but not overlapping */
-    setImp(profileCard, "margin-top", "0");
-  }
-
-  document.addEventListener("DOMContentLoaded", pullMobileCardCloserToMenu);
-  window.addEventListener("load", pullMobileCardCloserToMenu);
-  window.addEventListener("resize", pullMobileCardCloserToMenu);
-  window.addEventListener("orientationchange", pullMobileCardCloserToMenu);
-
-  setTimeout(pullMobileCardCloserToMenu, 0);
-  setTimeout(pullMobileCardCloserToMenu, 60);
-  setTimeout(pullMobileCardCloserToMenu, 140);
-  setTimeout(pullMobileCardCloserToMenu, 240);
-})();
