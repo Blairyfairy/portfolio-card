@@ -398,3 +398,90 @@ window.addEventListener("orientationchange", applyMenuLayout);
   setTimeout(forceCardDirectlyUnderMobileMenu, 500);
 })();
 
+/* ==========================================
+   APPEND ONLY — MOBILE HEADER CENTER ALIGN
+   GAP BETWEEN 2 ROWS = TOGGLE CENTER LINE
+   MOVE TEXT 2% LEFT
+   KEEP SAME 2-ROW SHAPE
+   ========================================== */
+
+(function () {
+  const MOBILE_BREAKPOINT = 768;
+
+  function alignMobileHeaderGapToToggleCenter() {
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeToggle = document.getElementById("themeToggle");
+    const line1 = credentialHeader && credentialHeader.querySelector(".mobile-cred-line-1");
+    const line2 = credentialHeader && credentialHeader.querySelector(".mobile-cred-line-2");
+
+    if (!credentialHeader || !themeToggle) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    const toggleTop = themeToggle.offsetTop || 14;
+    const toggleHeight = themeToggle.offsetHeight || 34;
+    const toggleCenter = toggleTop + (toggleHeight / 2);
+
+    const headerHeight = 24;
+    const lineHeight = 11;
+    const gapHeight = 2;
+
+    const desiredHeaderTop = toggleCenter - ((lineHeight + (gapHeight / 2)));
+
+    setImp(credentialHeader, "top", `${desiredHeaderTop}px`);
+    setImp(credentialHeader, "left", "calc(50% - 2%)");
+    setImp(credentialHeader, "transform", "translateX(-50%)");
+    setImp(credentialHeader, "width", "252px");
+    setImp(credentialHeader, "min-width", "252px");
+    setImp(credentialHeader, "max-width", "252px");
+    setImp(credentialHeader, "height", `${headerHeight}px`);
+    setImp(credentialHeader, "min-height", `${headerHeight}px`);
+    setImp(credentialHeader, "max-height", `${headerHeight}px`);
+    setImp(credentialHeader, "overflow", "hidden");
+    setImp(credentialHeader, "text-align", "center");
+    setImp(credentialHeader, "white-space", "normal");
+    setImp(credentialHeader, "line-height", "1.05");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "width", "252px");
+      setImp(line1, "min-width", "252px");
+      setImp(line1, "max-width", "252px");
+      setImp(line1, "height", "11px");
+      setImp(line1, "min-height", "11px");
+      setImp(line1, "max-height", "11px");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "overflow", "hidden");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "line-height", "1.05");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "width", "252px");
+      setImp(line2, "min-width", "252px");
+      setImp(line2, "max-width", "252px");
+      setImp(line2, "height", "11px");
+      setImp(line2, "min-height", "11px");
+      setImp(line2, "max-height", "11px");
+      setImp(line2, "margin", "2px 0 0 0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "overflow", "hidden");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "line-height", "1.05");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", alignMobileHeaderGapToToggleCenter);
+  window.addEventListener("load", alignMobileHeaderGapToToggleCenter);
+  window.addEventListener("resize", alignMobileHeaderGapToToggleCenter);
+  window.addEventListener("orientationchange", alignMobileHeaderGapToToggleCenter);
+
+  setTimeout(alignMobileHeaderGapToToggleCenter, 0);
+  setTimeout(alignMobileHeaderGapToToggleCenter, 50);
+  setTimeout(alignMobileHeaderGapToToggleCenter, 120);
+  setTimeout(alignMobileHeaderGapToToggleCenter, 240);
+  setTimeout(alignMobileHeaderGapToToggleCenter, 500);
+})();
