@@ -346,3 +346,122 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
+
+/* ==========================================
+   APPEND ONLY — MOBILE TOGGLE LOWER ALIGNMENT
+   MATCH PORTFOLIO MOBILE TO GALLERY MOBILE
+   MOVE TOGGLE + TEXT DOWN TOGETHER
+   DESKTOP/NON-MOBILE LEFT ALONE
+   ========================================== */
+
+(function () {
+  const MOBILE_BREAKPOINT = 768;
+
+  function forceGalleryLikeMobileTogglePosition() {
+    const topBar = document.querySelector(".top-bar");
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeToggle = document.getElementById("themeToggle");
+    const container = document.querySelector(".container");
+    const profileCard = document.querySelector(".profile-card");
+
+    if (!topBar || !credentialHeader || !themeToggle) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    /* move whole mobile menu band slightly lower like gallery */
+    setImp(topBar, "height", "60px");
+    setImp(topBar, "min-height", "60px");
+    setImp(topBar, "max-height", "60px");
+
+    /* keep fixed 2-row text shape, just lower it to align with lowered toggle */
+    setImp(credentialHeader, "top", "14px");
+    setImp(credentialHeader, "width", "252px");
+    setImp(credentialHeader, "min-width", "252px");
+    setImp(credentialHeader, "max-width", "252px");
+    setImp(credentialHeader, "height", "24px");
+    setImp(credentialHeader, "min-height", "24px");
+    setImp(credentialHeader, "max-height", "24px");
+    setImp(credentialHeader, "line-height", "1.05");
+    setImp(credentialHeader, "text-align", "center");
+    setImp(credentialHeader, "overflow", "hidden");
+
+    const line1 = credentialHeader.querySelector(".mobile-cred-line-1") ||
+                  credentialHeader.querySelector(".final-mobile-cred-line-1") ||
+                  credentialHeader.querySelector(".locked-mobile-cred-line-1");
+
+    const line2 = credentialHeader.querySelector(".mobile-cred-line-2") ||
+                  credentialHeader.querySelector(".final-mobile-cred-line-2") ||
+                  credentialHeader.querySelector(".locked-mobile-cred-line-2");
+
+    if (line1) {
+      setImp(line1, "width", "252px");
+      setImp(line1, "min-width", "252px");
+      setImp(line1, "max-width", "252px");
+      setImp(line1, "height", "11px");
+      setImp(line1, "min-height", "11px");
+      setImp(line1, "max-height", "11px");
+      setImp(line1, "margin", "0");
+      setImp(line1, "line-height", "1.05");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "overflow", "hidden");
+    }
+
+    if (line2) {
+      setImp(line2, "width", "252px");
+      setImp(line2, "min-width", "252px");
+      setImp(line2, "max-width", "252px");
+      setImp(line2, "height", "11px");
+      setImp(line2, "min-height", "11px");
+      setImp(line2, "max-height", "11px");
+      setImp(line2, "margin", "2px 0 0 0");
+      setImp(line2, "line-height", "1.05");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "overflow", "hidden");
+    }
+
+    /* force toggle lower to match gallery feel */
+    setImp(themeToggle, "position", "absolute");
+    setImp(themeToggle, "top", "14px");
+    setImp(themeToggle, "right", "16px");
+    setImp(themeToggle, "left", "auto");
+    setImp(themeToggle, "bottom", "auto");
+    setImp(themeToggle, "transform", "none");
+    setImp(themeToggle, "margin", "0");
+    setImp(themeToggle, "z-index", "122");
+    setImp(themeToggle, "display", "inline-flex");
+    setImp(themeToggle, "align-items", "center");
+    setImp(themeToggle, "justify-content", "center");
+    setImp(themeToggle, "min-width", "44px");
+    setImp(themeToggle, "min-height", "34px");
+    setImp(themeToggle, "padding", ".4rem 1rem");
+    setImp(themeToggle, "border-radius", "20px");
+    setImp(themeToggle, "font-size", ".85rem");
+    setImp(themeToggle, "line-height", "1");
+    setImp(themeToggle, "box-sizing", "border-box");
+    setImp(themeToggle, "box-shadow", "none");
+    setImp(themeToggle, "backdrop-filter", "none");
+    setImp(themeToggle, "-webkit-backdrop-filter", "none");
+
+    if (container) {
+      setImp(container, "padding-top", "5.9rem");
+      setImp(container, "box-sizing", "border-box");
+    }
+
+    if (profileCard) {
+      setImp(profileCard, "margin-top", "0");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", forceGalleryLikeMobileTogglePosition);
+  window.addEventListener("load", forceGalleryLikeMobileTogglePosition);
+  window.addEventListener("resize", forceGalleryLikeMobileTogglePosition);
+  window.addEventListener("orientationchange", forceGalleryLikeMobileTogglePosition);
+
+  setTimeout(forceGalleryLikeMobileTogglePosition, 0);
+  setTimeout(forceGalleryLikeMobileTogglePosition, 40);
+  setTimeout(forceGalleryLikeMobileTogglePosition, 120);
+  setTimeout(forceGalleryLikeMobileTogglePosition, 240);
+  setTimeout(forceGalleryLikeMobileTogglePosition, 500);
+})();
+
