@@ -287,3 +287,120 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
+
+/* ==========================================
+   APPEND ONLY — FORCE MOBILE HEADER TEXT
+   TO SAME ROW / LEVEL AS THEME TOGGLE
+   ========================================== */
+
+(function () {
+  function forceMobileTopRowAlignment() {
+    const topBar = document.querySelector(".top-bar");
+    const credentialHeader = document.querySelector(".credential-header");
+    const themeToggle = document.getElementById("themeToggle");
+    const container = document.querySelector(".container");
+    const profileCard = document.querySelector(".profile-card");
+
+    if (!topBar || !credentialHeader || !themeToggle) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) return;
+
+    setImp(topBar, "position", "absolute");
+    setImp(topBar, "top", "0");
+    setImp(topBar, "left", "0");
+    setImp(topBar, "right", "auto");
+    setImp(topBar, "width", "100%");
+    setImp(topBar, "height", "56px");
+    setImp(topBar, "display", "block");
+    setImp(topBar, "padding", "0");
+    setImp(topBar, "margin", "0");
+    setImp(topBar, "overflow", "visible");
+    setImp(topBar, "z-index", "120");
+    setImp(topBar, "pointer-events", "auto");
+    setImp(topBar, "box-sizing", "border-box");
+
+    credentialHeader.innerHTML = `
+      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:left;line-height:1;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)</span>
+    `;
+
+    setImp(credentialHeader, "position", "absolute");
+    setImp(credentialHeader, "top", "21px");
+    setImp(credentialHeader, "left", "16px");
+    setImp(credentialHeader, "right", "72px");
+    setImp(credentialHeader, "bottom", "auto");
+    setImp(credentialHeader, "transform", "none");
+    setImp(credentialHeader, "width", "auto");
+    setImp(credentialHeader, "max-width", "calc(100vw - 88px)");
+    setImp(credentialHeader, "min-width", "0");
+    setImp(credentialHeader, "margin", "0");
+    setImp(credentialHeader, "padding", "0");
+    setImp(credentialHeader, "text-align", "left");
+    setImp(credentialHeader, "white-space", "nowrap");
+    setImp(credentialHeader, "overflow", "hidden");
+    setImp(credentialHeader, "text-overflow", "clip");
+    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
+    setImp(credentialHeader, "font-size", ".5rem");
+    setImp(credentialHeader, "font-weight", "400");
+    setImp(credentialHeader, "line-height", "1");
+    setImp(credentialHeader, "letter-spacing", "0");
+    setImp(credentialHeader, "z-index", "121");
+    setImp(credentialHeader, "pointer-events", "none");
+
+    setImp(themeToggle, "position", "absolute");
+    setImp(themeToggle, "top", "12px");
+    setImp(themeToggle, "right", "16px");
+    setImp(themeToggle, "left", "auto");
+    setImp(themeToggle, "bottom", "auto");
+    setImp(themeToggle, "transform", "none");
+    setImp(themeToggle, "margin", "0");
+    setImp(themeToggle, "z-index", "122");
+    setImp(themeToggle, "pointer-events", "auto");
+    setImp(themeToggle, "display", "inline-flex");
+    setImp(themeToggle, "align-items", "center");
+    setImp(themeToggle, "justify-content", "center");
+    setImp(themeToggle, "width", "auto");
+    setImp(themeToggle, "min-width", "44px");
+    setImp(themeToggle, "max-width", "none");
+    setImp(themeToggle, "height", "auto");
+    setImp(themeToggle, "min-height", "34px");
+    setImp(themeToggle, "max-height", "none");
+    setImp(themeToggle, "padding", ".4rem 1rem");
+    setImp(themeToggle, "border-radius", "20px");
+    setImp(themeToggle, "box-sizing", "border-box");
+    setImp(themeToggle, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
+    setImp(themeToggle, "font-size", ".85rem");
+    setImp(themeToggle, "font-weight", "400");
+    setImp(themeToggle, "line-height", "1");
+    setImp(themeToggle, "letter-spacing", "0");
+    setImp(themeToggle, "appearance", "none");
+    setImp(themeToggle, "-webkit-appearance", "none");
+    setImp(themeToggle, "outline", "none");
+    setImp(themeToggle, "box-shadow", "none");
+    setImp(themeToggle, "cursor", "pointer");
+    setImp(themeToggle, "text-indent", "0");
+    setImp(themeToggle, "white-space", "nowrap");
+    setImp(themeToggle, "overflow", "visible");
+
+    if (container) {
+      setImp(container, "padding-top", "5.6rem");
+      setImp(container, "box-sizing", "border-box");
+    }
+
+    if (profileCard) {
+      setImp(profileCard, "margin-top", "0");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", forceMobileTopRowAlignment);
+  window.addEventListener("load", forceMobileTopRowAlignment);
+  window.addEventListener("resize", forceMobileTopRowAlignment);
+  window.addEventListener("orientationchange", forceMobileTopRowAlignment);
+
+  setTimeout(forceMobileTopRowAlignment, 0);
+  setTimeout(forceMobileTopRowAlignment, 80);
+  setTimeout(forceMobileTopRowAlignment, 160);
+  setTimeout(forceMobileTopRowAlignment, 300);
+})();
+
