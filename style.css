@@ -287,6 +287,8 @@ body {
     right: auto !important;
     width: 100% !important;
     height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
     padding: 0 !important;
     margin: 0 !important;
     overflow: visible !important;
@@ -298,23 +300,27 @@ body {
 
   .credential-header {
     position: absolute !important;
-    top: 12px !important;
+    top: 10px !important;
     left: 50% !important;
     right: auto !important;
     bottom: auto !important;
     transform: translateX(-50%) !important;
     -webkit-transform: translateX(-50%) !important;
-    width: auto !important;
-    max-width: calc(100vw - 110px) !important;
-    min-width: 0 !important;
+    width: 252px !important;
+    min-width: 252px !important;
+    max-width: 252px !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    max-height: 24px !important;
     margin: 0 !important;
     padding: 0 !important;
     font-size: 0.5rem !important;
-    line-height: 1.15 !important;
+    line-height: 1.05 !important;
     white-space: normal !important;
     text-align: center !important;
     z-index: 121 !important;
     pointer-events: none !important;
+    overflow: hidden !important;
   }
 
   .container {
@@ -324,7 +330,7 @@ body {
   #themeToggle,
   .theme-btn {
     position: absolute !important;
-    top: 12px !important;
+    top: 10px !important;
     right: 16px !important;
     left: auto !important;
     bottom: auto !important;
