@@ -465,3 +465,57 @@ window.addEventListener("orientationchange", applyMenuLayout);
   setTimeout(forceGalleryLikeMobileTogglePosition, 500);
 })();
 
+
+/* ==========================================
+   APPEND ONLY — MICRO OFFSET TEXT ADJUSTMENT
+   SLIGHT LEFT/RIGHT SHIFT WITHOUT BREAKING
+   2-ROW SHAPE OR CENTERING BEHAVIOR
+   ========================================== */
+
+(function () {
+  const MOBILE_BREAKPOINT = 768;
+
+  function nudgeMobileHeaderText() {
+    const credentialHeader = document.querySelector(".credential-header");
+    if (!credentialHeader) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    /* keep center anchor but shift slightly */
+    setImp(credentialHeader, "left", "calc(50% + 6px)"); /* ← change 6px to tweak */
+    setImp(credentialHeader, "transform", "translateX(-50%)");
+
+    /* lock width so text shape NEVER changes */
+    setImp(credentialHeader, "width", "252px");
+    setImp(credentialHeader, "min-width", "252px");
+    setImp(credentialHeader, "max-width", "252px");
+
+    /* ensure rows never reflow */
+    const line1 = credentialHeader.querySelector(
+      ".mobile-cred-line-1, .final-mobile-cred-line-1, .locked-mobile-cred-line-1"
+    );
+    const line2 = credentialHeader.querySelector(
+      ".mobile-cred-line-2, .final-mobile-cred-line-2, .locked-mobile-cred-line-2"
+    );
+
+    if (line1) {
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "overflow", "hidden");
+      setImp(line1, "text-align", "center");
+    }
+
+    if (line2) {
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "overflow", "hidden");
+      setImp(line2, "text-align", "center");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", nudgeMobileHeaderText);
+  window.addEventListener("load", nudgeMobileHeaderText);
+  window.addEventListener("resize", nudgeMobileHeaderText);
+  window.addEventListener("orientationchange", nudgeMobileHeaderText);
+
+  setTimeout(nudgeMobileHeaderText, 0);
+  setTimeout(nudgeMobileHeaderText, 60);
+  setTimeout(nudgeMobileHeaderText, 140);
+})();
