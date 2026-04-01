@@ -289,14 +289,16 @@ window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
 
 /* ==========================================
-   APPEND ONLY — MOBILE ONLY
-   FORCE RHCE6 TO SAME ROW AS TOGGLE CENTER
-   FORCE TOGGLE TO GALLERY/BLOG-LIKE POSITION
-   LEAVE DESKTOP/NON-MOBILE ALONE
+   APPEND ONLY — FINAL MOBILE MENU OVERRIDE
+   MATCH TOGGLE TO GALLERY/BLOG MOBILE POSITION
+   LOCK HEADER INTO ONE FIXED 2-ROW SHAPE
+   DESKTOP/NON-MOBILE UNCHANGED
    ========================================== */
 
 (function () {
-  function forceMobileHeaderMatch() {
+  const MOBILE_BREAKPOINT = 768;
+
+  function forceFinalMobileMenuOverride() {
     const topBar = document.querySelector(".top-bar");
     const credentialHeader = document.querySelector(".credential-header");
     const themeToggle = document.getElementById("themeToggle");
@@ -304,15 +306,17 @@ window.addEventListener("orientationchange", applyMenuLayout);
     const profileCard = document.querySelector(".profile-card");
 
     if (!topBar || !credentialHeader || !themeToggle) return;
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
 
+    /* top bar: mobile only hard lock */
     setImp(topBar, "position", "absolute");
     setImp(topBar, "top", "0");
     setImp(topBar, "left", "0");
     setImp(topBar, "right", "auto");
     setImp(topBar, "width", "100%");
-    setImp(topBar, "min-height", "52px");
-    setImp(topBar, "height", "52px");
+    setImp(topBar, "height", "56px");
+    setImp(topBar, "min-height", "56px");
+    setImp(topBar, "max-height", "56px");
     setImp(topBar, "display", "block");
     setImp(topBar, "padding", "0");
     setImp(topBar, "margin", "0");
@@ -321,10 +325,10 @@ window.addEventListener("orientationchange", applyMenuLayout);
     setImp(topBar, "pointer-events", "auto");
     setImp(topBar, "box-sizing", "border-box");
 
-    credentialHeader.innerHTML = `
-      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1;">RHCE6 · AWS Cloud Practitioner ·</span>
-      <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
-    `;
+    /* fixed exact 2-line text shape */
+    credentialHeader.innerHTML =
+      '<span class="final-mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>' +
+      '<span class="final-mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>';
 
     setImp(credentialHeader, "position", "absolute");
     setImp(credentialHeader, "top", "10px");
@@ -332,23 +336,69 @@ window.addEventListener("orientationchange", applyMenuLayout);
     setImp(credentialHeader, "right", "auto");
     setImp(credentialHeader, "bottom", "auto");
     setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "width", "auto");
-    setImp(credentialHeader, "max-width", "calc(100vw - 92px)");
-    setImp(credentialHeader, "min-width", "0");
+    setImp(credentialHeader, "width", "252px");
+    setImp(credentialHeader, "min-width", "252px");
+    setImp(credentialHeader, "max-width", "252px");
+    setImp(credentialHeader, "height", "24px");
+    setImp(credentialHeader, "min-height", "24px");
+    setImp(credentialHeader, "max-height", "24px");
     setImp(credentialHeader, "margin", "0");
     setImp(credentialHeader, "padding", "0");
+    setImp(credentialHeader, "overflow", "hidden");
     setImp(credentialHeader, "text-align", "center");
     setImp(credentialHeader, "white-space", "normal");
     setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
     setImp(credentialHeader, "font-size", ".5rem");
     setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "line-height", "1");
+    setImp(credentialHeader, "line-height", "1.05");
     setImp(credentialHeader, "letter-spacing", "0");
     setImp(credentialHeader, "z-index", "121");
     setImp(credentialHeader, "pointer-events", "none");
+    setImp(credentialHeader, "visibility", "visible");
+    setImp(credentialHeader, "opacity", "1");
 
+    const line1 = credentialHeader.querySelector(".final-mobile-cred-line-1");
+    const line2 = credentialHeader.querySelector(".final-mobile-cred-line-2");
+
+    if (line1) {
+      setImp(line1, "display", "block");
+      setImp(line1, "width", "252px");
+      setImp(line1, "min-width", "252px");
+      setImp(line1, "max-width", "252px");
+      setImp(line1, "height", "11px");
+      setImp(line1, "min-height", "11px");
+      setImp(line1, "max-height", "11px");
+      setImp(line1, "margin", "0");
+      setImp(line1, "padding", "0");
+      setImp(line1, "overflow", "hidden");
+      setImp(line1, "white-space", "nowrap");
+      setImp(line1, "text-align", "center");
+      setImp(line1, "font-size", ".5rem");
+      setImp(line1, "line-height", "1.05");
+      setImp(line1, "letter-spacing", "0");
+    }
+
+    if (line2) {
+      setImp(line2, "display", "block");
+      setImp(line2, "width", "252px");
+      setImp(line2, "min-width", "252px");
+      setImp(line2, "max-width", "252px");
+      setImp(line2, "height", "11px");
+      setImp(line2, "min-height", "11px");
+      setImp(line2, "max-height", "11px");
+      setImp(line2, "margin", "2px 0 0 0");
+      setImp(line2, "padding", "0");
+      setImp(line2, "overflow", "hidden");
+      setImp(line2, "white-space", "nowrap");
+      setImp(line2, "text-align", "center");
+      setImp(line2, "font-size", ".5rem");
+      setImp(line2, "line-height", "1.05");
+      setImp(line2, "letter-spacing", "0");
+    }
+
+    /* exact gallery/blog-style mobile toggle position + size */
     setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "9px");
+    setImp(themeToggle, "top", "10px");
     setImp(themeToggle, "right", "16px");
     setImp(themeToggle, "left", "auto");
     setImp(themeToggle, "bottom", "auto");
@@ -394,186 +444,19 @@ window.addEventListener("orientationchange", applyMenuLayout);
     }
   }
 
-  document.addEventListener("DOMContentLoaded", forceMobileHeaderMatch);
-  window.addEventListener("load", forceMobileHeaderMatch);
-  window.addEventListener("resize", forceMobileHeaderMatch);
-  window.addEventListener("orientationchange", forceMobileHeaderMatch);
-
-  setTimeout(forceMobileHeaderMatch, 0);
-  setTimeout(forceMobileHeaderMatch, 80);
-  setTimeout(forceMobileHeaderMatch, 160);
-  setTimeout(forceMobileHeaderMatch, 300);
-})();
-
-
-/* ==========================================
-   APPEND ONLY — MOBILE MENU HARD LOCK
-   STOPS HEADER TEXT FROM RESHAPING / MOVING
-   MATCHES GALLERY/BLOG MOBILE TOGGLE POSITION
-   DESKTOP/NON-MOBILE LEFT ALONE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function lockMobileHeaderShape() {
-    const topBar = document.querySelector(".top-bar");
+  function runFinalMobileMenuOverride() {
     const credentialHeader = document.querySelector(".credential-header");
-    const themeToggle = document.getElementById("themeToggle");
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
 
-    if (!topBar || !credentialHeader || !themeToggle) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* hard-lock top bar */
-    setImp(topBar, "position", "absolute");
-    setImp(topBar, "top", "0");
-    setImp(topBar, "left", "0");
-    setImp(topBar, "right", "auto");
-    setImp(topBar, "width", "100%");
-    setImp(topBar, "min-height", "52px");
-    setImp(topBar, "height", "52px");
-    setImp(topBar, "display", "block");
-    setImp(topBar, "padding", "0");
-    setImp(topBar, "margin", "0");
-    setImp(topBar, "overflow", "visible");
-    setImp(topBar, "z-index", "120");
-    setImp(topBar, "pointer-events", "auto");
-    setImp(topBar, "box-sizing", "border-box");
-    setImp(topBar, "font-size", "inherit");
-
-    /* exact same 2 rows every time */
-    credentialHeader.innerHTML =
-      '<span class="mobile-cred-line mobile-cred-line-1" style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>' +
-      '<span class="mobile-cred-line mobile-cred-line-2" style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>';
-
-    /* lock header block so it cannot reflow into other shapes */
-    setImp(credentialHeader, "position", "absolute");
-    setImp(credentialHeader, "top", "8px");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
-    setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "width", "250px");
-    setImp(credentialHeader, "min-width", "250px");
-    setImp(credentialHeader, "max-width", "250px");
-    setImp(credentialHeader, "height", "24px");
-    setImp(credentialHeader, "min-height", "24px");
-    setImp(credentialHeader, "max-height", "24px");
-    setImp(credentialHeader, "margin", "0");
-    setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "white-space", "normal");
-    setImp(credentialHeader, "overflow", "hidden");
-    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
-    setImp(credentialHeader, "font-size", ".5rem");
-    setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "line-height", "1.05");
-    setImp(credentialHeader, "letter-spacing", "0");
-    setImp(credentialHeader, "z-index", "121");
-    setImp(credentialHeader, "pointer-events", "none");
-    setImp(credentialHeader, "visibility", "visible");
-    setImp(credentialHeader, "opacity", "1");
-
-    const line1 = credentialHeader.querySelector(".mobile-cred-line-1");
-    const line2 = credentialHeader.querySelector(".mobile-cred-line-2");
-
-    if (line1) {
-      setImp(line1, "display", "block");
-      setImp(line1, "width", "250px");
-      setImp(line1, "min-width", "250px");
-      setImp(line1, "max-width", "250px");
-      setImp(line1, "height", "11px");
-      setImp(line1, "min-height", "11px");
-      setImp(line1, "max-height", "11px");
-      setImp(line1, "margin", "0");
-      setImp(line1, "padding", "0");
-      setImp(line1, "overflow", "hidden");
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "text-align", "center");
-      setImp(line1, "line-height", "1.05");
-      setImp(line1, "font-size", ".5rem");
-      setImp(line1, "letter-spacing", "0");
-    }
-
-    if (line2) {
-      setImp(line2, "display", "block");
-      setImp(line2, "width", "250px");
-      setImp(line2, "min-width", "250px");
-      setImp(line2, "max-width", "250px");
-      setImp(line2, "height", "11px");
-      setImp(line2, "min-height", "11px");
-      setImp(line2, "max-height", "11px");
-      setImp(line2, "margin", "2px 0 0 0");
-      setImp(line2, "padding", "0");
-      setImp(line2, "overflow", "hidden");
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "text-align", "center");
-      setImp(line2, "line-height", "1.05");
-      setImp(line2, "font-size", ".5rem");
-      setImp(line2, "letter-spacing", "0");
-    }
-
-    /* force gallery/blog-style toggle placement + size */
-    setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "10px");
-    setImp(themeToggle, "right", "16px");
-    setImp(themeToggle, "left", "auto");
-    setImp(themeToggle, "bottom", "auto");
-    setImp(themeToggle, "transform", "none");
-    setImp(themeToggle, "margin", "0");
-    setImp(themeToggle, "z-index", "122");
-    setImp(themeToggle, "pointer-events", "auto");
-    setImp(themeToggle, "display", "inline-flex");
-    setImp(themeToggle, "align-items", "center");
-    setImp(themeToggle, "justify-content", "center");
-    setImp(themeToggle, "width", "auto");
-    setImp(themeToggle, "min-width", "44px");
-    setImp(themeToggle, "max-width", "44px");
-    setImp(themeToggle, "height", "34px");
-    setImp(themeToggle, "min-height", "34px");
-    setImp(themeToggle, "max-height", "34px");
-    setImp(themeToggle, "padding", ".4rem 1rem");
-    setImp(themeToggle, "border-radius", "20px");
-    setImp(themeToggle, "box-sizing", "border-box");
-    setImp(themeToggle, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
-    setImp(themeToggle, "font-size", ".85rem");
-    setImp(themeToggle, "font-weight", "400");
-    setImp(themeToggle, "line-height", "1");
-    setImp(themeToggle, "letter-spacing", "0");
-    setImp(themeToggle, "appearance", "none");
-    setImp(themeToggle, "-webkit-appearance", "none");
-    setImp(themeToggle, "outline", "none");
-    setImp(themeToggle, "box-shadow", "none");
-    setImp(themeToggle, "cursor", "pointer");
-    setImp(themeToggle, "text-indent", "0");
-    setImp(themeToggle, "white-space", "nowrap");
-    setImp(themeToggle, "overflow", "hidden");
-    setImp(themeToggle, "backdrop-filter", "none");
-    setImp(themeToggle, "-webkit-backdrop-filter", "none");
-
-    if (container) {
-      setImp(container, "padding-top", "5.6rem");
-      setImp(container, "box-sizing", "border-box");
-    }
-
-    if (profileCard) {
-      setImp(profileCard, "margin-top", "0");
-    }
-  }
-
-  function hideThenLockMobileHeader() {
-    const credentialHeader = document.querySelector(".credential-header");
     if (credentialHeader && window.innerWidth <= MOBILE_BREAKPOINT) {
       setImp(credentialHeader, "visibility", "hidden");
       setImp(credentialHeader, "opacity", "0");
     }
 
-    lockMobileHeaderShape();
+    forceFinalMobileMenuOverride();
 
     requestAnimationFrame(() => {
-      lockMobileHeaderShape();
+      forceFinalMobileMenuOverride();
+
       const headerAgain = document.querySelector(".credential-header");
       if (headerAgain && window.innerWidth <= MOBILE_BREAKPOINT) {
         setImp(headerAgain, "visibility", "visible");
@@ -582,15 +465,14 @@ window.addEventListener("orientationchange", applyMenuLayout);
     });
   }
 
-  document.addEventListener("DOMContentLoaded", hideThenLockMobileHeader);
-  window.addEventListener("load", hideThenLockMobileHeader);
-  window.addEventListener("resize", hideThenLockMobileHeader);
-  window.addEventListener("orientationchange", hideThenLockMobileHeader);
+  document.addEventListener("DOMContentLoaded", runFinalMobileMenuOverride);
+  window.addEventListener("load", runFinalMobileMenuOverride);
+  window.addEventListener("resize", runFinalMobileMenuOverride);
+  window.addEventListener("orientationchange", runFinalMobileMenuOverride);
 
-  setTimeout(hideThenLockMobileHeader, 0);
-  setTimeout(hideThenLockMobileHeader, 40);
-  setTimeout(hideThenLockMobileHeader, 120);
-  setTimeout(hideThenLockMobileHeader, 240);
-  setTimeout(hideThenLockMobileHeader, 500);
+  setTimeout(runFinalMobileMenuOverride, 0);
+  setTimeout(runFinalMobileMenuOverride, 40);
+  setTimeout(runFinalMobileMenuOverride, 120);
+  setTimeout(runFinalMobileMenuOverride, 240);
+  setTimeout(runFinalMobileMenuOverride, 500);
 })();
-
