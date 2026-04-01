@@ -80,8 +80,12 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   setImp(credentialHeader, "width", "auto");
   setImp(credentialHeader, "max-width", "none");
   setImp(credentialHeader, "min-width", "0");
+  setImp(credentialHeader, "height", "auto");
+  setImp(credentialHeader, "min-height", "0");
+  setImp(credentialHeader, "max-height", "none");
   setImp(credentialHeader, "margin", "0");
   setImp(credentialHeader, "padding", "0");
+  setImp(credentialHeader, "overflow", "visible");
   setImp(credentialHeader, "text-align", "left");
   setImp(credentialHeader, "white-space", "nowrap");
   setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
@@ -91,6 +95,8 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   setImp(credentialHeader, "letter-spacing", "0");
   setImp(credentialHeader, "z-index", "auto");
   setImp(credentialHeader, "pointer-events", "auto");
+  setImp(credentialHeader, "visibility", "visible");
+  setImp(credentialHeader, "opacity", "1");
 
   setImp(themeToggle, "position", "static");
   setImp(themeToggle, "top", "auto");
@@ -142,12 +148,17 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
 function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   if (!topBar || !credentialHeader || !themeToggle) return;
 
+  setImp(credentialHeader, "visibility", "hidden");
+  setImp(credentialHeader, "opacity", "0");
+
   setImp(topBar, "position", "absolute");
   setImp(topBar, "top", "0");
   setImp(topBar, "left", "0");
   setImp(topBar, "right", "auto");
   setImp(topBar, "width", "100%");
   setImp(topBar, "height", "56px");
+  setImp(topBar, "min-height", "56px");
+  setImp(topBar, "max-height", "56px");
   setImp(topBar, "display", "block");
   setImp(topBar, "padding", "0");
   setImp(topBar, "margin", "0");
@@ -157,33 +168,76 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "box-sizing", "border-box");
 
   credentialHeader.innerHTML = `
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect</span>
-    <span style="display:block;white-space:nowrap;margin:0;padding:0;text-align:center;line-height:1.15;">Associate (Renewal Scheduled)</span>
+    <span class="mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>
+    <span class="mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
   `;
 
   setImp(credentialHeader, "position", "absolute");
-  setImp(credentialHeader, "top", "12px");
+  setImp(credentialHeader, "top", "10px");
   setImp(credentialHeader, "left", "50%");
   setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
   setImp(credentialHeader, "transform", "translateX(-50%)");
-  setImp(credentialHeader, "width", "auto");
-  setImp(credentialHeader, "max-width", "calc(100vw - 110px)");
-  setImp(credentialHeader, "min-width", "0");
+  setImp(credentialHeader, "width", "252px");
+  setImp(credentialHeader, "min-width", "252px");
+  setImp(credentialHeader, "max-width", "252px");
+  setImp(credentialHeader, "height", "24px");
+  setImp(credentialHeader, "min-height", "24px");
+  setImp(credentialHeader, "max-height", "24px");
   setImp(credentialHeader, "margin", "0");
   setImp(credentialHeader, "padding", "0");
+  setImp(credentialHeader, "overflow", "hidden");
   setImp(credentialHeader, "text-align", "center");
   setImp(credentialHeader, "white-space", "normal");
   setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
   setImp(credentialHeader, "font-size", ".5rem");
   setImp(credentialHeader, "font-weight", "400");
-  setImp(credentialHeader, "line-height", "1.15");
+  setImp(credentialHeader, "line-height", "1.05");
   setImp(credentialHeader, "letter-spacing", "0");
   setImp(credentialHeader, "z-index", "121");
   setImp(credentialHeader, "pointer-events", "none");
 
+  const line1 = credentialHeader.querySelector(".mobile-cred-line-1");
+  const line2 = credentialHeader.querySelector(".mobile-cred-line-2");
+
+  if (line1) {
+    setImp(line1, "display", "block");
+    setImp(line1, "width", "252px");
+    setImp(line1, "min-width", "252px");
+    setImp(line1, "max-width", "252px");
+    setImp(line1, "height", "11px");
+    setImp(line1, "min-height", "11px");
+    setImp(line1, "max-height", "11px");
+    setImp(line1, "margin", "0");
+    setImp(line1, "padding", "0");
+    setImp(line1, "overflow", "hidden");
+    setImp(line1, "white-space", "nowrap");
+    setImp(line1, "text-align", "center");
+    setImp(line1, "font-size", ".5rem");
+    setImp(line1, "line-height", "1.05");
+    setImp(line1, "letter-spacing", "0");
+  }
+
+  if (line2) {
+    setImp(line2, "display", "block");
+    setImp(line2, "width", "252px");
+    setImp(line2, "min-width", "252px");
+    setImp(line2, "max-width", "252px");
+    setImp(line2, "height", "11px");
+    setImp(line2, "min-height", "11px");
+    setImp(line2, "max-height", "11px");
+    setImp(line2, "margin", "2px 0 0 0");
+    setImp(line2, "padding", "0");
+    setImp(line2, "overflow", "hidden");
+    setImp(line2, "white-space", "nowrap");
+    setImp(line2, "text-align", "center");
+    setImp(line2, "font-size", ".5rem");
+    setImp(line2, "line-height", "1.05");
+    setImp(line2, "letter-spacing", "0");
+  }
+
   setImp(themeToggle, "position", "absolute");
-  setImp(themeToggle, "top", "12px");
+  setImp(themeToggle, "top", "10px");
   setImp(themeToggle, "right", "16px");
   setImp(themeToggle, "left", "auto");
   setImp(themeToggle, "bottom", "auto");
@@ -227,6 +281,11 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   if (profileCard) {
     setImp(profileCard, "margin-top", "0");
   }
+
+  requestAnimationFrame(() => {
+    setImp(credentialHeader, "visibility", "visible");
+    setImp(credentialHeader, "opacity", "1");
+  });
 }
 
 function applyMenuLayout() {
@@ -287,356 +346,3 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
-
-/* ==========================================
-   APPEND ONLY — FINAL MOBILE MENU OVERRIDE
-   MATCH TOGGLE TO GALLERY/BLOG MOBILE POSITION
-   LOCK HEADER INTO ONE FIXED 2-ROW SHAPE
-   DESKTOP/NON-MOBILE UNCHANGED
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function forceFinalMobileMenuOverride() {
-    const topBar = document.querySelector(".top-bar");
-    const credentialHeader = document.querySelector(".credential-header");
-    const themeToggle = document.getElementById("themeToggle");
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
-
-    if (!topBar || !credentialHeader || !themeToggle) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* top bar: mobile only hard lock */
-    setImp(topBar, "position", "absolute");
-    setImp(topBar, "top", "0");
-    setImp(topBar, "left", "0");
-    setImp(topBar, "right", "auto");
-    setImp(topBar, "width", "100%");
-    setImp(topBar, "height", "56px");
-    setImp(topBar, "min-height", "56px");
-    setImp(topBar, "max-height", "56px");
-    setImp(topBar, "display", "block");
-    setImp(topBar, "padding", "0");
-    setImp(topBar, "margin", "0");
-    setImp(topBar, "overflow", "visible");
-    setImp(topBar, "z-index", "120");
-    setImp(topBar, "pointer-events", "auto");
-    setImp(topBar, "box-sizing", "border-box");
-
-    /* fixed exact 2-line text shape */
-    credentialHeader.innerHTML =
-      '<span class="final-mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>' +
-      '<span class="final-mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>';
-
-    setImp(credentialHeader, "position", "absolute");
-    setImp(credentialHeader, "top", "10px");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
-    setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "width", "252px");
-    setImp(credentialHeader, "min-width", "252px");
-    setImp(credentialHeader, "max-width", "252px");
-    setImp(credentialHeader, "height", "24px");
-    setImp(credentialHeader, "min-height", "24px");
-    setImp(credentialHeader, "max-height", "24px");
-    setImp(credentialHeader, "margin", "0");
-    setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "overflow", "hidden");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "white-space", "normal");
-    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
-    setImp(credentialHeader, "font-size", ".5rem");
-    setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "line-height", "1.05");
-    setImp(credentialHeader, "letter-spacing", "0");
-    setImp(credentialHeader, "z-index", "121");
-    setImp(credentialHeader, "pointer-events", "none");
-    setImp(credentialHeader, "visibility", "visible");
-    setImp(credentialHeader, "opacity", "1");
-
-    const line1 = credentialHeader.querySelector(".final-mobile-cred-line-1");
-    const line2 = credentialHeader.querySelector(".final-mobile-cred-line-2");
-
-    if (line1) {
-      setImp(line1, "display", "block");
-      setImp(line1, "width", "252px");
-      setImp(line1, "min-width", "252px");
-      setImp(line1, "max-width", "252px");
-      setImp(line1, "height", "11px");
-      setImp(line1, "min-height", "11px");
-      setImp(line1, "max-height", "11px");
-      setImp(line1, "margin", "0");
-      setImp(line1, "padding", "0");
-      setImp(line1, "overflow", "hidden");
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "text-align", "center");
-      setImp(line1, "font-size", ".5rem");
-      setImp(line1, "line-height", "1.05");
-      setImp(line1, "letter-spacing", "0");
-    }
-
-    if (line2) {
-      setImp(line2, "display", "block");
-      setImp(line2, "width", "252px");
-      setImp(line2, "min-width", "252px");
-      setImp(line2, "max-width", "252px");
-      setImp(line2, "height", "11px");
-      setImp(line2, "min-height", "11px");
-      setImp(line2, "max-height", "11px");
-      setImp(line2, "margin", "2px 0 0 0");
-      setImp(line2, "padding", "0");
-      setImp(line2, "overflow", "hidden");
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "text-align", "center");
-      setImp(line2, "font-size", ".5rem");
-      setImp(line2, "line-height", "1.05");
-      setImp(line2, "letter-spacing", "0");
-    }
-
-    /* exact gallery/blog-style mobile toggle position + size */
-    setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "10px");
-    setImp(themeToggle, "right", "16px");
-    setImp(themeToggle, "left", "auto");
-    setImp(themeToggle, "bottom", "auto");
-    setImp(themeToggle, "transform", "none");
-    setImp(themeToggle, "margin", "0");
-    setImp(themeToggle, "z-index", "122");
-    setImp(themeToggle, "pointer-events", "auto");
-    setImp(themeToggle, "display", "inline-flex");
-    setImp(themeToggle, "align-items", "center");
-    setImp(themeToggle, "justify-content", "center");
-    setImp(themeToggle, "width", "auto");
-    setImp(themeToggle, "min-width", "44px");
-    setImp(themeToggle, "max-width", "none");
-    setImp(themeToggle, "height", "auto");
-    setImp(themeToggle, "min-height", "34px");
-    setImp(themeToggle, "max-height", "none");
-    setImp(themeToggle, "padding", ".4rem 1rem");
-    setImp(themeToggle, "border-radius", "20px");
-    setImp(themeToggle, "box-sizing", "border-box");
-    setImp(themeToggle, "font-family", "'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji','Segoe UI',sans-serif");
-    setImp(themeToggle, "font-size", ".85rem");
-    setImp(themeToggle, "font-weight", "400");
-    setImp(themeToggle, "line-height", "1");
-    setImp(themeToggle, "letter-spacing", "0");
-    setImp(themeToggle, "appearance", "none");
-    setImp(themeToggle, "-webkit-appearance", "none");
-    setImp(themeToggle, "outline", "none");
-    setImp(themeToggle, "box-shadow", "none");
-    setImp(themeToggle, "cursor", "pointer");
-    setImp(themeToggle, "text-indent", "0");
-    setImp(themeToggle, "white-space", "nowrap");
-    setImp(themeToggle, "overflow", "visible");
-    setImp(themeToggle, "backdrop-filter", "none");
-    setImp(themeToggle, "-webkit-backdrop-filter", "none");
-
-    if (container) {
-      setImp(container, "padding-top", "5.6rem");
-      setImp(container, "box-sizing", "border-box");
-    }
-
-    if (profileCard) {
-      setImp(profileCard, "margin-top", "0");
-    }
-  }
-
-  function runFinalMobileMenuOverride() {
-    const credentialHeader = document.querySelector(".credential-header");
-
-    if (credentialHeader && window.innerWidth <= MOBILE_BREAKPOINT) {
-      setImp(credentialHeader, "visibility", "hidden");
-      setImp(credentialHeader, "opacity", "0");
-    }
-
-    forceFinalMobileMenuOverride();
-
-    requestAnimationFrame(() => {
-      forceFinalMobileMenuOverride();
-
-      const headerAgain = document.querySelector(".credential-header");
-      if (headerAgain && window.innerWidth <= MOBILE_BREAKPOINT) {
-        setImp(headerAgain, "visibility", "visible");
-        setImp(headerAgain, "opacity", "1");
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", runFinalMobileMenuOverride);
-  window.addEventListener("load", runFinalMobileMenuOverride);
-  window.addEventListener("resize", runFinalMobileMenuOverride);
-  window.addEventListener("orientationchange", runFinalMobileMenuOverride);
-
-  setTimeout(runFinalMobileMenuOverride, 0);
-  setTimeout(runFinalMobileMenuOverride, 40);
-  setTimeout(runFinalMobileMenuOverride, 120);
-  setTimeout(runFinalMobileMenuOverride, 240);
-  setTimeout(runFinalMobileMenuOverride, 500);
-})();
-
-/* ==========================================
-   APPEND ONLY — LOCK MOBILE HEADER SHAPE
-   PREVENTS WORDS FROM FLIPPING/REWRAPPING
-   MOBILE ONLY, DESKTOP LEFT ALONE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function lockStableMobileHeader() {
-    const topBar = document.querySelector(".top-bar");
-    const credentialHeader = document.querySelector(".credential-header");
-    const themeToggle = document.getElementById("themeToggle");
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
-
-    if (!topBar || !credentialHeader || !themeToggle) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    /* hide during first paint so user never sees the wrong wrap */
-    setImp(credentialHeader, "visibility", "hidden");
-    setImp(credentialHeader, "opacity", "0");
-
-    /* hard lock top bar */
-    setImp(topBar, "position", "absolute");
-    setImp(topBar, "top", "0");
-    setImp(topBar, "left", "0");
-    setImp(topBar, "right", "auto");
-    setImp(topBar, "width", "100%");
-    setImp(topBar, "height", "56px");
-    setImp(topBar, "min-height", "56px");
-    setImp(topBar, "max-height", "56px");
-    setImp(topBar, "display", "block");
-    setImp(topBar, "padding", "0");
-    setImp(topBar, "margin", "0");
-    setImp(topBar, "overflow", "visible");
-    setImp(topBar, "z-index", "120");
-    setImp(topBar, "pointer-events", "auto");
-    setImp(topBar, "box-sizing", "border-box");
-
-    /* one exact 2-row version only */
-    credentialHeader.innerHTML =
-      '<span class="locked-mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>' +
-      '<span class="locked-mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>';
-
-    /* fixed width = fixed wrap shape */
-    setImp(credentialHeader, "position", "absolute");
-    setImp(credentialHeader, "top", "10px");
-    setImp(credentialHeader, "left", "50%");
-    setImp(credentialHeader, "right", "auto");
-    setImp(credentialHeader, "bottom", "auto");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "width", "252px");
-    setImp(credentialHeader, "min-width", "252px");
-    setImp(credentialHeader, "max-width", "252px");
-    setImp(credentialHeader, "height", "24px");
-    setImp(credentialHeader, "min-height", "24px");
-    setImp(credentialHeader, "max-height", "24px");
-    setImp(credentialHeader, "margin", "0");
-    setImp(credentialHeader, "padding", "0");
-    setImp(credentialHeader, "overflow", "hidden");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "white-space", "normal");
-    setImp(credentialHeader, "font-family", "'Segoe UI', sans-serif");
-    setImp(credentialHeader, "font-size", ".5rem");
-    setImp(credentialHeader, "font-weight", "400");
-    setImp(credentialHeader, "line-height", "1.05");
-    setImp(credentialHeader, "letter-spacing", "0");
-    setImp(credentialHeader, "z-index", "121");
-    setImp(credentialHeader, "pointer-events", "none");
-
-    const line1 = credentialHeader.querySelector(".locked-mobile-cred-line-1");
-    const line2 = credentialHeader.querySelector(".locked-mobile-cred-line-2");
-
-    if (line1) {
-      setImp(line1, "display", "block");
-      setImp(line1, "width", "252px");
-      setImp(line1, "min-width", "252px");
-      setImp(line1, "max-width", "252px");
-      setImp(line1, "height", "11px");
-      setImp(line1, "min-height", "11px");
-      setImp(line1, "max-height", "11px");
-      setImp(line1, "margin", "0");
-      setImp(line1, "padding", "0");
-      setImp(line1, "overflow", "hidden");
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "text-align", "center");
-      setImp(line1, "font-size", ".5rem");
-      setImp(line1, "line-height", "1.05");
-      setImp(line1, "letter-spacing", "0");
-    }
-
-    if (line2) {
-      setImp(line2, "display", "block");
-      setImp(line2, "width", "252px");
-      setImp(line2, "min-width", "252px");
-      setImp(line2, "max-width", "252px");
-      setImp(line2, "height", "11px");
-      setImp(line2, "min-height", "11px");
-      setImp(line2, "max-height", "11px");
-      setImp(line2, "margin", "2px 0 0 0");
-      setImp(line2, "padding", "0");
-      setImp(line2, "overflow", "hidden");
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "text-align", "center");
-      setImp(line2, "font-size", ".5rem");
-      setImp(line2, "line-height", "1.05");
-      setImp(line2, "letter-spacing", "0");
-    }
-
-    /* keep toggle in fixed mobile spot */
-    setImp(themeToggle, "position", "absolute");
-    setImp(themeToggle, "top", "12px");
-    setImp(themeToggle, "right", "16px");
-    setImp(themeToggle, "left", "auto");
-    setImp(themeToggle, "bottom", "auto");
-    setImp(themeToggle, "transform", "none");
-    setImp(themeToggle, "margin", "0");
-    setImp(themeToggle, "z-index", "122");
-    setImp(themeToggle, "pointer-events", "auto");
-    setImp(themeToggle, "display", "inline-flex");
-    setImp(themeToggle, "align-items", "center");
-    setImp(themeToggle, "justify-content", "center");
-    setImp(themeToggle, "width", "auto");
-    setImp(themeToggle, "min-width", "44px");
-    setImp(themeToggle, "max-width", "none");
-    setImp(themeToggle, "height", "auto");
-    setImp(themeToggle, "min-height", "34px");
-    setImp(themeToggle, "max-height", "none");
-    setImp(themeToggle, "padding", ".4rem 1rem");
-    setImp(themeToggle, "border-radius", "20px");
-    setImp(themeToggle, "box-sizing", "border-box");
-    setImp(themeToggle, "font-size", ".85rem");
-    setImp(themeToggle, "line-height", "1");
-    setImp(themeToggle, "backdrop-filter", "none");
-    setImp(themeToggle, "-webkit-backdrop-filter", "none");
-
-    if (container) {
-      setImp(container, "padding-top", "5.6rem");
-      setImp(container, "box-sizing", "border-box");
-    }
-
-    if (profileCard) {
-      setImp(profileCard, "margin-top", "0");
-    }
-
-    requestAnimationFrame(() => {
-      setImp(credentialHeader, "visibility", "visible");
-      setImp(credentialHeader, "opacity", "1");
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", lockStableMobileHeader);
-  window.addEventListener("load", lockStableMobileHeader);
-  window.addEventListener("resize", lockStableMobileHeader);
-  window.addEventListener("orientationchange", lockStableMobileHeader);
-
-  setTimeout(lockStableMobileHeader, 0);
-  setTimeout(lockStableMobileHeader, 40);
-  setTimeout(lockStableMobileHeader, 120);
-  setTimeout(lockStableMobileHeader, 240);
-})();
-
