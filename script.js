@@ -348,3 +348,53 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
+
+/* ==========================================
+   APPEND ONLY — FORCE MOBILE CARD DIRECTLY
+   UNDER MENU WITHOUT OVERLAP
+   MOBILE ONLY, DESKTOP LEFT ALONE
+   ========================================== */
+
+(function () {
+  const MOBILE_BREAKPOINT = 768;
+
+  function forceCardDirectlyUnderMobileMenu() {
+    const topBar = document.querySelector(".top-bar");
+    const container = document.querySelector(".container");
+    const profileCard = document.querySelector(".profile-card");
+
+    if (!topBar || !container || !profileCard) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    const menuHeight = Math.max(topBar.offsetHeight || 0, 60);
+    const safeGap = 4; /* tiny gap so card does not overlap menu */
+
+    /* kill vertical centering behavior */
+    setImp(container, "display", "flex");
+    setImp(container, "justify-content", "center");
+    setImp(container, "align-items", "flex-start");
+    setImp(container, "flex", "1 1 auto");
+    setImp(container, "height", "auto");
+    setImp(container, "min-height", "0");
+    setImp(container, "padding-top", `${menuHeight + safeGap}px`);
+    setImp(container, "padding-bottom", "1rem");
+    setImp(container, "box-sizing", "border-box");
+
+    /* hard pull card to the very top of the container */
+    setImp(profileCard, "margin-top", "0");
+    setImp(profileCard, "align-self", "flex-start");
+    setImp(profileCard, "transform", "translateY(0)");
+  }
+
+  document.addEventListener("DOMContentLoaded", forceCardDirectlyUnderMobileMenu);
+  window.addEventListener("load", forceCardDirectlyUnderMobileMenu);
+  window.addEventListener("resize", forceCardDirectlyUnderMobileMenu);
+  window.addEventListener("orientationchange", forceCardDirectlyUnderMobileMenu);
+
+  setTimeout(forceCardDirectlyUnderMobileMenu, 0);
+  setTimeout(forceCardDirectlyUnderMobileMenu, 50);
+  setTimeout(forceCardDirectlyUnderMobileMenu, 120);
+  setTimeout(forceCardDirectlyUnderMobileMenu, 240);
+  setTimeout(forceCardDirectlyUnderMobileMenu, 500);
+})();
+
