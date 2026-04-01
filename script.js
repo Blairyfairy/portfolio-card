@@ -48,6 +48,29 @@ function applyToggleColors() {
   }
 }
 
+function setMobileVisibility(isVisible) {
+  const credentialHeader = document.querySelector(".credential-header");
+  const container = document.querySelector(".container");
+  const profileCard = document.querySelector(".profile-card");
+
+  if (window.innerWidth > 768) return;
+
+  if (credentialHeader) {
+    setImp(credentialHeader, "visibility", isVisible ? "visible" : "hidden");
+    setImp(credentialHeader, "opacity", isVisible ? "1" : "0");
+  }
+
+  if (container) {
+    setImp(container, "visibility", isVisible ? "visible" : "hidden");
+    setImp(container, "opacity", isVisible ? "1" : "0");
+  }
+
+  if (profileCard) {
+    setImp(profileCard, "visibility", isVisible ? "visible" : "hidden");
+    setImp(profileCard, "opacity", isVisible ? "1" : "0");
+  }
+}
+
 function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   if (!topBar || !credentialHeader || !themeToggle) return;
 
@@ -57,6 +80,8 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "right", "auto");
   setImp(topBar, "width", "100%");
   setImp(topBar, "height", "auto");
+  setImp(topBar, "min-height", "0");
+  setImp(topBar, "max-height", "none");
   setImp(topBar, "display", "flex");
   setImp(topBar, "justify-content", "space-between");
   setImp(topBar, "align-items", "center");
@@ -136,21 +161,32 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   setImp(themeToggle, "-webkit-backdrop-filter", "blur(10px)");
 
   if (container) {
-    setImp(container, "padding-top", "5.4rem");
-    setImp(container, "box-sizing", "border-box");
+    setImp(container, "display", "flex");
+    setImp(container, "justify-content", "center");
     setImp(container, "align-items", "center");
+    setImp(container, "flex", "1");
+    setImp(container, "height", "auto");
+    setImp(container, "min-height", "0");
+    setImp(container, "padding-top", "5.4rem");
+    setImp(container, "padding-bottom", "1rem");
+    setImp(container, "box-sizing", "border-box");
+    setImp(container, "visibility", "visible");
+    setImp(container, "opacity", "1");
   }
 
   if (profileCard) {
     setImp(profileCard, "margin-top", ".5rem");
+    setImp(profileCard, "align-self", "auto");
+    setImp(profileCard, "transform", "none");
+    setImp(profileCard, "visibility", "visible");
+    setImp(profileCard, "opacity", "1");
   }
 }
 
 function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
-  if (!topBar || !credentialHeader || !themeToggle) return;
+  if (!topBar || !credentialHeader || !themeToggle || !container || !profileCard) return;
 
-  setImp(credentialHeader, "visibility", "hidden");
-  setImp(credentialHeader, "opacity", "0");
+  setMobileVisibility(false);
 
   setImp(topBar, "position", "absolute");
   setImp(topBar, "top", "0");
@@ -174,8 +210,8 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   `;
 
   setImp(credentialHeader, "position", "absolute");
-  setImp(credentialHeader, "top", "14px");
-  setImp(credentialHeader, "left", "calc(50% + 6px)");
+  setImp(credentialHeader, "top", "19px");
+  setImp(credentialHeader, "left", "calc(50% - 2%)");
   setImp(credentialHeader, "right", "auto");
   setImp(credentialHeader, "bottom", "auto");
   setImp(credentialHeader, "transform", "translateX(-50%)");
@@ -274,19 +310,22 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(themeToggle, "backdrop-filter", "none");
   setImp(themeToggle, "-webkit-backdrop-filter", "none");
 
-  if (container) {
-    setImp(container, "padding-top", "4.9rem");
-    setImp(container, "box-sizing", "border-box");
-    setImp(container, "align-items", "flex-start");
-  }
+  setImp(container, "display", "flex");
+  setImp(container, "justify-content", "center");
+  setImp(container, "align-items", "flex-start");
+  setImp(container, "flex", "1 1 auto");
+  setImp(container, "height", "auto");
+  setImp(container, "min-height", "0");
+  setImp(container, "padding-top", "64px");
+  setImp(container, "padding-bottom", "1rem");
+  setImp(container, "box-sizing", "border-box");
 
-  if (profileCard) {
-    setImp(profileCard, "margin-top", "0");
-  }
+  setImp(profileCard, "margin-top", "0");
+  setImp(profileCard, "align-self", "flex-start");
+  setImp(profileCard, "transform", "translateY(0)");
 
   requestAnimationFrame(() => {
-    setImp(credentialHeader, "visibility", "visible");
-    setImp(credentialHeader, "opacity", "1");
+    setMobileVisibility(true);
   });
 }
 
@@ -297,7 +336,7 @@ function applyMenuLayout() {
   const profileCard = document.querySelector(".profile-card");
   const isMobile = window.innerWidth <= 768;
 
-  if (!topBar || !credentialHeader || !themeToggle) return;
+  if (!topBar || !credentialHeader || !themeToggle || !container || !profileCard) return;
 
   if (isMobile) {
     applyMobileLayout(topBar, credentialHeader, container, profileCard);
@@ -309,20 +348,87 @@ function applyMenuLayout() {
   applyToggleColors();
 }
 
+function applyImmediateMobilePrelayout() {
+  const topBar = document.querySelector(".top-bar");
+  const credentialHeader = document.querySelector(".credential-header");
+  const container = document.querySelector(".container");
+  const profileCard = document.querySelector(".profile-card");
+
+  if (!topBar || !credentialHeader || !themeToggle || !container || !profileCard) return;
+  if (window.innerWidth > 768) return;
+
+  setMobileVisibility(false);
+
+  setImp(topBar, "position", "absolute");
+  setImp(topBar, "top", "0");
+  setImp(topBar, "left", "0");
+  setImp(topBar, "right", "auto");
+  setImp(topBar, "width", "100%");
+  setImp(topBar, "height", "60px");
+  setImp(topBar, "min-height", "60px");
+  setImp(topBar, "max-height", "60px");
+  setImp(topBar, "display", "block");
+  setImp(topBar, "padding", "0");
+  setImp(topBar, "margin", "0");
+  setImp(topBar, "overflow", "visible");
+  setImp(topBar, "z-index", "120");
+  setImp(topBar, "box-sizing", "border-box");
+
+  credentialHeader.innerHTML = `
+    <span class="mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>
+    <span class="mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
+  `;
+
+  setImp(credentialHeader, "position", "absolute");
+  setImp(credentialHeader, "top", "19px");
+  setImp(credentialHeader, "left", "calc(50% - 2%)");
+  setImp(credentialHeader, "right", "auto");
+  setImp(credentialHeader, "bottom", "auto");
+  setImp(credentialHeader, "transform", "translateX(-50%)");
+  setImp(credentialHeader, "width", "252px");
+  setImp(credentialHeader, "min-width", "252px");
+  setImp(credentialHeader, "max-width", "252px");
+  setImp(credentialHeader, "height", "24px");
+  setImp(credentialHeader, "min-height", "24px");
+  setImp(credentialHeader, "max-height", "24px");
+
+  setImp(themeToggle, "position", "absolute");
+  setImp(themeToggle, "top", "14px");
+  setImp(themeToggle, "right", "16px");
+  setImp(themeToggle, "left", "auto");
+  setImp(themeToggle, "bottom", "auto");
+  setImp(themeToggle, "transform", "none");
+  setImp(themeToggle, "min-width", "44px");
+  setImp(themeToggle, "min-height", "34px");
+  setImp(themeToggle, "padding", ".4rem 1rem");
+
+  setImp(container, "display", "flex");
+  setImp(container, "justify-content", "center");
+  setImp(container, "align-items", "flex-start");
+  setImp(container, "flex", "1 1 auto");
+  setImp(container, "height", "auto");
+  setImp(container, "min-height", "0");
+  setImp(container, "padding-top", "64px");
+  setImp(container, "padding-bottom", "1rem");
+  setImp(container, "box-sizing", "border-box");
+
+  setImp(profileCard, "margin-top", "0");
+  setImp(profileCard, "align-self", "flex-start");
+  setImp(profileCard, "transform", "translateY(0)");
+}
+
+applyImmediateMobilePrelayout();
+
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     applyThemeIcon();
     applyToggleColors();
-
     themeToggle.style.transition = "background 0.4s ease, color 0.4s ease";
     document.body.style.transition = "background 0.7s ease";
-
     const theme = document.body.classList.contains("dark") ? "dark" : "light";
     localStorage.setItem("blairTheme", theme);
-
-    setTimeout(applyMenuLayout, 0);
-    setTimeout(applyMenuLayout, 80);
+    applyMenuLayout();
   });
 }
 
@@ -338,150 +444,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applyThemeIcon();
   applyToggleColors();
+  applyImmediateMobilePrelayout();
   applyMenuLayout();
-
-  setTimeout(applyMenuLayout, 0);
-  setTimeout(applyMenuLayout, 80);
-  setTimeout(applyMenuLayout, 160);
 });
 
 window.addEventListener("load", applyMenuLayout);
 window.addEventListener("resize", applyMenuLayout);
 window.addEventListener("orientationchange", applyMenuLayout);
-
-/* ==========================================
-   APPEND ONLY — FORCE MOBILE CARD DIRECTLY
-   UNDER MENU WITHOUT OVERLAP
-   MOBILE ONLY, DESKTOP LEFT ALONE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function forceCardDirectlyUnderMobileMenu() {
-    const topBar = document.querySelector(".top-bar");
-    const container = document.querySelector(".container");
-    const profileCard = document.querySelector(".profile-card");
-
-    if (!topBar || !container || !profileCard) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    const menuHeight = Math.max(topBar.offsetHeight || 0, 60);
-    const safeGap = 4; /* tiny gap so card does not overlap menu */
-
-    /* kill vertical centering behavior */
-    setImp(container, "display", "flex");
-    setImp(container, "justify-content", "center");
-    setImp(container, "align-items", "flex-start");
-    setImp(container, "flex", "1 1 auto");
-    setImp(container, "height", "auto");
-    setImp(container, "min-height", "0");
-    setImp(container, "padding-top", `${menuHeight + safeGap}px`);
-    setImp(container, "padding-bottom", "1rem");
-    setImp(container, "box-sizing", "border-box");
-
-    /* hard pull card to the very top of the container */
-    setImp(profileCard, "margin-top", "0");
-    setImp(profileCard, "align-self", "flex-start");
-    setImp(profileCard, "transform", "translateY(0)");
-  }
-
-  document.addEventListener("DOMContentLoaded", forceCardDirectlyUnderMobileMenu);
-  window.addEventListener("load", forceCardDirectlyUnderMobileMenu);
-  window.addEventListener("resize", forceCardDirectlyUnderMobileMenu);
-  window.addEventListener("orientationchange", forceCardDirectlyUnderMobileMenu);
-
-  setTimeout(forceCardDirectlyUnderMobileMenu, 0);
-  setTimeout(forceCardDirectlyUnderMobileMenu, 50);
-  setTimeout(forceCardDirectlyUnderMobileMenu, 120);
-  setTimeout(forceCardDirectlyUnderMobileMenu, 240);
-  setTimeout(forceCardDirectlyUnderMobileMenu, 500);
-})();
-
-/* ==========================================
-   APPEND ONLY — MOBILE HEADER CENTER ALIGN
-   GAP BETWEEN 2 ROWS = TOGGLE CENTER LINE
-   MOVE TEXT 2% LEFT
-   KEEP SAME 2-ROW SHAPE
-   ========================================== */
-
-(function () {
-  const MOBILE_BREAKPOINT = 768;
-
-  function alignMobileHeaderGapToToggleCenter() {
-    const credentialHeader = document.querySelector(".credential-header");
-    const themeToggle = document.getElementById("themeToggle");
-    const line1 = credentialHeader && credentialHeader.querySelector(".mobile-cred-line-1");
-    const line2 = credentialHeader && credentialHeader.querySelector(".mobile-cred-line-2");
-
-    if (!credentialHeader || !themeToggle) return;
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
-
-    const toggleTop = themeToggle.offsetTop || 14;
-    const toggleHeight = themeToggle.offsetHeight || 34;
-    const toggleCenter = toggleTop + (toggleHeight / 2);
-
-    const headerHeight = 24;
-    const lineHeight = 11;
-    const gapHeight = 2;
-
-    const desiredHeaderTop = toggleCenter - ((lineHeight + (gapHeight / 2)));
-
-    setImp(credentialHeader, "top", `${desiredHeaderTop}px`);
-    setImp(credentialHeader, "left", "calc(50% - 2%)");
-    setImp(credentialHeader, "transform", "translateX(-50%)");
-    setImp(credentialHeader, "width", "252px");
-    setImp(credentialHeader, "min-width", "252px");
-    setImp(credentialHeader, "max-width", "252px");
-    setImp(credentialHeader, "height", `${headerHeight}px`);
-    setImp(credentialHeader, "min-height", `${headerHeight}px`);
-    setImp(credentialHeader, "max-height", `${headerHeight}px`);
-    setImp(credentialHeader, "overflow", "hidden");
-    setImp(credentialHeader, "text-align", "center");
-    setImp(credentialHeader, "white-space", "normal");
-    setImp(credentialHeader, "line-height", "1.05");
-
-    if (line1) {
-      setImp(line1, "display", "block");
-      setImp(line1, "width", "252px");
-      setImp(line1, "min-width", "252px");
-      setImp(line1, "max-width", "252px");
-      setImp(line1, "height", "11px");
-      setImp(line1, "min-height", "11px");
-      setImp(line1, "max-height", "11px");
-      setImp(line1, "margin", "0");
-      setImp(line1, "padding", "0");
-      setImp(line1, "white-space", "nowrap");
-      setImp(line1, "overflow", "hidden");
-      setImp(line1, "text-align", "center");
-      setImp(line1, "line-height", "1.05");
-    }
-
-    if (line2) {
-      setImp(line2, "display", "block");
-      setImp(line2, "width", "252px");
-      setImp(line2, "min-width", "252px");
-      setImp(line2, "max-width", "252px");
-      setImp(line2, "height", "11px");
-      setImp(line2, "min-height", "11px");
-      setImp(line2, "max-height", "11px");
-      setImp(line2, "margin", "2px 0 0 0");
-      setImp(line2, "padding", "0");
-      setImp(line2, "white-space", "nowrap");
-      setImp(line2, "overflow", "hidden");
-      setImp(line2, "text-align", "center");
-      setImp(line2, "line-height", "1.05");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", alignMobileHeaderGapToToggleCenter);
-  window.addEventListener("load", alignMobileHeaderGapToToggleCenter);
-  window.addEventListener("resize", alignMobileHeaderGapToToggleCenter);
-  window.addEventListener("orientationchange", alignMobileHeaderGapToToggleCenter);
-
-  setTimeout(alignMobileHeaderGapToToggleCenter, 0);
-  setTimeout(alignMobileHeaderGapToToggleCenter, 50);
-  setTimeout(alignMobileHeaderGapToToggleCenter, 120);
-  setTimeout(alignMobileHeaderGapToToggleCenter, 240);
-  setTimeout(alignMobileHeaderGapToToggleCenter, 500);
-})();
