@@ -30,8 +30,8 @@
         <h2>Blair Page</h2>
         <div class="sub-name">(Burness Drake McCoy)</div>
         <h4>Full Stack</h4>
-      <!-- =========================
-     SOCIAL INLINE ROW (CENTERED)
+   <!-- =========================
+     SOCIAL INLINE ROW (UNIFIED)
      ========================= -->
 
 <div class="brand-badge-row">
@@ -40,15 +40,17 @@
   <a href="https://www.upwork.com/freelancers/~016bcaceaa7f29db64"
      target="_blank"
      rel="noopener"
-     class="badge-item compact-badge upwork-compact-badge">
+     class="badge-item compact-badge upwork-compact-badge"
+     aria-label="Upwork - Blair Page">
 
-    <span class="icon-wrap">
+    <span class="icon-wrap" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="12" r="10" fill="#9e829c"></circle>
         <path d="M7.6 8.9v3.1a4.4 4.4 0 0 0 8.8 0V8.9"
               stroke="#f0eff4"
               stroke-width="1.9"
-              stroke-linecap="round"/>
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
       </svg>
     </span>
 
@@ -59,15 +61,15 @@
 
   </a>
 
-
   <!-- ===== LINKTREE ===== -->
   <a href="https://linktr.ee/blairpage"
      target="_blank"
      rel="noopener noreferrer"
-     class="badge-item compact-badge">
+     class="badge-item compact-badge linktree-compact-badge"
+     aria-label="Linktree - Blair Page">
 
-    <span class="icon-wrap">
-      <svg viewBox="0 0 128 128">
+    <span class="icon-wrap" aria-hidden="true">
+      <svg viewBox="0 0 128 128" fill="none">
         <rect x="24" y="24" width="80" height="80" rx="22" fill="#9e829c"></rect>
         <g transform="translate(64 61)">
           <rect x="-5" y="-28" width="10" height="56" rx="5" fill="#f0eff4"></rect>
@@ -86,13 +88,13 @@
 
   </a>
 
-
   <!-- ===== DISCORD ===== -->
   <a href="#"
-     class="badge-item compact-badge"
-     title="Discord: BlairPage">
+     class="badge-item compact-badge discord-compact-badge"
+     title="Discord: BlairPage"
+     aria-label="Discord - BlairPage">
 
-    <span class="icon-wrap">
+    <span class="icon-wrap" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="#9e829c">
         <path d="M20.3 4.3A17.7 17.7 0 0 0 15.9 3c-.2.3-.4.7-.6 1a16.6 16.6 0 0 0-6.6 0c-.2-.3-.4-.7-.6-1a17.7 17.7 0 0 0-4.4 1.3C1.3 8.1.5 11.8.8 15.5a17.8 17.8 0 0 0 5.4 2.7c.4-.5.7-1 .9-1.6-.5-.2-1-.4-1.4-.6.1-.1.2-.2.3-.3a12.2 12.2 0 0 0 11 0l.3.3c-.5.2-1 .4-1.5.6.3.6.6 1.1.9 1.6a17.8 17.8 0 0 0 5.4-2.7c.4-4.3-.6-8-2.8-11.2Z"/>
       </svg>
@@ -105,14 +107,14 @@
 
   </a>
 
-
   <!-- ===== WHATSAPP ===== -->
   <a href="https://wa.me/16502489346"
      target="_blank"
      rel="noopener noreferrer"
-     class="badge-item compact-badge">
+     class="badge-item compact-badge whatsapp-compact-badge"
+     aria-label="WhatsApp - Message">
 
-    <span class="icon-wrap">
+    <span class="icon-wrap" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="#9e829c">
         <path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5-1.3A10 10 0 1 0 12 2Zm5.4 13.6c-.2.6-1.3 1.1-1.8 1.2-.5.1-1.2.2-3.5-.7-2.8-1.1-4.6-3.9-4.7-4-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.2-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.5.2.6.8 2 .9 2.2.1.2.1.4 0 .6-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.8 1.5 1.3 2.7 1.7 3.1 1.9.4.2.6.2.8-.1.2-.3.9-1 1.1-1.4.2-.3.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.3.5.5 0 .2-.1.9-.3 1.5Z"/>
       </svg>
@@ -125,7 +127,109 @@
 
   </a>
 
+  <!-- ===== DEVIANTART ===== -->
+  <a href="https://www.deviantart.com/blarghtrill"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="badge-item compact-badge deviantart-compact-badge"
+     aria-label="DeviantArt - blarghtrill">
+
+    <span class="icon-wrap" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M14.9 2H10.9L9.15 5.5H5.7V9H7.65L5.1 14H9.1L6.55 19H10.55L12.35 15.45H15.8V11.95H13.85L16.4 7H12.4L14.9 2Z"
+              fill="#9e829c"/>
+      </svg>
+    </span>
+
+    <span class="copy">
+      <span class="label">DeviantArt</span>
+      <span class="sub">blarghtrill</span>
+    </span>
+
+  </a>
+
 </div>
+
+<style>
+.brand-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.compact-badge {
+  gap: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge-item:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6));
+}
+
+.icon-wrap {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-wrap svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.35rem;
+}
+
+.label {
+  color: var(--dusty-mauve);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.sub {
+  color: var(--dusty-mauve);
+  opacity: 0.8;
+  font-size: 0.62rem;
+}
+
+@media (max-width: 768px) {
+  .brand-badge-row {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-badge-row {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}
+</style>
 
 
 
