@@ -215,8 +215,18 @@
 
 @media (max-width: 480px) {
   .brand-badge-row {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
+
+    /* 👇 THIS is the key */
+    max-width: 260px; /* controls wrap into ~2 rows */
+    margin: 0 auto;
+  }
+
+  .badge-item {
+    flex: 0 0 auto;
   }
 }
 
