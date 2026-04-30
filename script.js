@@ -1,7 +1,26 @@
 // =========================
 // Portfolio Card JS
 // =========================
+// =========================
+// CONNECT BUTTON FIX
+// =========================
+const followBtn = document.getElementById("followBtn");
+const btnText = document.querySelector(".btn-text");
 
+if (followBtn && btnText) {
+  followBtn.addEventListener("click", () => {
+    followBtn.classList.toggle("following");
+
+    if (followBtn.classList.contains("following")) {
+      btnText.textContent = "Connected ✓";
+
+      // 👇 THIS opens email
+      window.location.href = "mailto:blairpagedrakemccoy@gmail.com";
+    } else {
+      btnText.textContent = "Connect";
+    }
+  });
+}
 // Theme Toggle Button
 const themeToggle = document.getElementById("themeToggle");
 
