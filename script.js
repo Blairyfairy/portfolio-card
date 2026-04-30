@@ -95,7 +95,7 @@ function applyDesktopLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "letter-spacing", "0");
 
   credentialHeader.textContent =
-    "RHCE6 · AWS Cloud Practitioner · AWS Solutions Architect Associate (Renewal Scheduled)";
+    "RHCE6 · AWS Cloud Practitioner";
   setImp(credentialHeader, "position", "static");
   setImp(credentialHeader, "top", "auto");
   setImp(credentialHeader, "left", "auto");
