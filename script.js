@@ -205,8 +205,7 @@ function applyMobileLayout(topBar, credentialHeader, container, profileCard) {
   setImp(topBar, "box-sizing", "border-box");
 
   credentialHeader.innerHTML = `
-    <span class="mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner ·</span>
-    <span class="mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
+    <span class="mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">RHCE6 · AWS Cloud Practitioner</span>
   `;
 
   setImp(credentialHeader, "position", "absolute");
