@@ -448,7 +448,18 @@
   text-align: center !important;
 }
 </style>
-  
+  <style>
+/* ULTRA FORCE Karen vertical alignment fix */
+.profile-action-row .karen-hero-btn .karen-hero-title {
+  position: relative !important;
+  top: auto !important;
+
+  transform: translateY(-1px) !important; /* 🔥 THIS WILL ACTUALLY MOVE IT */
+
+  display: inline-block !important; /* break flex centering dominance */
+  line-height: 31px !important;
+}
+</style>
 </body>
 </html>
 
