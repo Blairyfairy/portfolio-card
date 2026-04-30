@@ -442,3 +442,27 @@ body {
     0 0 10px rgba(158,130,156,0.24),
     0 0 20px rgba(158,130,156,0.12) !important;
 }
+
+.profile-action-row .karen-hero-title,
+.profile-action-row .follow-btn .btn-text {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+
+  /* 🔥 CRITICAL: identical font box */
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+
+  transform: translateY(-0.5px); /* micro optical alignment */
+}
+
