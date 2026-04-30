@@ -377,7 +377,6 @@ function applyImmediateMobilePrelayout() {
 
   credentialHeader.innerHTML = `
     <span class="mobile-cred-line-1" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Certified</span>
-    <span class="mobile-cred-line-2" style="display:block;margin:0;padding:0;white-space:nowrap;text-align:center;line-height:1.05;">AWS Solutions Architect Associate (Renewal Scheduled)</span>
   `;
 
   setImp(credentialHeader, "position", "absolute");
