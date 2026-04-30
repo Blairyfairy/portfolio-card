@@ -462,7 +462,32 @@ body {
   font-weight: 600 !important;
   line-height: 1 !important;
   letter-spacing: 0.02em !important;
+.profile-action-row .karen-hero-title,
+.profile-action-row .follow-btn .btn-text {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  transform: translateY(-0.5px); /* micro optical alignment */
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  line-height: 31px !important;
+  letter-spacing: 0.02em !important;
+
+  text-align: center !important;
+  vertical-align: middle !important;
+  transform: none !important;
+}
+
+.profile-action-row .karen-hero-title {
+  position: relative !important;
+  top: 0.75px !important;
+}
 }
 
