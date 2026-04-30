@@ -2,9 +2,6 @@
 // Portfolio Card JS
 // =========================
 
-
-}
-
 // Theme Toggle Button
 const themeToggle = document.getElementById("themeToggle");
 
