@@ -2,21 +2,7 @@
 // Portfolio Card JS
 // =========================
 
-// Follow / Connect button
-const followBtn = document.getElementById("followBtn");
-const btnText = document.querySelector(".btn-text");
 
-if (followBtn && btnText) {
-  followBtn.addEventListener("click", () => {
-    followBtn.classList.toggle("following");
-
-    if (followBtn.classList.contains("following")) {
-      btnText.textContent = "Connected ✓";
-      window.open("mailto:blairpagedrakemccoy@gmail.com", "_self");
-    } else {
-      btnText.textContent = "Connect";
-    }
-  });
 }
 
 // Theme Toggle Button
