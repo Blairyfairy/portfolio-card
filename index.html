@@ -312,21 +312,24 @@
   margin-top: 0.8rem !important;
   flex-wrap: nowrap !important;
 }
-
 .profile-action-row .karen-hero-btn,
 .profile-action-row .follow-btn {
   width: 94px !important;
   min-width: 94px !important;
   max-width: 94px !important;
+
   height: 31px !important;
   min-height: 31px !important;
+  max-height: 31px !important;
 
   display: inline-flex !important;
   justify-content: center !important;
   align-items: center !important;
 
+  /* 🔥 HARD RESET ALL DIFFERENCES */
+  padding: 0 !important;
   margin: 0 !important;
-  padding: 0.35rem 0.55rem !important;
+  box-sizing: border-box !important;
 
   border: 1px solid var(--glass-border) !important;
   border-radius: 20px !important;
@@ -341,6 +344,10 @@
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
 
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+
   transition:
     background 0.25s ease,
     border-color 0.25s ease,
@@ -348,45 +355,6 @@
     transform 0.2s ease !important;
 }
 
-.profile-action-row .karen-hero-btn:hover,
-.profile-action-row .follow-btn:hover {
-  background: rgba(158,130,156,0.24) !important;
-  border-color: rgba(240,239,244,0.34) !important;
-  box-shadow:
-    0 0 12px rgba(158,130,156,0.30),
-    0 0 26px rgba(158,130,156,0.16) !important;
-  transform: translateY(-1px) !important;
-}
-
-.profile-action-row .karen-hero-title,
-.profile-action-row .follow-btn .btn-text {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif !important;
-  font-size: 0.76rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-  color: var(--ghost-white) !important;
-  white-space: nowrap !important;
-}
-
-@media (max-width: 390px) {
-  .profile-action-row {
-    gap: 0.35rem !important;
-  }
-
-  .profile-action-row .karen-hero-btn,
-  .profile-action-row .follow-btn {
-    width: 86px !important;
-    min-width: 86px !important;
-    max-width: 86px !important;
-    height: 29px !important;
-  }
-
-  .profile-action-row .karen-hero-title,
-  .profile-action-row .follow-btn .btn-text {
-    font-size: 0.72rem !important;
-  }
-}
 </style>
 
 <div class="profile-action-row">
