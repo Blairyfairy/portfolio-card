@@ -502,6 +502,78 @@
   line-height: 33px !important;
 }
 </style>
+<!-- =========================
+FORCED APPEND — 2 ROW BADGE WRAP
+KEEP EVERYTHING ELSE EXACTLY SAME
+APPEND AT VERY END OF FILE
+========================= -->
+
+<style id="forced-two-row-badge-wrap">
+
+@media (max-width: 480px) {
+
+  .brand-badge-row{
+    display:grid !important;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+
+    gap:0.42rem !important;
+
+    width:100% !important;
+    max-width:320px !important;
+
+    margin:0 auto !important;
+
+    align-items:stretch !important;
+    justify-items:stretch !important;
+  }
+
+  .brand-badge-row .badge-item{
+    width:100% !important;
+    min-width:0 !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    padding:0.18rem 0.25rem !important;
+
+    overflow:hidden !important;
+    box-sizing:border-box !important;
+  }
+
+  .brand-badge-row .copy{
+    min-width:0 !important;
+    overflow:hidden !important;
+  }
+
+  .brand-badge-row .label{
+    font-size:0.68rem !important;
+
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .brand-badge-row .sub{
+    font-size:0.50rem !important;
+
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .brand-badge-row .icon-wrap,
+  .brand-badge-row .icon-wrap svg{
+    width:19px !important;
+    height:19px !important;
+    flex:0 0 19px !important;
+  }
+
+}
+
+</style>
 </body>
 </html>
 
