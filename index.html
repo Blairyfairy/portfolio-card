@@ -499,78 +499,77 @@
   line-height: 33px !important;
 }
 </style>
-<!-- =========================
-FORCED APPEND — 2 ROW BADGE WRAP
-KEEP EVERYTHING ELSE EXACTLY SAME
-APPEND AT VERY END OF FILE
-========================= -->
-
-<style id="forced-two-row-badge-wrap">
-
-@media (max-width: 480px) {
-
-  .brand-badge-row{
+<style id="forced-badge-row-only-final">
+  .profile-info .brand-badge-row{
     display:grid !important;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr)) !important;
-
-    gap:0.42rem !important;
-
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:0.45rem !important;
     width:100% !important;
-    max-width:320px !important;
-
-    margin:0 auto !important;
-
+    max-width:520px !important;
+    margin:1.1rem auto 0 !important;
     align-items:stretch !important;
     justify-items:stretch !important;
   }
 
-  .brand-badge-row .badge-item{
+  .profile-info .brand-badge-row > .badge-item{
     width:100% !important;
     min-width:0 !important;
-
+    max-width:none !important;
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
-
-    padding:0.18rem 0.25rem !important;
-
-    overflow:hidden !important;
+    gap:0.22rem !important;
+    padding:0.15rem 0.18rem !important;
     box-sizing:border-box !important;
+    overflow:hidden !important;
   }
 
-  .brand-badge-row .copy{
+  .profile-info .brand-badge-row > .badge-item .icon-wrap,
+  .profile-info .brand-badge-row > .badge-item .icon-wrap svg{
+    width:18px !important;
+    height:18px !important;
+    flex:0 0 18px !important;
+  }
+
+  .profile-info .brand-badge-row > .badge-item .copy{
     min-width:0 !important;
+    margin-left:0.16rem !important;
     overflow:hidden !important;
   }
 
-  .brand-badge-row .label{
+  .profile-info .brand-badge-row > .badge-item .label{
     font-size:0.68rem !important;
-
+    line-height:1.05 !important;
     white-space:nowrap !important;
     overflow:hidden !important;
     text-overflow:ellipsis !important;
   }
 
-  .brand-badge-row .sub{
+  .profile-info .brand-badge-row > .badge-item .sub{
     font-size:0.50rem !important;
-
+    line-height:1.05 !important;
     white-space:nowrap !important;
     overflow:hidden !important;
     text-overflow:ellipsis !important;
   }
 
-  .brand-badge-row .icon-wrap,
-  .brand-badge-row .icon-wrap svg{
-    width:19px !important;
-    height:19px !important;
-    flex:0 0 19px !important;
+  @media(max-width:520px){
+    .profile-info .brand-badge-row{
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      max-width:300px !important;
+    }
   }
-
-}
-
 </style>
+
+<script id="forced-move-personality-into-badge-row-only">
+(function(){
+  const row = document.querySelector('.profile-info .brand-badge-row');
+  const orphan = document.querySelector('.profile-info > a.badge-item[href*="assessment_page.html"]');
+  if(row && orphan && !row.contains(orphan)){
+    row.appendChild(orphan);
+  }
+})();
+</script>
 </body>
 </html>
 
