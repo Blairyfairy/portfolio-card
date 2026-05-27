@@ -571,6 +571,194 @@
   }
 })();
 </script>
+<script>
+(function () {
+  var VIDEO_ID = '0ey_AWgtqt8';
+
+  var PLAYER_ID = 'left-floating-player-rvb-destroyer';
+  var BUTTON_ID = 'left-floating-button-rvb-destroyer';
+  var STYLE_ID = 'left-floating-player-style-rvb-destroyer';
+  var OPTIONS_ID = 'left-floating-video-options-rvb-destroyer';
+
+  var VIDEO_OPTIONS = [
+    { id: '0ey_AWgtqt8', label: 'Red vs. Blue - Blarg Honk' },
+    { id: 'eWdA1DKfbwo', label: 'Static-X - Destroyer' },
+    { id: 'TasujsNonuY', label: 'The Great Destroyer - Modwheelmood' },
+    { id: 'yrzgD3bNbZk', label: 'RWBY: Ruby Rose vs. Pack of Beowolves (60FPS)' },
+    { id: 'i9uKEmUjNPs', label: 'Red vs Blue AMV: Radioactive (Kendrick Lamar Remix)' },
+    { id: 'UglIp5xR8jE', label: "Ada's Seizure Of Power" },
+    { id: 'J2uAbuhagkE', label: 'Area-51 - Cutscene 03: Edgar' }
+  ];
+
+  var activeVideoId = VIDEO_ID;
+  var activeVideoTitle = VIDEO_OPTIONS[0].label;
+  var EMBED_BASE = 'https://www.youtube.com/embed/';
+
+  function buildSrc(muted) {
+    return EMBED_BASE + activeVideoId +
+      '?autoplay=1' +
+      '&mute=' + (muted ? '1' : '0') +
+      '&controls=1' +
+      '&playsinline=1' +
+      '&rel=0' +
+      '&modestbranding=1' +
+      '&enablejsapi=1';
+  }
+
+  function removeOld() {
+    [PLAYER_ID, BUTTON_ID, STYLE_ID, OPTIONS_ID].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.parentNode.removeChild(el);
+    });
+  }
+
+  function injectStyle() {
+    var style = document.createElement('style');
+    style.id = STYLE_ID;
+
+    style.innerHTML =
+      '#' + PLAYER_ID + '{position:fixed!important;left:20px!important;bottom:78px!important;width:260px!important;height:150px!important;z-index:2147483000!important;border-radius:12px!important;overflow:hidden!important;background:#000!important;box-shadow:0 10px 25px rgba(0,0,0,.6)!important;display:none!important;}' +
+      '#' + PLAYER_ID + '.open{display:block!important;}' +
+      '#' + OPTIONS_ID + '{position:fixed!important;left:20px!important;bottom:236px!important;width:260px!important;z-index:2147483002!important;display:none!important;grid-template-columns:1fr!important;gap:6px!important;padding:8px!important;border-radius:12px!important;background:rgba(23,14,32,.84)!important;border:1px solid rgba(240,239,244,.28)!important;box-shadow:0 10px 25px rgba(0,0,0,.50)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;box-sizing:border-box!important;max-height:44vh!important;overflow-y:auto!important;overscroll-behavior:contain!important;}' +
+      '#' + OPTIONS_ID + '.open{display:grid!important;}' +
+      '#' + OPTIONS_ID + ' button{width:100%!important;box-sizing:border-box!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:10px!important;padding:6px 7px!important;background:rgba(255,255,255,.12)!important;color:#fff!important;font:700 10.5px/1.18 Inter,system-ui,sans-serif!important;text-align:left!important;cursor:pointer!important;white-space:normal!important;overflow-wrap:anywhere!important;box-shadow:none!important;}' +
+      '#' + OPTIONS_ID + ' button.active,#' + OPTIONS_ID + ' button:hover{background:rgba(158,130,156,.42)!important;}' +
+      '#' + PLAYER_ID + ' iframe{width:100%!important;height:100%!important;border:0!important;display:block!important;background:#000!important;}' +
+      '#' + BUTTON_ID + '{position:fixed!important;left:20px!important;bottom:20px!important;width:52px!important;height:52px!important;z-index:2147483001!important;border-radius:50%!important;border:1px solid rgba(240,239,244,.35)!important;background:rgba(58,62,59,.72)!important;color:#fff!important;cursor:pointer!important;font-size:1.15rem!important;font-weight:700!important;display:flex!important;align-items:center!important;justify-content:center!important;box-shadow:0 8px 20px rgba(0,0,0,.45)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;touch-action:manipulation!important;}' +
+      '#' + BUTTON_ID + ':hover{background:rgba(158,130,156,.34)!important;transform:translateY(-2px)!important;}' +
+      '@media(max-width:640px){#' + PLAYER_ID + '{left:12px!important;bottom:72px!important;width:calc(100vw - 24px)!important;height:calc((100vw - 24px) * .5625)!important;}#' + OPTIONS_ID + '{left:12px!important;bottom:calc(72px + ((100vw - 24px) * .5625) + 8px)!important;width:calc(100vw - 24px)!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important;padding:7px!important;max-height:38vh!important;}#' + OPTIONS_ID + ' button{font-size:9.5px!important;line-height:1.12!important;padding:6px!important;}#' + BUTTON_ID + '{left:12px!important;bottom:12px!important;}}';
+
+    document.head.appendChild(style);
+  }
+
+  function createPlayer() {
+    removeOld();
+    injectStyle();
+
+    var player = document.createElement('div');
+    player.id = PLAYER_ID;
+
+    var options = document.createElement('div');
+    options.id = OPTIONS_ID;
+
+    var button = document.createElement('button');
+    button.id = BUTTON_ID;
+    button.type = 'button';
+
+    var state = 'closed';
+
+    function setButton() {
+      if (state === 'closed') button.innerHTML = '▶';
+      if (state === 'muted') button.innerHTML = '🔊';
+      if (state === 'playing') button.innerHTML = '🔇';
+      if (state === 'stopped') button.innerHTML = '✕';
+      button.setAttribute('aria-label', activeVideoTitle);
+      button.setAttribute('title', activeVideoTitle);
+    }
+
+    function pauseOtherYouTubeFrames() {
+      document.querySelectorAll('iframe[src*="youtube.com/embed/"], iframe[src*="youtube-nocookie.com/embed/"]').forEach(function (frame) {
+        try {
+          frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch (e) {}
+      });
+    }
+
+    function loadIframe(muted) {
+      pauseOtherYouTubeFrames();
+      player.innerHTML =
+        '<iframe src="' + buildSrc(muted) + '" title="' + activeVideoTitle.replace(/"/g, '&quot;') + '" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+    }
+
+    VIDEO_OPTIONS.forEach(function(item){
+      var optionButton = document.createElement('button');
+      optionButton.type = 'button';
+      optionButton.textContent = item.label;
+
+      if(item.id === activeVideoId) optionButton.className = 'active';
+
+      optionButton.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        activeVideoId = item.id;
+        activeVideoTitle = item.label;
+
+        options.querySelectorAll('button').forEach(function(btn){
+          btn.classList.remove('active');
+        });
+
+        optionButton.classList.add('active');
+        setButton();
+
+        if(state === 'closed' || state === 'stopped') {
+          state = 'muted';
+          player.classList.add('open');
+          options.classList.add('open');
+          loadIframe(true);
+          setButton();
+          return;
+        }
+
+        if(state === 'muted') loadIframe(true);
+        if(state === 'playing') loadIframe(false);
+      });
+
+      options.appendChild(optionButton);
+    });
+
+    button.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      if(state === 'closed') {
+        state = 'muted';
+        player.classList.add('open');
+        options.classList.add('open');
+        loadIframe(true);
+        setButton();
+        return;
+      }
+
+      if(state === 'muted') {
+        state = 'playing';
+        loadIframe(false);
+        setButton();
+        return;
+      }
+
+      if(state === 'playing') {
+        state = 'stopped';
+        player.innerHTML = '';
+        player.classList.add('open');
+        options.classList.add('open');
+        setButton();
+        return;
+      }
+
+      if(state === 'stopped') {
+        state = 'closed';
+        player.innerHTML = '';
+        player.classList.remove('open');
+        options.classList.remove('open');
+        setButton();
+      }
+    });
+
+    document.body.appendChild(player);
+    document.body.appendChild(options);
+    document.body.appendChild(button);
+
+    setButton();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createPlayer);
+  } else {
+    createPlayer();
+  }
+})();
+</script> 
 </body>
 </html>
 
