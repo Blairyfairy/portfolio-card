@@ -755,6 +755,52 @@
   }
 </style>
 
+<style id="lock-credential-header-style">
+  .credential-header::before,
+  .credential-header::after{ content:none !important; display:none !important; }
+</style>
+<script id="lock-credential-header">
+(function(){
+  var el = document.querySelector('.credential-header');
+  if(!el) return;
+  var original = el.innerHTML;
+  var parent = el.parentNode;
+  var protoHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+
+  /* FORCE: render the header text from a closed shadow root.
+     Anything a script writes into the normal DOM of this element is never displayed. */
+  try {
+    var shadow = el.attachShadow({ mode: 'closed' });
+    var span = document.createElement('span');
+    span.innerHTML = original;
+    shadow.appendChild(span);
+  } catch(e){}
+
+  /* Block common ways a script can rewrite the header text */
+  ['innerHTML','textContent','innerText','outerHTML'].forEach(function(n){
+    var proto = n === 'innerText' ? HTMLElement.prototype : (n === 'textContent' ? Node.prototype : Element.prototype);
+    var desc = Object.getOwnPropertyDescriptor(proto, n);
+    if(!desc) return;
+    try { Object.defineProperty(el, n, { configurable:true, get:function(){ return desc.get.call(el); }, set:function(){} }); } catch(e){}
+  });
+  ['appendChild','removeChild','replaceChild','insertBefore','append','prepend','replaceChildren','insertAdjacentHTML','insertAdjacentText','remove'].forEach(function(m){
+    try { el[m] = function(){}; } catch(e){}
+  });
+
+  /* Backup: restore original text / element if anything still touches it */
+  var restoring = false;
+  function restore(){
+    if(restoring) return;
+    restoring = true;
+    if(el.parentNode !== parent){ try { parent.insertBefore(el, parent.firstChild); } catch(e){} }
+    if(protoHTML.get.call(el) !== original) protoHTML.set.call(el, original);
+    restoring = false;
+  }
+  var obs = new MutationObserver(restore);
+  obs.observe(el, {childList:true, characterData:true, subtree:true, attributes:true});
+  if(parent) obs.observe(parent, {childList:true});
+})();
+</script>
 <script id="forced-move-personality-into-badge-row-only">
 (function(){
   const row = document.querySelector('.profile-info .brand-badge-row');
