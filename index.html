@@ -1220,3 +1220,34 @@
 
 
 
+
+
+<!-- Targeted desktop-matched link hover color fix; original card code above remains unchanged. -->
+<style id="desktop-matched-white-link-hover">
+  :root {
+    --bp-link-mauve: #9e829c;
+    --bp-link-white: #f0eff4;
+  }
+
+  /* Match the main desktop site's white hover glow for all card links. */
+  a:hover,
+  a:visited:hover,
+  a:active:hover {
+    color: var(--bp-link-white, #f0eff4) !important;
+    -webkit-text-fill-color: var(--bp-link-white, #f0eff4) !important;
+    text-decoration-color: var(--bp-link-white, #f0eff4) !important;
+    text-shadow: 0 0 5px rgba(240,239,244,0.30), 0 0 14px rgba(240,239,244,0.42) !important;
+  }
+
+  /* Linked badge captions use their own color, so explicitly brighten them on hover. */
+  a.badge-item:hover .label,
+  a.badge-item:hover .sub,
+  .badge-item:hover .label,
+  .badge-item:hover .sub {
+    color: var(--bp-link-white, #f0eff4) !important;
+    -webkit-text-fill-color: var(--bp-link-white, #f0eff4) !important;
+    text-shadow: 0 0 5px rgba(240,239,244,0.30), 0 0 14px rgba(240,239,244,0.42) !important;
+  }
+
+  a img, a svg { -webkit-text-fill-color: initial !important; }
+</style>
