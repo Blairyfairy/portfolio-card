@@ -1433,3 +1433,29 @@
     }
   }
 </style>
+
+
+<!-- Targeted merge fix: genuinely smaller card captions; preserve all prior code. -->
+<style id="card-caption-compact-no-ellipsis-final">
+  /* Override every earlier desktop-size rule, including compact-badge selectors. */
+  html body .profile-info .brand-badge-row > a.badge-item .label,
+  html body .profile-info .brand-badge-row > a.badge-item.compact-badge .label,
+  html body a.badge-item .label,
+  html body a.badge-item.compact-badge .label {
+    font-size: 0.62rem !important;
+    line-height: 1.08 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  html body .profile-info .brand-badge-row > a.badge-item .sub,
+  html body .profile-info .brand-badge-row > a.badge-item.compact-badge .sub,
+  html body a.badge-item .sub,
+  html body a.badge-item.compact-badge .sub {
+    font-size: 0.46rem !important;
+    line-height: 1.08 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+</style>
