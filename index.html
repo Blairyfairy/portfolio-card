@@ -1296,3 +1296,79 @@
     html body .badge-item .sub { font-size: 0.5rem !important; }
   }
 </style>
+
+
+<!-- Targeted merge fix: exact desktop badge-link caption sizing and hover glow for the requested card links only. All prior bytes remain unchanged. -->
+<style id="exact-desktop-sizing-glow-requested-card-links">
+  /* Scope this fix only to the requested social/project links. */
+  html body a.badge-item[href="https://linktr.ee/blairpage"] .label,
+  html body a.badge-item[href="#"][title="Discord: BlairPage"] .label,
+  html body a.badge-item[href="https://wa.me/16502489346"] .label,
+  html body a.badge-item[href="https://www.deviantart.com/blarghtrill"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/aws_exam_results_pdf_viewer.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/linux_lordi_github_page.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/jag_report_page.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/assessment_page.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/95-100_ATS_Gap_Differential.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_ATS_Skills_Gap.html"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_Job_Titles_ATS.html"] .label,
+  html body a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/fashion-atelier/"] .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"] .label {
+    font-size: 0.85rem !important;
+    line-height: normal !important;
+    font-weight: 700 !important;
+  }
+
+  html body a.badge-item[href="https://linktr.ee/blairpage"] .sub,
+  html body a.badge-item[href="#"][title="Discord: BlairPage"] .sub,
+  html body a.badge-item[href="https://wa.me/16502489346"] .sub,
+  html body a.badge-item[href="https://www.deviantart.com/blarghtrill"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/aws_exam_results_pdf_viewer.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/linux_lordi_github_page.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/jag_report_page.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/assessment_page.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/95-100_ATS_Gap_Differential.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_ATS_Skills_Gap.html"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_Job_Titles_ATS.html"] .sub,
+  html body a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/fashion-atelier/"] .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"] .sub {
+    font-size: 0.62rem !important;
+    line-height: normal !important;
+  }
+
+  /* Same single-layer desktop white glow on these links' title and subtitle text. */
+  html body a.badge-item[href="https://linktr.ee/blairpage"]:hover .label,
+  html body a.badge-item[href="https://linktr.ee/blairpage"]:hover .sub,
+  html body a.badge-item[href="#"][title="Discord: BlairPage"]:hover .label,
+  html body a.badge-item[href="#"][title="Discord: BlairPage"]:hover .sub,
+  html body a.badge-item[href="https://wa.me/16502489346"]:hover .label,
+  html body a.badge-item[href="https://wa.me/16502489346"]:hover .sub,
+  html body a.badge-item[href="https://www.deviantart.com/blarghtrill"]:hover .label,
+  html body a.badge-item[href="https://www.deviantart.com/blarghtrill"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/aws_exam_results_pdf_viewer.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/aws_exam_results_pdf_viewer.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/linux_lordi_github_page.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/linux_lordi_github_page.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/jag_report_page.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/jag_report_page.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/assessment_page.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/assessment_page.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/95-100_ATS_Gap_Differential.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/95-100_ATS_Gap_Differential.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_ATS_Skills_Gap.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_ATS_Skills_Gap.html"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_Job_Titles_ATS.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_Job_Titles_ATS.html"]:hover .sub,
+  html body a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"]:hover .label,
+  html body a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/fashion-atelier/"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/fashion-atelier/"]:hover .sub,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"]:hover .label,
+  html body a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"]:hover .sub {
+    color: #f0eff4 !important;
+    -webkit-text-fill-color: #f0eff4 !important;
+    text-shadow: 0 0 14px rgba(240, 239, 244, 0.65) !important;
+  }
+</style>
