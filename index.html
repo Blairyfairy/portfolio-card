@@ -125,6 +125,18 @@
     }
   </style>
 
+  <style id="card-gem-link-main-website-fix">
+    /* Make only the gemstone clickable while preserving its grid position and hover effect. */
+    .profile-card .card-brand-mark-link {
+      display: contents !important;
+      text-decoration: none !important;
+      outline-offset: 3px;
+    }
+    .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
+      filter: brightness(1.08) drop-shadow(0 0 5px rgba(247,225,255,0.95)) !important;
+    }
+  </style>
+
   <style id="card-brand-text-centered-logo-left-fix">
     /* Center the Blair Page text on the card axis; place the logo immediately to its left. */
     .profile-card .card-brand-lockup {
@@ -185,7 +197,7 @@
 
       <section class="profile-info">
         <div class="card-brand-lockup">
-          <h2 class="card-brand-heading"><img src="BlairPageLogo.png" alt="" class="card-brand-mark" width="48" height="48" decoding="async"><span class="card-brand-text">Blair Page</span></h2>
+          <h2 class="card-brand-heading"><a href="https://blairyfairy.github.io/BlairPage/" class="card-brand-mark-link" target="_blank" rel="noopener noreferrer" aria-label="Open the Blair Page main website in a new tab"><img src="BlairPageLogo.png" alt="" class="card-brand-mark" width="48" height="48" decoding="async"></a><span class="card-brand-text">Blair Page</span></h2>
           <div class="sub-name">(Burness Drake McCoy)</div>
         </div>
         <h4>BSBA, 129/120 Credits, 3.40 GPA (ASBA, Nov 2025) · Final Three Major Electives · Dual Enrollment: MBA in AI Product Management, 60% Complete.</h4>
