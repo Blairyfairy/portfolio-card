@@ -124,6 +124,45 @@
       }
     }
   </style>
+
+  <style id="card-brand-text-centered-logo-left-fix">
+    /* Center the Blair Page text on the card axis; place the logo immediately to its left. */
+    .profile-card .card-brand-lockup {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+      grid-template-rows: auto auto !important;
+      column-gap: 0 !important;
+      row-gap: 0.28em !important;
+      align-items: center !important;
+      justify-content: stretch !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto 0.5rem !important;
+      box-sizing: border-box !important;
+    }
+    .profile-card .card-brand-heading { display: contents !important; }
+    .profile-card .card-brand-mark {
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+      justify-self: end !important;
+      margin: 0 0.38em 0 0 !important;
+    }
+    .profile-card .card-brand-text {
+      grid-column: 2 !important;
+      grid-row: 1 !important;
+      justify-self: center !important;
+      text-align: center !important;
+    }
+    .profile-card .card-brand-lockup .sub-name {
+      grid-column: 2 !important;
+      grid-row: 2 !important;
+      justify-self: center !important;
+      text-align: center !important;
+    }
+    @media (max-width: 480px) {
+      .profile-card .card-brand-mark { margin-right: 0.3em !important; }
+    }
+  </style>
 </head>
 <body>
 
