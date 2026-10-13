@@ -1680,3 +1680,214 @@ html body .profile-card a:hover * {
     .profile-card .card-brand-lockup { min-height: 3.4rem !important; }
   }
 </style>
+
+
+<!-- Append-only correction: keep the existing Blair Page branding appearance, remove glow/hover effects, and center the wordmark under the circular profile image. -->
+<style id="card-brand-centered-no-glow-original-look-merge-fix">
+  .profile-card .card-brand-lockup {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 3.7rem !important;
+    margin: 0 auto 0.5rem !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+  .profile-card .card-brand-heading {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+  .profile-card .card-brand-text {
+    display: inline-block !important;
+    position: relative !important;
+    left: auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .profile-card .card-brand-mark-link {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(calc(-100% - 0.38em - 48px)) !important;
+    width: 48px !important;
+    height: 48px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+    z-index: 2 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .profile-card .card-brand-mark,
+  .profile-card .card-brand-mark:hover,
+  .profile-card .card-brand-mark-link:hover .card-brand-mark,
+  .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
+    display: block !important;
+    width: 48px !important;
+    height: 48px !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .profile-card .card-brand-lockup .sub-name {
+    display: block !important;
+    position: relative !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.55em 0 0 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+  @media (max-width: 480px) {
+    .profile-card .card-brand-mark-link {
+      transform: translateX(calc(-100% - 0.3em - 42px)) !important;
+      width: 42px !important;
+      height: 42px !important;
+    }
+    .profile-card .card-brand-mark,
+    .profile-card .card-brand-mark:hover,
+    .profile-card .card-brand-mark-link:hover .card-brand-mark,
+    .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
+      width: 42px !important;
+      height: 42px !important;
+    }
+    .profile-card .card-brand-lockup { min-height: 3.4rem !important; }
+  }
+</style>
+
+
+<!-- Append-only final correction: match desktop wordmark finish, remove haze, preserve centered layout. -->
+<style id="card-brand-desktop-look-no-haze-final-fix">
+  .profile-card .card-brand-text,
+  .profile-card .card-brand-text:hover,
+  .profile-card .card-brand-text:focus,
+  .profile-card .card-brand-text:focus-visible,
+  .profile-card .card-brand-heading,
+  .profile-card .card-brand-heading:hover {
+    filter: none !important;
+    -webkit-filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .profile-card .card-brand-text::before,
+  .profile-card .card-brand-text::after,
+  .profile-card .card-brand-heading::before,
+  .profile-card .card-brand-heading::after {
+    content: none !important;
+    display: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .profile-card .card-brand-lockup {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+  .profile-card .card-brand-heading {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  .profile-card .card-brand-text {
+    display: inline-block !important;
+    position: relative !important;
+    left: auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    font-weight: 800 !important;
+    font-size: 1.15em !important;
+    letter-spacing: -0.015em !important;
+    line-height: 1.1 !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f0eff4 45%, #c9b3c7 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    white-space: nowrap !important;
+  }
+  .profile-card .card-brand-mark-link {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(calc(-100% - 0.38em - 48px)) !important;
+    width: 48px !important;
+    height: 48px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    box-shadow: none !important;
+  }
+  .profile-card .card-brand-mark,
+  .profile-card .card-brand-mark:hover,
+  .profile-card .card-brand-mark-link:hover .card-brand-mark,
+  .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
+    width: 48px !important;
+    height: 48px !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+  .profile-card .card-brand-lockup .sub-name {
+    display: block !important;
+    position: relative !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.55em 0 0 !important;
+    text-align: center !important;
+    text-shadow: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+  @media (max-width: 480px) {
+    .profile-card .card-brand-mark-link {
+      width: 42px !important; height: 42px !important;
+      transform: translateX(calc(-100% - 0.3em - 42px)) !important;
+    }
+    .profile-card .card-brand-mark,
+    .profile-card .card-brand-mark:hover,
+    .profile-card .card-brand-mark-link:hover .card-brand-mark,
+    .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
+      width: 42px !important; height: 42px !important;
+    }
+  }
+</style>
