@@ -1279,3 +1279,20 @@
 
   html body a img, html body a svg { -webkit-text-fill-color: initial !important; }
 </style>
+
+
+<!-- Targeted merge fix: match card badge-link caption sizing to desktop index.html. All existing card code above remains unchanged. -->
+<style id="desktop-matched-card-link-sizing">
+  /* Desktop index.html uses 0.85rem labels and 0.62rem subtitles. */
+  html body .badge-item .label {
+    font-size: 0.85rem !important;
+  }
+  html body .badge-item .sub {
+    font-size: 0.62rem !important;
+  }
+  /* Match the desktop site's compact caption sizing at narrow widths. */
+  @media (max-width: 768px) {
+    html body .badge-item .label { font-size: 0.68rem !important; }
+    html body .badge-item .sub { font-size: 0.5rem !important; }
+  }
+</style>
