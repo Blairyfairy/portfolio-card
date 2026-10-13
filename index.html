@@ -1258,3 +1258,12 @@ html body .profile-card .card-brand-lockup {
   column-gap: 0.14em !important;
 }
 </style>
+
+
+<!-- Append-only merge fix: restore white hover text for card links without changing other styling. -->
+<style id="card-link-hover-white-merge-fix">
+html body .profile-card a:hover,
+html body .profile-card a:hover * {
+  color: #fff !important;
+}
+</style>
