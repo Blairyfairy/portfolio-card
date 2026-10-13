@@ -1575,3 +1575,22 @@
     }
   }
 </style>
+
+
+<!-- Targeted merge fix: equal vertical spacing between each centered badge row. All preceding bytes remain unchanged. -->
+<style id="card-equal-vertical-row-spacing-merge-fix">
+  /* Normalize the gaps between the first, second, and third link rows. */
+  html body .profile-info .brand-badge-row {
+    row-gap: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  html body .profile-info .brand-badge-row + .brand-badge-row {
+    margin-top: 0.72rem !important;
+  }
+  @media (max-width: 620px) {
+    html body .profile-info .brand-badge-row + .brand-badge-row {
+      margin-top: 0.58rem !important;
+    }
+  }
+</style>
