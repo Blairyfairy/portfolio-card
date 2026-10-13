@@ -1510,3 +1510,68 @@
     }
   }
 </style>
+
+
+<!-- Targeted merge fix: match desktop index.html badge spacing while keeping the card's centered row layout and compact captions. -->
+<style id="card-desktop-spacing-centered-rows-merge-fix">
+  html body .profile-info .brand-badge-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    align-content: center !important;
+    justify-content: center !important;
+    gap: 0.28rem 0.58rem !important;
+    width: 100% !important;
+    max-width: 1050px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+  }
+
+  html body .profile-info .brand-badge-row > a.badge-item,
+  html body .profile-info .brand-badge-row > a.badge-item.compact-badge {
+    display: inline-flex !important;
+    flex: 0 1 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 0.22rem !important;
+  }
+
+  html body .profile-info .brand-badge-row > a.badge-item .icon-wrap {
+    flex: 0 0 22px !important;
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  html body .profile-info .brand-badge-row > a.badge-item .copy {
+    min-width: 0 !important;
+    margin-left: 0.12rem !important;
+    text-align: center !important;
+  }
+
+  html body .profile-info .brand-badge-row > a.badge-item .label,
+  html body .profile-info .brand-badge-row > a.badge-item .sub {
+    max-width: none !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    white-space: normal !important;
+  }
+
+  @media (max-width: 620px) {
+    html body .profile-info .brand-badge-row {
+      justify-content: center !important;
+      column-gap: 0.45rem !important;
+      row-gap: 0.55rem !important;
+      max-width: 100% !important;
+    }
+    html body .profile-info .brand-badge-row > a.badge-item {
+      flex: 0 1 auto !important;
+    }
+  }
+</style>
