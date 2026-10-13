@@ -1251,3 +1251,31 @@
 
   a img, a svg { -webkit-text-fill-color: initial !important; }
 </style>
+
+
+<!-- Exact desktop-site hover glow match; original card code remains unchanged. -->
+<style id="exact-desktop-link-hover-glow-match">
+  :root { --bp-desktop-hover-white: #f0eff4; }
+
+  /* Match the main index.html's stronger, single-layer white glow. */
+  html body a:hover,
+  html body a:visited:hover,
+  html body a:active:hover {
+    color: var(--bp-desktop-hover-white) !important;
+    -webkit-text-fill-color: var(--bp-desktop-hover-white) !important;
+    text-decoration-color: var(--bp-desktop-hover-white) !important;
+    text-shadow: 0 0 14px rgba(240, 239, 244, 0.65) !important;
+  }
+
+  /* Match the same glow on badge text, whose own styles override anchor color. */
+  html body a.badge-item:hover .label,
+  html body a.badge-item:hover .sub,
+  html body .badge-item:hover .label,
+  html body .badge-item:hover .sub {
+    color: var(--bp-desktop-hover-white) !important;
+    -webkit-text-fill-color: var(--bp-desktop-hover-white) !important;
+    text-shadow: 0 0 14px rgba(240, 239, 244, 0.65) !important;
+  }
+
+  html body a img, html body a svg { -webkit-text-fill-color: initial !important; }
+</style>
