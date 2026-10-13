@@ -1383,3 +1383,48 @@ html body .profile-card .card-brand-lockup {
     }
   }
 </style>
+
+<!-- Forced final override (append-only, nothing above this line was changed): strictly center the "Blair Page" text and the name line under it on the card axis (same axis as the circle photo).
+     The logo sits to the LEFT of the "Blair Page" text at the exact same distance (0.14rem = 2.24px, the approved gap) at every size and version.
+     Layout: 3-column grid [1fr | text | 1fr] -> the text column is always dead center; the logo is end-aligned in the left column so it hugs the text's left edge;
+     the name line spans all columns and is centered. The :not(#id) pieces give ID-level specificity so no earlier !important rule can win. -->
+<style id="card-brand-strict-center-logo-left-forced-final">
+html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-lockup:not(#bpBrandD){
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) !important;
+  grid-template-rows:auto auto !important;
+  column-gap:0 !important;
+  justify-content:stretch !important;
+  justify-items:stretch !important;
+  width:100% !important;
+  max-width:100% !important;
+  box-sizing:border-box !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-heading:not(#bpBrandD){
+  display:contents !important;
+}
+html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-mark:not(#bpBrandD){
+  grid-column:1 !important;
+  grid-row:1 !important;
+  justify-self:end !important;
+  margin:0 0.14rem 0 0 !important;   /* the approved logo-to-name distance (0.14 of the lockup 1rem font size), identical at every size */
+}
+html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-text:not(#bpBrandD){
+  grid-column:2 !important;
+  grid-row:1 !important;
+  justify-self:center !important;
+  text-align:center !important;
+}
+html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-lockup:not(#bpBrandD) .sub-name{
+  grid-column:1 / -1 !important;
+  grid-row:2 !important;
+  justify-self:center !important;
+  text-align:center !important;
+}
+@media (max-width:480px){
+  html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-lockup:not(#bpBrandD){ column-gap:0 !important; }
+  html:not(#bpBrandA):not(#bpBrandB) body:not(#bpBrandC) .profile-card .card-brand-mark:not(#bpBrandD){ margin:0 0.14rem 0 0 !important; }
+}
+</style>
