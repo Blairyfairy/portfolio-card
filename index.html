@@ -90,7 +90,9 @@
       will-change: transform, filter;
       backface-visibility: hidden;
     }
-    .profile-card .card-brand-mark:hover {
+    .profile-card .card-brand-mark:hover,
+    .profile-card .card-brand-mark-link:hover .card-brand-mark,
+    .profile-card .card-brand-mark-link:focus-visible .card-brand-mark {
       filter:
         brightness(1.08)
         saturate(1.12)
