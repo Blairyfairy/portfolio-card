@@ -177,6 +177,31 @@
       .profile-card .card-brand-mark { margin-right: 0.3em !important; }
     }
   </style>
+
+<!-- Append-only: equal icon-to-text spacing for every link badge. Each SVG has different built-in padding inside its viewBox, and the icon box was a fixed 26px,
+     so gaps looked uneven. The box now hugs the icon and each icon's empty side padding is cancelled with a negative margin. No existing rule or markup changed. -->
+<style id="badge-icon-equal-gap-fix">
+  html body .profile-info .brand-badge-row > a.badge-item .icon-wrap{
+    flex:0 0 auto !important;
+    width:auto !important;
+    height:20px !important;
+  }
+  html body .profile-info .brand-badge-row > a.badge-item .icon-wrap svg{
+    flex:0 0 20px !important;
+  }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://linktr.ee/blairpage"] .icon-wrap svg{ margin:0 -3.75px 0 -3.75px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://discord.com/users/BlairPage"] .icon-wrap svg{ margin:0 -1.51px 0 -0.62px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://wa.me/16502489346"] .icon-wrap svg{ margin:0 -1.72px 0 -1.67px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://www.deviantart.com/blarghtrill"] .icon-wrap svg{ margin:0 -6.33px 0 -4.25px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/aws_exam_results_pdf_viewer.html"] .icon-wrap svg{ margin:0 -1.84px 0 -1.84px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/linux_lordi_github_page.html"] .icon-wrap svg{ margin:0 -5.00px 0 -5.00px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/jag_report_page.html"] .icon-wrap svg{ margin:0 -1.88px 0 -1.88px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/assessment_page.html"] .icon-wrap svg{ margin:0 -2.50px 0 -2.50px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/95-100_ATS_Gap_Differential.html"] .icon-wrap svg{ margin:0 -2.62px 0 -2.62px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/Blairs_Job_Titles_ATS.html"] .icon-wrap svg{ margin:0 -3.25px 0 -3.25px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"] .icon-wrap svg{ margin:0 -1.28px 0 -1.48px !important; }
+  html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"] .icon-wrap svg{ margin:0 -2.19px 0 -2.19px !important; }
+</style>
 </head>
 <body>
 
