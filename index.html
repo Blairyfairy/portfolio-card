@@ -202,14 +202,78 @@
   html body .profile-info .brand-badge-row > a.badge-item[href="https://hub.docker.com/repositories/blairyfairy"] .icon-wrap svg{ margin:0 -1.28px 0 -1.48px !important; }
   html body .profile-info .brand-badge-row > a.badge-item[href="https://blairyfairy.github.io/BlairPage/blairs_gardening_gallery.html"] .icon-wrap svg{ margin:0 -2.19px 0 -2.19px !important; }
 </style>
+
+<!-- Credential-brand-only merge: same artwork and proportions as main profile; all other card styles preserved. -->
+<style id="bp-card-main-profile-credential-branding">
+.top-bar .credential-header.bp-brand-links{
+  display:flex !important; align-items:flex-start !important; justify-content:flex-start !important;
+  flex-direction:row !important; gap:10px !important; min-width:0 !important;
+  width:auto !important; max-width:calc(100% - 76px) !important;
+  margin:0 !important; padding:0 !important; background:transparent !important;
+  border:0 !important; box-shadow:none !important; line-height:normal !important;
+}
+.top-bar .bp-brand-links .bp-brand-link{
+  display:flex !important; flex-direction:column !important; align-items:flex-start !important;
+  justify-content:flex-start !important; flex:0 0 auto !important;
+  width:auto !important; min-width:0 !important; padding:0 !important; margin:0 !important;
+  background:none !important; border:0 !important; border-radius:0 !important;
+  text-decoration:none !important; box-shadow:none !important; transform:none !important;
+  transition:none !important; line-height:1 !important;
+}
+.top-bar .bp-brand-links .bp-exact-lvmh{
+  display:block !important; width:94px !important; height:auto !important; aspect-ratio:174/95 !important;
+  object-fit:contain !important; margin:0 !important; padding:0 !important;
+  transform:none !important; transition:filter .22s ease !important;
+}
+.top-bar .bp-brand-links .bp-exact-aws{
+  display:block !important; width:154px !important; height:auto !important; aspect-ratio:398/90 !important;
+  object-fit:contain !important; margin:0 !important; padding:0 !important;
+  transform:none !important; transition:filter .22s ease !important;
+}
+.top-bar .bp-brand-links .bp-training-status{
+  display:block !important; position:static !important; align-self:flex-start !important;
+  margin:-3px 0 0 0 !important; padding:0 !important;
+  font:400 12px/1.1 Arial,Helvetica,sans-serif !important;
+  letter-spacing:0 !important; white-space:nowrap !important; color:#9e829c !important;
+  text-align:left !important; transform:none !important; transition:none !important;
+  text-shadow:none !important; filter:none !important;
+}
+.top-bar .bp-brand-links .bp-brand-link:hover .bp-exact-lvmh,
+.top-bar .bp-brand-links .bp-brand-link:hover .bp-exact-aws,
+.top-bar .bp-brand-links .bp-brand-link:focus-visible .bp-exact-lvmh,
+.top-bar .bp-brand-links .bp-brand-link:focus-visible .bp-exact-aws{
+  filter:drop-shadow(0 0 3px rgba(255,255,255,.9)) drop-shadow(0 0 8px rgba(255,255,255,.5)) !important;
+  transform:none !important;
+}
+.top-bar .bp-brand-links .bp-brand-link:hover .bp-training-status,
+.top-bar .bp-brand-links .bp-brand-link:focus-visible .bp-training-status{
+  transform:none !important; filter:none !important; text-shadow:none !important;
+}
+@media(max-width:480px){
+  .top-bar .credential-header.bp-brand-links{gap:7px !important; max-width:calc(100% - 62px) !important;}
+  .top-bar .bp-brand-links .bp-exact-lvmh{width:72px !important;}
+  .top-bar .bp-brand-links .bp-exact-aws{width:115px !important;}
+  .top-bar .bp-brand-links .bp-training-status{font-size:10px !important; margin-top:-2px !important;}
+}
+@media(max-width:340px){
+  .top-bar .bp-brand-links .bp-exact-lvmh{width:62px !important;}
+  .top-bar .bp-brand-links .bp-exact-aws{width:99px !important;}
+}
+</style>
 </head>
 <body>
 
   <!-- 🌟 Executive Header: Credentials and credibility -->
   <header class="top-bar">
-    <div class="credential-header">
-      Inside LVMH (In Training) · AWS Certified 
-    </div>
+    <div class="credential-header bp-brand-links" aria-label="Credential shortcuts">
+    <a class="bp-brand-link bp-lvmh-link" href="https://blairyfairy.github.io/BlairPage/#certifications" target="_blank" rel="noopener noreferrer" aria-label="INSIDE LVMH in training — jump to Certifications">
+      <img class="bp-exact-lvmh" src="data:image/png;base64,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" alt="INSIDE LVMH" />
+      <span class="bp-training-status">(In Training)</span>
+    </a>
+    <a class="bp-brand-link bp-aws-link" href="https://blairyfairy.github.io/BlairPage/#credly-badges" target="_blank" rel="noopener noreferrer" aria-label="AWS Certified — jump to Credly badges">
+      <img class="bp-exact-aws" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzOTggOTAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iYXdzIGNlcnRpZmllZCI+PHRleHQgeD0iMiIgeT0iNjYiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJIZWx2ZXRpY2EgTmV1ZSxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSI3NSIgZm9udC13ZWlnaHQ9IjIwMCIgbGV0dGVyLXNwYWNpbmc9Ii00Ij5hd3M8L3RleHQ+PHBhdGggZD0iTTE0NSAyNCBMMTY0LjA1IDM1IEwxNjQuMDUgNTcgTDE0NSA2OCBMMTI1Ljk1IDU3IEwxMjUuOTUgMzUgWiIgZmlsbD0iI2ZmOTkwMCIvPjxwYXRoIGQ9Ik0xMzYgNDYgTDE0MyA1MyBMMTU1IDM5IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48dGV4dCB4PSIxNzAiIHk9IjY2IiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iSGVsdmV0aWNhIE5ldWUsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNjkiIGZvbnQtd2VpZ2h0PSIxMDAiIGxldHRlci1zcGFjaW5nPSItMiI+Y2VydGlmaWVkPC90ZXh0Pjwvc3ZnPg==" alt="aws certified" />
+    </a>
+  </div>
     <button id="themeToggle" class="theme-btn">🌙</button>
   </header>
 
@@ -269,8 +333,15 @@
      title="Discord: BlairPage">
 
     <span class="icon-wrap">
-      <svg viewBox="0 0 24 24" fill="#9e829c">
-        <path d="M20.3 4.3A17.7 17.7 0 0 0 15.9 3c-.2.3-.4.7-.6 1a16.6 16.6 0 0 0-6.6 0c-.2-.3-.4-.7-.6-1a17.7 17.7 0 0 0-4.4 1.3C1.3 8.1.5 11.8.8 15.5a17.8 17.8 0 0 0 5.4 2.7c.4-.5.7-1 .9-1.6-.5-.2-1-.4-1.4-.6.1-.1.2-.2.3-.3a12.2 12.2 0 0 0 11 0l.3.3c-.5.2-1 .4-1.5.6.3.6.6 1.1.9 1.6a17.8 17.8 0 0 0 5.4-2.7c.4-4.3-.6-8-2.8-11.2Z"/>
+      <svg viewBox="0 0 24 24" fill="#9e829c" aria-hidden="true">
+        <defs>
+          <mask id="bp-discord-clyde-eye-cutouts">
+            <rect width="24" height="24" fill="white"/>
+            <ellipse cx="8.65" cy="10.65" rx="1.12" ry="1.48" fill="black"/>
+            <ellipse cx="15.35" cy="10.65" rx="1.12" ry="1.48" fill="black"/>
+          </mask>
+        </defs>
+        <path mask="url(#bp-discord-clyde-eye-cutouts)" d="M20.3 4.3A17.7 17.7 0 0 0 15.9 3c-.2.3-.4.7-.6 1a16.6 16.6 0 0 0-6.6 0c-.2-.3-.4-.7-.6-1a17.7 17.7 0 0 0-4.4 1.3C1.3 8.1.5 11.8.8 15.5a17.8 17.8 0 0 0 5.4 2.7c.4-.5.7-1 .9-1.6-.5-.2-1-.4-1.4-.6.1-.1.2-.2.3-.3a12.2 12.2 0 0 0 11 0l.3.3c-.5.2-1 .4-1.5.6.3.6.6 1.1.9 1.6a17.8 17.8 0 0 0 5.4-2.7c.4-4.3-.6-8-2.8-11.2Z"/>
       </svg>
     </span>
 
@@ -289,8 +360,9 @@
      class="badge-item compact-badge">
 
     <span class="icon-wrap">
-      <svg viewBox="0 0 24 24" fill="#9e829c">
-        <path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5-1.3A10 10 0 1 0 12 2Zm5.4 13.6c-.2.6-1.3 1.1-1.8 1.2-.5.1-1.2.2-3.5-.7-2.8-1.1-4.6-3.9-4.7-4-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.2-.3.6-.4.8-.4h.6c.2 0 .5 0 .7.5.2.6.8 2 .9 2.2.1.2.1.4 0 .6-.1.2-.2.4-.4.6l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.8 1.5 1.3 2.7 1.7 3.1 1.9.4.2.6.2.8-.1.2-.3.9-1 1.1-1.4.2-.3.4-.3.7-.2.3.1 1.9.9 2.2 1.1.3.2.5.3.5.5 0 .2-.1.9-.3 1.5Z"/>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <defs><mask id="bp-whatsapp-transparent-handset"><rect width="24" height="24" fill="white"/><path fill="black" d="M7.15 5.9c-.47 0-.87.2-1.2.55-.56.59-.86 1.4-.86 2.32 0 1.62 1.03 3.56 2.83 5.38 1.88 1.88 4.2 3.12 6.32 3.4 1.13.15 2.11-.06 2.8-.59.57-.44 1.02-1.24 1.02-1.92 0-.24-.13-.4-.39-.53l-2.46-1.15c-.3-.14-.52-.12-.72.18l-1.05 1.27c-.17.21-.33.24-.64.09-.83-.39-1.59-.88-2.3-1.49-.65-.57-1.23-1.26-1.71-2.02-.15-.25-.1-.4.09-.6l.77-.9c.2-.22.25-.4.15-.65L8.75 6.5c-.15-.4-.36-.59-.72-.6h-.88Z"/></mask></defs>
+        <path fill="#9e829c" mask="url(#bp-whatsapp-transparent-handset)" d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5-1.3A10 10 0 1 0 12 2Z"/>
       </svg>
     </span>
 
@@ -926,6 +998,7 @@
 (function(){
   var el = document.querySelector('.credential-header');
   if(!el) return;
+  if(el.classList.contains('bp-brand-links')) return; /* preserve working credential anchors */
   var original = el.innerHTML;
   var parent = el.parentNode;
   var protoHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
