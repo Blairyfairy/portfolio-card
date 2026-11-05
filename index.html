@@ -277,6 +277,64 @@
   .top-bar .bp-brand-links .bp-training-status { font-size:7.5px !important; }
 }
 </style>
+
+<!-- Match the main index.html credential pair: identical artwork dimensions, link-to-link spacing and label placement. -->
+<style id="bp-card-main-index-credential-pair-exact-spacing-20261104">
+html body .top-bar .bp-credential-brand-links.bp-brand-links {
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  gap:clamp(8px,1.1vw,15px) !important;
+  column-gap:clamp(8px,1.1vw,15px) !important;
+  row-gap:0 !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links > .bp-brand-link {
+  flex:0 0 auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  min-height:0 !important;
+  align-self:flex-start !important;
+  transform:none !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links > .bp-lvmh-link {
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  gap:0 !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links > .bp-aws-link {
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:0 !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-lvmh {
+  width:64px !important; height:35px !important; object-fit:contain !important; margin:0 !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-aws {
+  width:106px !important; height:28px !important; object-fit:contain !important; margin:0 !important;
+}
+html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-training-status {
+  margin:0 !important; padding:0 !important; font:400 9px/1.1 Arial,Helvetica,sans-serif !important;
+  align-self:flex-start !important; text-align:left !important; letter-spacing:0 !important;
+}
+@media (max-width:640px) {
+  html body .top-bar .bp-credential-brand-links.bp-brand-links {gap:8px !important; column-gap:8px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-lvmh {width:52px !important; height:28.4px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-aws {width:86px !important; height:19.45px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-training-status {font-size:8px !important;line-height:1.05 !important;}
+}
+@media (max-width:390px) {
+  html body .top-bar .bp-credential-brand-links.bp-brand-links {gap:6px !important; column-gap:6px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-lvmh {width:46px !important; height:25.1px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-exact-aws {width:76px !important; height:17.2px !important;}
+  html body .top-bar .bp-credential-brand-links.bp-brand-links .bp-training-status {font-size:7.5px !important;}
+}
+</style>
 </head>
 <body>
 
