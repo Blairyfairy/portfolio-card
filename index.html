@@ -388,21 +388,9 @@ body.dark .profile-card {
 @media(max-width:640px){.top-bar > button#themeToggle.theme-btn{top:.74rem !important;right:.72rem !important;}}
 @media(max-width:420px){.top-bar > button#themeToggle.theme-btn{top:.68rem !important;right:.58rem !important;min-width:42px !important;min-height:32px !important;padding:.36rem .82rem !important;font-size:.8rem !important;}}
 
-/* Restore the toggle's original space in header flow while leaving the perfectly
-   positioned absolute toggle untouched. This restores the card's previous top offset. */
-.top-bar::after {
-  content:"" !important;
-  display:block !important;
-  flex:0 0 76px !important;
-  width:76px !important;
-  height:34px !important;
-  min-height:34px !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
-}
-@media(max-width:420px){
-  .top-bar::after {height:32px !important;min-height:32px !important;width:70px !important;flex-basis:70px !important;}
-}
+/* Preserve the original card's vertical position: no extra pseudo-element
+   or additional header row. The credential lockup retains its native height. */
+.top-bar::after { content:none !important; display:none !important; }
 </style>
 </head>
 <body>
