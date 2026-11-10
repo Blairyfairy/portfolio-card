@@ -343,6 +343,51 @@ body.dark .profile-card {
   background-image: none !important;
 }
 </style>
+<style id="bp-theme-toggle-match-bak1-20261110">
+/* Match bak1 main-profile toggle dimensions, border and top-right header anchor.
+   Scoped to the toggle so the remaining header and portfolio are unchanged. */
+.top-bar { position:relative !important; }
+.top-bar > button#themeToggle.theme-btn {
+  position:absolute !important;
+  top:1rem !important;
+  right:2rem !important;
+  left:auto !important;
+  bottom:auto !important;
+  margin:0 !important;
+  width:auto !important;
+  min-width:44px !important;
+  max-width:none !important;
+  height:auto !important;
+  min-height:34px !important;
+  padding:.4rem 1rem !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+  font-size:.85rem !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
+  color:var(--text-light,#f0eff4) !important;
+  background:var(--glass-bg,rgba(240,239,244,.08)) !important;
+  background-image:none !important;
+  border:1px solid var(--glass-border,rgba(240,239,244,.22)) !important;
+  border-radius:20px !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  cursor:pointer !important;
+  transition:background .35s ease,border-color .35s ease,color .35s ease,box-shadow .25s ease,transform .2s ease !important;
+}
+.top-bar > button#themeToggle.theme-btn:hover {
+  transform:translateY(-1px) !important;
+  box-shadow:0 4px 14px rgba(0,0,0,.28) !important;
+}
+@media(max-width:900px){.top-bar > button#themeToggle.theme-btn{top:.82rem !important;right:1rem !important;}}
+@media(max-width:640px){.top-bar > button#themeToggle.theme-btn{top:.74rem !important;right:.72rem !important;}}
+@media(max-width:420px){.top-bar > button#themeToggle.theme-btn{top:.68rem !important;right:.58rem !important;min-width:42px !important;min-height:32px !important;padding:.36rem .82rem !important;font-size:.8rem !important;}}
+</style>
 </head>
 <body>
 
