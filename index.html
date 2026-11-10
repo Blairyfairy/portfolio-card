@@ -392,6 +392,17 @@ body.dark .profile-card {
    or additional header row. The credential lockup retains its native height. */
 .top-bar::after { content:none !important; display:none !important; }
 </style>
+<style id="bp-profile-card-balanced-top-gap-20261110">
+/* A small, consistent visual separation below the approved header. */
+html body main.container > article.profile-card {
+  margin-top: 14px !important;
+}
+@media (max-width: 640px) {
+  html body main.container > article.profile-card {
+    margin-top: 10px !important;
+  }
+}
+</style>
 </head>
 <body>
 
