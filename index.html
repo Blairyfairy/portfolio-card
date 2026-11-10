@@ -393,13 +393,16 @@ body.dark .profile-card {
 .top-bar::after { content:none !important; display:none !important; }
 </style>
 <style id="bp-profile-card-balanced-top-gap-20261110">
-/* A small, consistent visual separation below the approved header. */
+/* Move the card itself upward without moving or resizing the approved header/toggle.
+   A positional offset works even when other styles override margins. */
 html body main.container > article.profile-card {
-  margin-top: -2px !important;
+  position: relative !important;
+  top: -18px !important;
+  margin-top: 0 !important;
 }
 @media (max-width: 640px) {
   html body main.container > article.profile-card {
-    margin-top: -3px !important;
+    top: -15px !important;
   }
 }
 </style>
